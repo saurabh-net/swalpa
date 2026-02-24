@@ -31,5 +31,4 @@ MANIFEST
 .idea/
 
 # Ignore Agent instructions
-GEMINI.md
 scripts/
