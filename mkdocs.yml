@@ -1,0 +1,55 @@
+site_name: SWALPA
+site_description: Spoken Words And Language Practical Acquisition - A Phonetic-Only Bangalore Kannada Resource
+repo_url: https://github.com/saurabh-net/swalpa
+repo_name: saurabh-net/swalpa
+docs_dir: docs
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+     - navigation.footer
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+
+nav:
+  - Namaskara: index.md
+  - 1. History & Nuances: 01_history_and_nuances.md
+  - 2. Survival & Emergencies: 02_survival_and_emergencies.md
+  - 3. Social Interactions: 03_social_interactions.md
+  - 4. Household & Logistics: 04_household_and_logistics.md
+  - 5. Time & Numbers: 05_time_and_numbers.md
+  - 6. Verbs & Grammar: 06_verbs_and_grammar.md
+  - 7. Adjectives: 07_adjectives.md
+  - 8. Slang: 08_slang.md
+  - 9. Travel & Conflict: 09_travel_and_conflict.md
+  - 10. Everyday Logistics & Services: 10_everyday_logistics_and_services.md
+  - Flashcards:
+      - English to Kannada: 11_flashcards_en_kn.md
+      - Kannada to English: 11_flashcards_kn_en.md
