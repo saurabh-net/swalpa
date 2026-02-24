@@ -38,6 +38,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.details
 
+extra:
+  generator: false
+
 nav:
   - Namaskara: index.md
   - 1. History & Nuances: 01_history_and_nuances.md
