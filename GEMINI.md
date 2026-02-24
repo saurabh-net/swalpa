@@ -29,7 +29,10 @@ While the public repo is for the static site, this private repo is for:
 ## 🛠️ Operational Workflow
 1.  **Syncing**: Changes are typically developed here and then pushed to the public repo once finalized.
 2.  **Scripts**: Any Python automation should reside in this repo.
-3.  **Deployments**: The public repository handles the live site at [https://saurabh-net.github.io/swalpa/](https://saurabh-net.github.io/swalpa/).
+3.  **Local Development**:
+    *   `mkdocs serve` can be run using `/Users/saurabhmaurya/Library/Python/3.9/bin/mkdocs serve`.
+    *   Dependencies are installed locally via `pip3 install mkdocs-material`.
+4.  **Deployments**: The public repository handles the live site at [https://saurabh-net.github.io/swalpa/](https://saurabh-net.github.io/swalpa/).
 
 ## 🚦 Current Status (As of Feb 24, 2026)
 *   **Migration Complete**: Initial content migrated from public repo.
