@@ -48,17 +48,18 @@ def generate_audio():
         
         mp3_path = os.path.join(audio_dir, f"{safe_filename}.mp3")
         
-        if os.path.exists(mp3_path):
-            continue # Already generated
-            
+        # IMPROVEMENT: Normalization to prevent gTTS from spelling out all-caps segments
+        # 1. Lowercase: "CHAY" -> "chay" (prevents acronym interpretation)
+        # 2. Hyphens to spaces: "kuh-chay-ree" -> "kuh chay ree" (better prosody)
+        tts_text = phonetic_text.lower().replace('-', ' ')
+        
+        # We'll overwrite even if it exists to apply the quality fix
         try:
-            # Use gTTS with language set to English ('en') with an Indian accent ('co.in' TLD)
-            # This is because the text is English transliteration (e.g. SWAL-pah)
-            # Kannada TTS expects Kannada script natively.
-            tts = gTTS(text=phonetic_text, lang='en', tld='co.in', slow=False)
+            tts = gTTS(text=tts_text, lang='en', tld='co.in', slow=False)
             tts.save(mp3_path)
             success_count += 1
-            print(f"[{i}/{len(unique_phonetics)}] Generated audio for: {phonetic_text}")
+            if i % 50 == 0 or i == len(unique_phonetics):
+                print(f"[{i}/{len(unique_phonetics)}] Processed: {phonetic_text} -> '{tts_text}'")
         except Exception as e:
             print(f"Failed to generate audio for {phonetic_text}: {e}", file=sys.stderr)
             
