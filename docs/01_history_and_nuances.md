@@ -7,25 +7,25 @@ Kannada is structured like a "linguistic layer cake," reflecting millennia of hi
 ### A. The Foundation: Proto-Dravidian (The "Tamil" Connection)
 Kannada and Tamil are sister languages descending from **Proto-Dravidian**. Around 2,500 years ago, the Southern branch split, but Kannada retained the earthy "core" Vocabulary.
 
-* **What it covers:** Nature (*Mara*, *Neeru*), Kinship (*Amma*, *Appa*), Body Parts (*Kannu*, *Kaalu*), and basic survival actions.
+* **What it covers:** Nature (*Mara* ⟨muh-RAH⟩, *Neeru* ⟨NEE-roo⟩), Kinship (*Amma* ⟨um-MAH⟩, *Appa* ⟨up-PAH⟩), Body Parts (*Kannu* ⟨kun-NOO⟩, *Kaalu* ⟨KAA-loo⟩), and basic survival actions.
 * **Why it helps:** If you know even a few words in Tamil, Malayalam, or Telugu, you already have a 30-40% head start.
 * **The Great Shift (`p` -> `h`):** Around the 10th century, the initial `p` sound in Old Kannada (and Tamil) softened to `h` in Modern Kannada. 
-  * Tamil/Old Kannada: *Paal* -> Kannada: *Haalu* (Milk)
-  * Tamil/Old Kannada: *Palli* -> Kannada: *Halli* (Village)
-  * Tamil/Old Kannada: *Pattu* -> Kannada: *Hattu* (Ten)
-  * *Hoovu* (Flower), *Hogu* (Go), *Huduga* (Boy).
+  * Tamil/Old Kannada: *Paal* ⟨PAAL⟩ -> Kannada: *Haalu* ⟨HAA-loo⟩ (Milk)
+  * Tamil/Old Kannada: *Palli* ⟨PUL-lee⟩ -> Kannada: *Halli* ⟨HUL-lee⟩ (Village)
+  * Tamil/Old Kannada: *Pattu* ⟨PUT-too⟩ -> Kannada: *Hattu* ⟨HUT-too⟩ (Ten)
+  * *Hoovu* ⟨HOO-voo⟩ (Flower), *Hogu* ⟨HOH-goo⟩ (Go), *Huduga* ⟨hoo-doo-GAH⟩ (Boy).
 
 ### B. The Intellectual Superstructure: Sanskrit
-For over 1,500 years, Sanskrit was the language of liturgy, philosophy, and high science across India. Early Kannada royalty (like the Chalukyas) and poets blended these words into *Halegannada* (Old Kannada).
+For over 1,500 years, Sanskrit was the language of liturgy, philosophy, and high science across India. Early Kannada royalty (like the Chalukyas) and poets blended these words into *Halegannada* ⟨huh-lay-gun-nuh-DAH⟩ (Old Kannada).
 
-* **What it covers:** Abstracts (*Vichara*, *Santhosha*, *Prayathna*), and Religion/Science (*Puje*, *Akasha*, *Samaya*).
-* **Why it helps:** If you speak any Indo-Aryan language (Hindi, Marathi, Bengali), you will instantly recognize these "high-level" concept words (*Raatri* - Night, *Abhyasa* - Habit, *Karan* - Reason).
+* **What it covers:** Abstracts (*Vichara* ⟨vee-CHAA-rah⟩, *Santhosha* ⟨sun-TOH-shah⟩, *Prayathna* ⟨pruh-YUTH-nah⟩), and Religion/Science (*Puje* ⟨POO-jay⟩, *Akasha* ⟨aa-KAA-shah⟩, *Samaya* ⟨suh-MY-yah⟩).
+* **Why it helps:** If you speak any Indo-Aryan language (Hindi, Marathi, Bengali), you will instantly recognize these "high-level" concept words (*Raatri* ⟨RAAH-tree⟩ - Night, *Abhyasa* ⟨ub-HYAA-sah⟩ - Habit, *Karan* ⟨KAA-run⟩ - Reason).
 
 ### C. The Administrative Layer: Perso-Arabic (Urdu/Hindi)
 What might sound like "Hindi" administrative words is actually the legacy of the Deccan Sultanates (Bijapur, Bidar) and later the Kingdom of Mysore under Hyder Ali and Tipu Sultan. For centuries, Persian and later Urdu/Hindustani shaped the administrative lexicon across India.
 
-* **What it covers:** Legal/Admin (*Kacheri* - Office, *Dakhale* - Document, *Arji* - Application, *Kanoonu* - Law), and everyday material items (*Chaku* - Knife, *Meju* - Table).
-* **Why it helps:** Many of these words are identical to modern Hindi/Urdu. If you’ve ever filed paperwork in North India, you already know the Kannada words for "Office" and "Ready" (*Tayaru*).
+* **What it covers:** Legal/Admin (*Kacheri* ⟨kuh-CHAY-ree⟩ - Office, *Dakhale* ⟨DUCK-uh-lay⟩ - Document, *Arji* ⟨AR-jee⟩ - Application, *Kanoonu* ⟨kuh-NOO-noo⟩ - Law), and everyday material items (*Chaku* ⟨CHAA-koo⟩ - Knife, *Meju* ⟨MAY-joo⟩ - Table).
+* **Why it helps:** Many of these words are identical to modern Hindi/Urdu. If you've ever filed paperwork in North India, you already know the Kannada words for "Office" and "Ready" (*Tayaru* ⟨TY-yaa-roo⟩).
 
 ### D. The Modern Layer: English
 British colonial rule baked English into the school systems and technology.
@@ -37,9 +37,9 @@ British colonial rule baked English into the school systems and technology.
 
 | Category | Source | Example (Kannada) |
 | --- | --- | --- |
-| **Physical/Basic** | Proto-Dravidian | *Mannu* (Soil), *Baayi* (Mouth) |
-| **Emotional/Abstract** | Sanskrit | *Santhosha* (Happiness), *Prayatna* (Effort) |
-| **Legal/Official** | Perso-Arabic (Urdu) | *Tayaru* (Ready), *Kacheri* (Office) |
+| **Physical/Basic** | Proto-Dravidian | *Mannu* ⟨MUN-noo⟩ (Soil), *Baayi* ⟨BAA-yee⟩ (Mouth) |
+| **Emotional/Abstract** | Sanskrit | *Santhosha* ⟨sun-TOH-shah⟩ (Happiness), *Prayatna* ⟨pruh-YUTH-nah⟩ (Effort) |
+| **Legal/Official** | Perso-Arabic (Urdu) | *Tayaru* ⟨TY-yaa-roo⟩ (Ready), *Kacheri* ⟨kuh-CHAY-ree⟩ (Office) |
 | **Technical/Modern** | English | *Computer-u*, *Ticket-u* |
 
 ## 2. The Grammar Bridge (For Hindi Speakers)
@@ -50,10 +50,10 @@ In Hindi, you often don't say "Main bhookha hoon" (I am hungry), you say "**Mujh
 
 | Concept | Hindi Structure | Kannada Structure |
 | :--- | :--- | :--- |
-| **To Me** | **Mujhe** / Mujhko | **Nanage** |
-| **To You** | **Tumhe** / Tujhe | **Ninge** / **Nimige** |
-| **Want** | **Chahiye** | **Bēku** |
-| **Don't Want** | **Nahi Chahiye** | **Bēda** |
+| **To Me** | **Mujhe** / Mujhko | **Nanage** ⟨nuh-nuh-GEY⟩ |
+| **To You** | **Tumhe** / Tujhe | **Ninge** ⟨NIN-gey⟩ / **Nimige** ⟨NIM-ee-gey⟩ |
+| **Want** | **Chahiye** | **Bēku** ⟨BAY-koo⟩ |
+| **Don't Want** | **Nahi Chahiye** | **Bēda** ⟨BAY-dah⟩ |
 
 ---
 
@@ -65,16 +65,16 @@ In Kannada, you say "**To me**, hunger is happening."
 
 Verbs of feeling, needing, and experiencing often happen *to* the subject.
 
-*   **The Anchor:** `Nanage` (To me).
+*   **The Anchor:** `Nanage` ⟨nuh-nuh-GEY⟩ (To me).
 *   **Pattern:** `[Subject-Dative] + [Experience] + [Verb/Existence]`
 
 | English | Hindi Parallel | Kannada Literal | Spoken Kannada |
 | :--- | :--- | :--- | :--- |
-| I am hungry | Mujhe bhook lagi hai | To me hunger has become | **Nanage hasivu agide** |
-| I am happy | Mujhe khushi hui hai | To me happiness has become | **Nanage khushi agide** |
-| I know | Mujhe pata hai | To me it is known | **Nanage gothu** |
-| I don't know | Mujhe nahi pata | To me it is not known | **Nanage gothilla** |
-| I want coffee | Mujhe coffee chahiye | To me coffee is needed | **Nanage coffee bēku** |
+| I am hungry | Mujhe bhook lagi hai | To me hunger has become | **Nanage hasivu agide** ⟨nuh-nuh-GEY huh-see-VOO ah-gee-DAY⟩ |
+| I am happy | Mujhe khushi hui hai | To me happiness has become | **Nanage khushi agide** ⟨nuh-nuh-GEY khoo-SHEE ah-gee-DAY⟩ |
+| I know | Mujhe pata hai | To me it is known | **Nanage gothu** ⟨nuh-nuh-GEY GOH-too⟩ |
+| I don't know | Mujhe nahi pata | To me it is not known | **Nanage gothilla** ⟨nuh-nuh-GEY goh-TILL-lah⟩ |
+| I want coffee | Mujhe coffee chahiye | To me coffee is needed | **Nanage coffee bēku** ⟨nuh-nuh-GEY coffee BAY-koo⟩ |
 
 ### B. The Agglutination Logic (Building Words)
 Kannada "glues" meanings onto the end of words using suffixes. In Hindi, you use **Postpositions** (*ka, ke, ki, mein, par*). In Kannada, these are strictly suffixes.
@@ -82,41 +82,41 @@ Kannada "glues" meanings onto the end of words using suffixes. In Hindi, you use
 **The "Mental Shift":**
 
 *   **Hindi:** Ghar (Noun) + Mein (Postposition) = *Separate Words*.
-*   **Kannada:** Mane (Noun) + alli (Suffix) = *One Word*.
+*   **Kannada:** Mane ⟨MUH-ney⟩ (Noun) + alli ⟨UL-lee⟩ (Suffix) = *One Word*.
 
 | Concept | Hindi Structure (Postpositions) | Kannada Structure (Suffixes) | Example (House/Ghar/Mane) |
 | :--- | :--- | :--- | :--- |
-| **In** | Ghar **mein** | Mane + **alli** | **Maneyalli** |
-| **To** | Ghar **ko** | Mane + **ge** | **Manege** |
-| **From** | Ghar **se** | Mane + **inda** | **Maneyinda** |
-| **Inside** | Ghar **ke andar** | Mane + **olage** | **Mane-y-olage** |
-| **Plural** | Gharon **mein** | Mane + **gal** + **alli** | **Manegalalli** |
+| **In** | Ghar **mein** | Mane + **alli** | **Maneyalli** ⟨MUH-ney-YUL-lee⟩ |
+| **To** | Ghar **ko** | Mane + **ge** | **Manege** ⟨MUH-ney-GEY⟩ |
+| **From** | Ghar **se** | Mane + **inda** | **Maneyinda** ⟨MUH-ney-YIN-dah⟩ |
+| **Inside** | Ghar **ke andar** | Mane + **olage** | **Mane-y-olage** ⟨MUH-ney-OH-luh-gey⟩ |
+| **Plural** | Gharon **mein** | Mane + **gal** + **alli** | **Manegalalli** ⟨MUH-ney-guh-LUL-lee⟩ |
 
 ### C. The Hierarchy of Respect (Tu vs Aap)
 Kannada is strict about respect. Using the wrong form can be offensive.
 
-*   **Singular/Informal (Tu):** `Neenu`. Use *only* with close friends or children.
-*   **Plural/Respectful (Aap/Tum):** `Neevu`. This is the safe default for everyone (Auto drivers, shopkeepers, strangers).
+*   **Singular/Informal (Tu):** `Neenu` ⟨NEE-noo⟩. Use *only* with close friends or children.
+*   **Plural/Respectful (Aap/Tum):** `Neevu` ⟨NEE-voo⟩. This is the safe default for everyone (Auto drivers, shopkeepers, strangers).
     *   **Verb Ending:** Add `-i` or `-ri` to convey this respect.
-    *   *Baa* (Come - Tu) -> **Banni** (Come - Aap).
-    *   *Hogu* (Go - Tu) -> **Hogi** (Go - Aap).
+    *   *Baa* ⟨BAA⟩ (Come - Tu) -> **Banni** ⟨BUN-nee⟩ (Come - Aap).
+    *   *Hogu* ⟨HOH-goo⟩ (Go - Tu) -> **Hogi** ⟨HOH-gee⟩ (Go - Aap).
 
 ### D. The "Bēku / Bēda" Necessity
 This is the binary engine of survival.
 
-*   **Bēku:** Want / Need / Must (*Chahiye*)
-*   **Bēda:** Don't want / Don't need / Must not (*Nahi Chahiye*)
+*   **Bēku** ⟨BAY-koo⟩: Want / Need / Must (*Chahiye*)
+*   **Bēda** ⟨BAY-dah⟩: Don't want / Don't need / Must not (*Nahi Chahiye*)
 
-*   "Neeru **bēku**" -> (I) want water. (*Paani chahiye*)
+*   "Neeru ⟨NEE-roo⟩ **bēku**" -> (I) want water. (*Paani chahiye*)
 *   "Coffee **bēda**" -> (I) don't want coffee. (*Coffee nahi chahiye*)
-*   "Nillisi **bēku**" -> (You) must stop. (*Rokna chahiye*)
+*   "Nillisi ⟨NIL-lee-see⟩ **bēku**" -> (You) must stop. (*Rokna chahiye*)
 
 ---
 
 ## 4. Colloquial Filters (Bangalore Style)
 *   **Politeness:** Suffix verbs with `-i` or `-ri` for respect.
-    *   `Banni` (Come - Respectful / *Aayiye*) vs `Baa` (Come - Informal / *Aa*).
-*   **"Maadi":** The universal "Do" verb (*Karo/Kijiye*).
+    *   `Banni` ⟨BUN-nee⟩ (Come - Respectful / *Aayiye*) vs `Baa` ⟨BAA⟩ (Come - Informal / *Aa*).
+*   **"Maadi"** ⟨MAA-dee⟩: The universal "Do" verb (*Karo/Kijiye*).
     *   `Phone maadi` (Call me / *Phone kijiye*).
     *   `Help maadi` (Help me / *Help kijiye*).
     *   `Clean maadi` (Clean this / *Clean kijiye*).

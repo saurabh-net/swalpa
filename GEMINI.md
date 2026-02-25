@@ -16,8 +16,8 @@ While the public repo is for the static site, this private repo is for:
 ### Directory Structure
 *   `docs/`: Mirrored from public (Source of Truth for the site).
 *   `mkdocs.yml`: Mirrored configuration.
-*   `scripts/`: [Planned] Python scripts for language processing.
-*   `research/`: [Planned] Knowledge bases and raw data.
+*   `scripts/`: [Planned] Python scripts for language processing. DO NOT MIRROR THIS TO THE PUBLIC REPOSITORY.
+*   `research/`: [Planned] Knowledge bases and raw data. DO NOT MIRROR THIS TO THE PUBLIC REPOSITORY.
 
 ### Configuration & State
 *   **Git Identity**: Saurabh Maurya (saurabhmaurya06@gmail.com)

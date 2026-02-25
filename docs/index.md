@@ -3,17 +3,17 @@
 Namaskara! Welcome to **SWALPA** (Spoken Words And Language Practical Acquisition).
 
 ## 🎯 Our Mission
-Our goal is to provide a **phonetic-only, Bangalore-functional** Kannada learning resource. This guide is built specifically for non-Kannada speakers in Bangalore—such as IT professionals, recent migrants, and long-term residents—who want to survive and thrive through spoken language without needing to learn the formal written script (Varnamala).
+Our goal is to provide a **phonetic-only, Bangalore-functional** Kannada learning resource. This guide is built specifically for non-Kannada speakers in Bangalore—such as IT professionals, recent migrants, and long-term residents—who want to survive and thrive through spoken language without needing to learn the formal written script (Varnamala ⟨var-nuh-MAA-laa⟩).
 
-We focus on maximizing your return on investment (ROI) by teaching you high-frequency vocabulary and practical phrases that you can use immediately in your daily life in Namma Bengaluru.
+We focus on maximizing your return on investment (ROI) by teaching you high-frequency vocabulary and practical phrases that you can use immediately in your daily life in Namma Bengaluru ⟨num-mah ben-gah-LOO-roo⟩.
 
 ## 👥 Target Audience
 This guide is for you if:
 
 - You live in Bangalore and want to interact confidently with locals, auto drivers, shopkeepers, and colleagues.
-- You want to learn practical, street-smart Kannada (the Bangalore dialect, like *Oota aitha?* instead of the textbook *Oota madidira?*).
+- You want to learn practical, street-smart Kannada (the Bangalore dialect, like *Oota aitha?* ⟨OO-tah eye-TAH⟩ instead of the textbook *Oota madidira?* ⟨OO-tah maa-dee-dee-RAH⟩).
 - You find learning a new script intimidating and prefer to learn through transliteration (reading Kannada words in English letters).
-- You relate well to Hindi logical bridges, which we use to make grammar easier to grasp intuitively (e.g., using Hindi parallels like *Mujhe* -> *Nanage*).
+- You relate well to Hindi logical bridges, which we use to make grammar easier to grasp intuitively (e.g., using Hindi parallels like *Mujhe* -> *Nanage* ⟨nuh-nuh-GEY⟩).
 
 ## 📖 Course Preview
 Here is a sneak peek at what you will learn in the upcoming modules:
@@ -29,4 +29,4 @@ Here is a sneak peek at what you will learn in the upcoming modules:
 *   **[9. Travel & Conflict](09_travel_and_conflict.md)**: Navigating autos, buses, metro, and successfully resolving disputes without escalating.
 *   **[10. Everyday Logistics & Services](10_everyday_logistics_and_services.md)**: Dealing with delivery drivers, landlords, basic repairs, and office navigation.
 
-Dive in, practice speaking out loud, and don't worry about being perfect. *Swalpa swalpa* (little by little), you'll get there!
+Dive in, practice speaking out loud, and don't worry about being perfect. *Swalpa swalpa* ⟨SWAL-pah SWAL-pah⟩ (little by little), you'll get there!

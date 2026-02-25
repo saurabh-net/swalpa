@@ -1,0 +1,40 @@
+/* custom audio link styling for phonetic guides */
+.audio-phonetic-link {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    padding: 0 4px;
+    margin: 0 2px;
+    color: var(--md-primary-fg-color);
+    font-size: 0.9em;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.audio-phonetic-link:hover {
+    background-color: var(--md-primary-fg-color--transparent);
+}
+
+.audio-phonetic-link:active {
+    transform: scale(0.95);
+}
+
+.audio-icon {
+    font-style: normal;
+    margin-right: 2px;
+    font-size: 1.1em;
+}
+
+/* Playing animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.audio-playing .audio-icon {
+    animation: pulse 0.8s infinite ease-in-out;
+    color: var(--md-accent-fg-color);
+}
