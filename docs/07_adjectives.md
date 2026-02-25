@@ -1,4 +1,4 @@
-# 07. Sprint 6: Adjectives & Descriptors
+# 06. Adjectives & Descriptors
 
 In Kannada, descriptive adjectives generally precede the noun they modify, maintaining the exact same syntactic order as English and Hindi (e.g., *Dodda mane* = Big house = *Bada ghar*). 
 

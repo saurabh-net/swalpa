@@ -1,4 +1,4 @@
-# 09. Sprint 8: Travel, Directions, and Conflict
+# 08. Travel, Directions, and Conflict
 
 Navigating Bengaluru traffic requires clear, authoritative directions. The core spatial markers you learned previously (*illi*, *alli*) are combined with these directional commands to form the "Auto-Rickshaw Protocol". Handling interactions on the street, including traffic police or minor conflicts, is also crucial.
 

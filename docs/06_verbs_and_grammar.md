@@ -1,4 +1,4 @@
-# 06. Sprint 5: Core Verbs & Grammar
+# 05. Core Verbs & Grammar
 
 Memorizing the verb root alongside its imperative (command) form allows for immediate action. 
 **Crucial Rule:** Appending `-i` or `-ri` to the verb root ensures the request is polite. Use this default for everyone except close friends or children.

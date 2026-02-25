@@ -1,4 +1,4 @@
-# 08. Sprint 7: Bangalore Slang & Kanglish
+# 07. Bangalore Slang & Kanglish
 
 Bengaluru spoken Kannada is a highly dynamic and syncretic dialect. It seamlessly blends *Hosagannada* (Modern Kannada) with English (forming "Kanglish"), incorporates loanwords from neighboring languages (like Tamil), and features a rich tapestry of local street slang. 
 

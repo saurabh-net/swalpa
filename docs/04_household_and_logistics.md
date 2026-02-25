@@ -1,4 +1,4 @@
-# 04. Sprint 3: Household, Groceries, and Logistics
+# 10. Household, Groceries, and Logistics
 
 A core lexicon is required to manage the home, instruct domestic help, rent accommodation, and navigate grocery shopping effectively.
 

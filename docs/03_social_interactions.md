@@ -1,4 +1,4 @@
-# 03. Sprint 2: Social & Professional
+# 03. Social & Professional
 
 Bengaluru's social grammar is built on respect and indirect politeness. Mastering these phrases will help you transition from a visitor to a local colleague.
 
