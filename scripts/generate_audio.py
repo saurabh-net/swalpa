@@ -50,8 +50,52 @@ def generate_audio():
         
         # IMPROVEMENT: Normalization to prevent gTTS from spelling out all-caps segments
         # 1. Lowercase: "CHAY" -> "chay" (prevents acronym interpretation)
-        # 2. Hyphens to spaces: "kuh-chay-ree" -> "kuh chay ree" (better prosody)
-        tts_text = phonetic_text.lower().replace('-', ' ')
+        # 2. Syllable Overrides: "gey" -> "gay", "hul" -> "hull" etc.
+        # 3. Hyphens to spaces: "kuh-chay-ree" -> "kuh chay ree" (better prosody)
+        
+        # Mapping common mispronunciations or syllables that trigger spelling-out behavior
+        phonetic_overrides = {
+            # Fix for spelling out all-caps/short syllables
+            'hul': 'hull',
+            'pul': 'pull',
+            'cul': 'cull',
+            'tul': 'tull',
+            
+            # Fix for 'nuh' sounding like 'noo' (mapping to 'a'/short-a sound)
+            'nuh': 'na',
+            'muh': 'ma',
+            'ruh': 'ra',
+            'duh': 'da',
+            'kuh': 'ka',
+            'guh': 'ga',
+            'luh': 'la',
+            'vuh': 'va',
+            'yuh': 'ya',
+            'buh': 'ba',
+            'huh': 'ha',
+            'thuh': 'tha',
+            'shuh': 'sha',
+            
+            # Ending vowel fixes
+            'gey': 'gay',
+            'dey': 'day',
+            'bey': 'bay',
+            'ney': 'nay',
+            'ley': 'lay',
+            'hey': 'hay',
+            'sey': 'say',
+            'tay': 'tay',
+            'ay': 'ay',
+            
+            # General fixes
+            'ree': 'ree', 
+        }
+        
+        # Process the text
+        normalized = phonetic_text.lower()
+        parts = normalized.split('-')
+        overridden_parts = [phonetic_overrides.get(p, p) for p in parts]
+        tts_text = ' '.join(overridden_parts)
         
         # We'll overwrite even if it exists to apply the quality fix
         try:
