@@ -165,6 +165,6 @@ def generate_audio(mode='phonetic'):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate SWALPA audio.')
-    parser.add_argument('--mode', choices=['phonetic', 'native'], default='phonetic', help='Audio generation mode')
+    parser.add_argument('--mode', choices=['phonetic', 'native'], default='native', help='Audio generation mode')
     args = parser.parse_args()
     generate_audio(mode=args.mode)

@@ -1,6 +1,6 @@
 /**
  * Audio Pronunciation Script for SWALPA
- * Finds all ⟨phonetic⟩ tags, converts them, and handles audio playback.
+ * Finds all ⟨phonetic⟩ tags, converts them, and handles native Kannada audio playback.
  */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -21,46 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // A single audio element reused for playback
     const audioElement = new Audio();
     let currentPlayingButton = null;
-    let audioMode = localStorage.getItem('swalpa_audio_mode') || 'phonetic';
-
-    // Add UI toggle for Voice Settings
-    function addVoiceToggle() {
-        const header = articleContent.querySelector('h1');
-        if (!header) return;
-
-        const toggleContainer = document.createElement('div');
-        toggleContainer.className = 'voice-settings-container';
-        toggleContainer.style = 'margin-bottom: 20px; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 8px; display: flex; align-items: center; gap: 10px; font-size: 0.9em;';
-
-        const label = document.createElement('span');
-        label.innerText = 'Voice Style:';
-        label.style.fontWeight = 'bold';
-
-        const createRadio = (mode, labelText) => {
-            const wrapper = document.createElement('label');
-            wrapper.style = 'display: flex; align-items: center; gap: 5px; cursor: pointer;';
-            const input = document.createElement('input');
-            input.type = 'radio';
-            input.name = 'voice_mode';
-            input.value = mode;
-            input.checked = (audioMode === mode);
-            input.onchange = () => {
-                audioMode = mode;
-                localStorage.setItem('swalpa_audio_mode', mode);
-            };
-            wrapper.appendChild(input);
-            wrapper.appendChild(document.createTextNode(labelText));
-            return wrapper;
-        };
-
-        toggleContainer.appendChild(label);
-        toggleContainer.appendChild(createRadio('phonetic', 'Phonetic (For Learners)'));
-        toggleContainer.appendChild(createRadio('native', 'Native (Experimental)'));
-
-        header.after(toggleContainer);
-    }
-
-    addVoiceToggle();
 
     audioElement.addEventListener('ended', function () {
         if (currentPlayingButton) {
@@ -121,13 +81,16 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.title = 'Listen to pronunciation';
             btn.innerHTML = `<span class="audio-icon">🔊</span>⟨${phoneticText}⟩`;
 
-            // Get base path
+            // Get base path from an existing stylesheet link
             const stylesheet = document.querySelector('link[rel="stylesheet"][href*="assets/stylesheets/"]');
             let basePath = '/';
             if (stylesheet) {
                 const href = stylesheet.getAttribute('href');
                 basePath = href.substring(0, href.indexOf('assets/stylesheets/'));
             }
+
+            // Always use native Kannada audio
+            const audioUrl = `${basePath}assets/audio_native/${safeFilename}.mp3`;
 
             btn.onclick = function (e) {
                 e.preventDefault();
@@ -136,10 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (currentPlayingButton) {
                     currentPlayingButton.classList.remove('audio-playing');
                 }
-
-                // Determine URL based on current mode
-                const audioSubdir = (audioMode === 'native') ? 'audio_native' : 'audio';
-                const audioUrl = `${basePath}assets/${audioSubdir}/${safeFilename}.mp3`;
 
                 audioElement.src = audioUrl;
                 audioElement.play().catch(err => console.log("Playback failed:", err));
