@@ -7,6 +7,7 @@ import base64
 import sys
 import time
 import argparse
+import unicodedata
 
 import argparse
 try:
@@ -25,6 +26,10 @@ def load_api_key():
             if line.startswith('GOOGLE_CLOUD_API_KEY='):
                 return line.split('=')[1].strip()
     return None
+
+def strip_accents(s):
+   return ''.join(c for c in unicodedata.normalize('NFD', s)
+                  if unicodedata.category(c) != 'Mn')
 
 def generate_audio(mode='phonetic'):
     api_key = load_api_key()
@@ -47,14 +52,12 @@ def generate_audio(mode='phonetic'):
     
     # Regex Patterns
     if mode == 'native':
-        # Broad detection for anything before the bracket
         pattern = re.compile(r'([^*‘“⟨\n]{1,40})\s*⟨(?P<phonetic>[^⟩]+)⟩')
     else:
         pattern = re.compile(r'⟨(?P<phonetic>[^⟩]+)⟩')
     
     md_files = glob.glob(os.path.join(docs_dir, '*.md'))
     
-    # Map of safe_filename -> (tts_text, is_ssml, original_phonetic)
     generation_map = {}
     
     # Phonetic overrides for the en-IN voice
@@ -82,15 +85,14 @@ def generate_audio(mode='phonetic'):
             
             is_ssml = False
             if mode == 'native':
-                # Priority 1: Check if we have a direct script mapping
                 if safe_filename in KANNADA_MAPPING:
                     tts_text = f"<speak><lang xml:lang='kn-IN'>{KANNADA_MAPPING[safe_filename]}</lang></speak>"
                     is_ssml = True
                 else:
-                    # Fallback: Use the word before the bracket
                     raw_word = match.group(1).strip().split('\n')[-1]
                     word = re.sub(r'[*‘“’”]+', '', raw_word).strip()
-                    # Wrap in SSML lang tag to hint at Kannada prosody even for Latin
+                    # CRITICAL FIX: Strip accents/special chars for fallback
+                    word = strip_accents(word)
                     tts_text = f"<speak><lang xml:lang='kn-IN'>{word}</lang></speak>"
                     is_ssml = True
             else:
@@ -114,8 +116,8 @@ def generate_audio(mode='phonetic'):
         tts_text, is_ssml, phonetic_text = generation_map[safe_filename]
         mp3_path = os.path.join(audio_dir, f"{safe_filename}.mp3")
         
-        # Skip if already exists (optional, but keep it for efficiency if you want)
-        # if os.path.exists(mp3_path): continue
+        # Skip if already exists and is not 0 bytes
+        if os.path.exists(mp3_path) and os.path.getsize(mp3_path) > 0: continue
 
         input_payload = {"ssml": tts_text} if is_ssml else {"text": tts_text}
         
