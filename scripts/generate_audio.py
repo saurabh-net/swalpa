@@ -31,7 +31,7 @@ def strip_accents(s):
    return ''.join(c for c in unicodedata.normalize('NFD', s)
                   if unicodedata.category(c) != 'Mn')
 
-def generate_audio(mode='phonetic'):
+def generate_audio(mode='phonetic', custom_voice=None, custom_output_dir=None):
     api_key = load_api_key()
     if not api_key:
         print("Error: GOOGLE_CLOUD_API_KEY not found in .env")
@@ -40,12 +40,12 @@ def generate_audio(mode='phonetic'):
     docs_dir = os.path.join(os.path.dirname(__file__), '..', 'docs')
     
     if mode == 'native':
-        audio_dir = os.path.join(docs_dir, 'assets', 'audio_native')
-        voice_name = "kn-IN-Wavenet-A"
+        audio_dir = os.path.join(docs_dir, 'assets', custom_output_dir or 'audio_native')
+        voice_name = custom_voice or "kn-IN-Wavenet-A"
         lang_code = "kn-IN"
     else:
-        audio_dir = os.path.join(docs_dir, 'assets', 'audio')
-        voice_name = "en-IN-Wavenet-A"
+        audio_dir = os.path.join(docs_dir, 'assets', custom_output_dir or 'audio')
+        voice_name = custom_voice or "en-IN-Wavenet-A"
         lang_code = "en-IN"
         
     os.makedirs(audio_dir, exist_ok=True)
@@ -86,13 +86,16 @@ def generate_audio(mode='phonetic'):
             is_ssml = False
             if mode == 'native':
                 if safe_filename in KANNADA_MAPPING:
-                    tts_text = f"<speak><lang xml:lang='kn-IN'>{KANNADA_MAPPING[safe_filename]}</lang></speak>"
-                    is_ssml = True
+                    word = KANNADA_MAPPING[safe_filename]
                 else:
                     raw_word = match.group(1).strip().split('\n')[-1]
                     word = re.sub(r'[*‘“’”]+', '', raw_word).strip()
-                    # CRITICAL FIX: Strip accents/special chars for fallback
                     word = strip_accents(word)
+                
+                if "Chirp3" in voice_name:
+                    tts_text = f"The following word is in Kannada: {word}"
+                    is_ssml = False
+                else:
                     tts_text = f"<speak><lang xml:lang='kn-IN'>{word}</lang></speak>"
                     is_ssml = True
             else:
@@ -125,8 +128,7 @@ def generate_audio(mode='phonetic'):
             "input": input_payload,
             "voice": {
                 "languageCode": lang_code,
-                "name": voice_name,
-                "ssmlGender": "FEMALE"
+                "name": voice_name
             },
             "audioConfig": {
                 "audioEncoding": "MP3",
@@ -134,6 +136,9 @@ def generate_audio(mode='phonetic'):
                 "speakingRate": 0.95
             }
         }
+        
+        if "Wavenet" in voice_name and not custom_voice:
+            payload["voice"]["ssmlGender"] = "FEMALE"
         
         max_retries = 3
         for attempt in range(max_retries):
@@ -166,5 +171,7 @@ def generate_audio(mode='phonetic'):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate SWALPA audio.')
     parser.add_argument('--mode', choices=['phonetic', 'native'], default='native', help='Audio generation mode')
+    parser.add_argument('--voice', help='Override voice name (e.g., kn-IN-Chirp3-HD-Puck)')
+    parser.add_argument('--output-dir', dest='output_dir', help='Override output directory within docs/assets (e.g., audio_native_v4_male)')
     args = parser.parse_args()
-    generate_audio(mode=args.mode)
+    generate_audio(mode=args.mode, custom_voice=args.voice, custom_output_dir=args.output_dir)

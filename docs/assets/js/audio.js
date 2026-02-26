@@ -7,6 +7,55 @@ document.addEventListener("DOMContentLoaded", function () {
     const articleContent = document.querySelector('.md-content');
     if (!articleContent) return;
 
+    // --- Voice Toggle UI ---
+    const swalpaAudioVoiceKey = 'swalpa_voice_dir';
+    let currentVoiceDir = localStorage.getItem(swalpaAudioVoiceKey) || 'audio_native';
+
+    const toggleContainer = document.createElement('div');
+    toggleContainer.className = 'audio-voice-toggle-container';
+    toggleContainer.style.marginBottom = '20px';
+    toggleContainer.style.padding = '10px';
+    toggleContainer.style.backgroundColor = 'var(--md-default-bg-color)';
+    toggleContainer.style.border = '1px solid var(--md-default-fg-color--lightest)';
+    toggleContainer.style.borderRadius = '4px';
+
+    const toggleLabel = document.createElement('label');
+    toggleLabel.htmlFor = 'voice-select';
+    toggleLabel.innerText = 'Voice Style: ';
+    toggleLabel.style.fontWeight = 'bold';
+    toggleLabel.style.marginRight = '10px';
+
+    const voiceSelect = document.createElement('select');
+    voiceSelect.id = 'voice-select';
+
+    const optionFemale = document.createElement('option');
+    optionFemale.value = 'audio_native';
+    optionFemale.text = 'Native Female (Wavenet)';
+
+    const optionMale = document.createElement('option');
+    optionMale.value = 'audio_native_v4_male';
+    optionMale.text = 'Native Male (Chirp 3 HD)';
+
+    voiceSelect.appendChild(optionFemale);
+    voiceSelect.appendChild(optionMale);
+    voiceSelect.value = currentVoiceDir;
+
+    voiceSelect.addEventListener('change', function (e) {
+        currentVoiceDir = e.target.value;
+        localStorage.setItem(swalpaAudioVoiceKey, currentVoiceDir);
+    });
+
+    toggleContainer.appendChild(toggleLabel);
+    toggleContainer.appendChild(voiceSelect);
+
+    const h1 = articleContent.querySelector('h1');
+    if (h1) {
+        h1.parentNode.insertBefore(toggleContainer, h1.nextSibling);
+    } else {
+        articleContent.prepend(toggleContainer);
+    }
+    // --- End Voice Toggle UI ---
+
     // We need to parse text nodes finding the pattern ⟨...⟩
     const pattern = /⟨([^⟩]+)⟩/g;
 
@@ -89,8 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 basePath = href.substring(0, href.indexOf('assets/stylesheets/'));
             }
 
-            // Always use native Kannada audio
-            const audioUrl = `${basePath}assets/audio_native/${safeFilename}.mp3`;
+            // Always use selected native Kannada audio directory
+            const getAudioUrl = () => `${basePath}assets/${currentVoiceDir}/${safeFilename}.mp3`;
 
             btn.onclick = function (e) {
                 e.preventDefault();
@@ -100,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     currentPlayingButton.classList.remove('audio-playing');
                 }
 
-                audioElement.src = audioUrl;
+                audioElement.src = getAudioUrl();
                 audioElement.play().catch(err => console.log("Playback failed:", err));
 
                 btn.classList.add('audio-playing');
