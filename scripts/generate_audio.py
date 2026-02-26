@@ -90,14 +90,14 @@ def generate_audio(mode='phonetic', custom_voice=None, custom_output_dir=None):
                 else:
                     raw_word = match.group(1).strip().split('\n')[-1]
                     word = re.sub(r'[*‘“’”]+', '', raw_word).strip()
-                    word = strip_accents(word)
+                    # Do not strip_accents on Kannada words because it strips vowel marks!
                 
-                if "Chirp3" in voice_name:
-                    tts_text = f"The following word is in Kannada: {word}"
-                    is_ssml = False
-                else:
-                    tts_text = f"<speak><lang xml:lang='kn-IN'>{word}</lang></speak>"
-                    is_ssml = True
+                # If word is empty or just punctuation, fallback to phonetic
+                if not re.search(r'[a-zA-Z\u0C80-\u0CFF]', word):
+                    word = phonetic_text.replace('-', ' ')
+
+                tts_text = f"<speak><lang xml:lang='kn-IN'>{word}</lang></speak>"
+                is_ssml = True
             else:
                 normalized = phonetic_text.lower()
                 parts = normalized.split('-')
