@@ -63,3 +63,4 @@ nav:
   - Flashcards:
       - English to Kannada: 11_flashcards_en_kn.md
       - Kannada to English: 11_flashcards_kn_en.md
+  - Configuration: configuration.md
