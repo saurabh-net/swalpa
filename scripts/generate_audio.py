@@ -8,6 +8,12 @@ import sys
 import time
 import argparse
 
+import argparse
+try:
+    from kannada_mapping import KANNADA_MAPPING
+except ImportError:
+    KANNADA_MAPPING = {}
+
 # Load API key from .env file
 def load_api_key():
     env_path = os.path.join(os.path.dirname(__file__), '..', '.env')
@@ -40,18 +46,15 @@ def generate_audio(mode='phonetic'):
     os.makedirs(audio_dir, exist_ok=True)
     
     # Regex Patterns
-    # Phonetic mode: just the brackets
-    # Native mode: the word(s) before the brackets
     if mode == 'native':
-        # Look for words immediately before the ⟨, optionally in *asterisks* or ‘quotes’
-        pattern = re.compile(r'([*‘“]*)(?P<word>[\w\s\?\!]+)([*’”]*)\s*⟨(?P<phonetic>[^⟩]+)⟩')
+        # Broad detection for anything before the bracket
+        pattern = re.compile(r'([^*‘“⟨\n]{1,40})\s*⟨(?P<phonetic>[^⟩]+)⟩')
     else:
         pattern = re.compile(r'⟨(?P<phonetic>[^⟩]+)⟩')
     
     md_files = glob.glob(os.path.join(docs_dir, '*.md'))
     
-    # Map of safe_filename -> (tts_text, original_phonetic)
-    # This prevents redunant generation and ensures filenames are unique based on phonetics
+    # Map of safe_filename -> (tts_text, is_ssml, original_phonetic)
     generation_map = {}
     
     # Phonetic overrides for the en-IN voice
@@ -77,17 +80,28 @@ def generate_audio(mode='phonetic'):
             safe_filename = re.sub(r'[^a-zA-Z0-9_\-]', '_', phonetic_text)
             safe_filename = re.sub(r'_+', '_', safe_filename).strip('_')
             
+            is_ssml = False
             if mode == 'native':
-                tts_text = match.group('word').strip()
+                # Priority 1: Check if we have a direct script mapping
+                if safe_filename in KANNADA_MAPPING:
+                    tts_text = f"<speak><lang xml:lang='kn-IN'>{KANNADA_MAPPING[safe_filename]}</lang></speak>"
+                    is_ssml = True
+                else:
+                    # Fallback: Use the word before the bracket
+                    raw_word = match.group(1).strip().split('\n')[-1]
+                    word = re.sub(r'[*‘“’”]+', '', raw_word).strip()
+                    # Wrap in SSML lang tag to hint at Kannada prosody even for Latin
+                    tts_text = f"<speak><lang xml:lang='kn-IN'>{word}</lang></speak>"
+                    is_ssml = True
             else:
                 normalized = phonetic_text.lower()
                 parts = normalized.split('-')
                 overridden_parts = [phonetic_overrides.get(p, p) for p in parts]
                 tts_text = ' '.join(overridden_parts)
             
-            generation_map[safe_filename] = (tts_text, phonetic_text)
+            generation_map[safe_filename] = (tts_text, is_ssml, phonetic_text)
 
-    print(f"Mode: {mode}. Found {len(generation_map)} unique audio items to generate.")
+    print(f"Mode: {mode}. Found {len(generation_map)} unique audio items.")
     
     url = "https://texttospeech.googleapis.com/v1/text:synthesize"
     headers = {"X-Goog-Api-Key": api_key, "Content-Type": "application/json"}
@@ -97,11 +111,16 @@ def generate_audio(mode='phonetic'):
     
     sorted_filenames = sorted(generation_map.keys())
     for i, safe_filename in enumerate(sorted_filenames, 1):
-        tts_text, phonetic_text = generation_map[safe_filename]
+        tts_text, is_ssml, phonetic_text = generation_map[safe_filename]
         mp3_path = os.path.join(audio_dir, f"{safe_filename}.mp3")
         
+        # Skip if already exists (optional, but keep it for efficiency if you want)
+        # if os.path.exists(mp3_path): continue
+
+        input_payload = {"ssml": tts_text} if is_ssml else {"text": tts_text}
+        
         payload = {
-            "input": {"text": tts_text},
+            "input": input_payload,
             "voice": {
                 "languageCode": lang_code,
                 "name": voice_name,
