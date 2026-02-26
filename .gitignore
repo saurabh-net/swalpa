@@ -32,3 +32,4 @@ MANIFEST
 
 # Ignore Agent instructions
 # (scripts/ is tracked in the private repo per GEMINI.md)
+.env
