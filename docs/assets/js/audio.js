@@ -161,6 +161,20 @@ document.addEventListener("DOMContentLoaded", function () {
             const audioUrl = `${basePath}assets/${currentVoiceDir}/${safeFilename}.mp3`;
             console.log(`[SWALPA Audio] Found: ${phoneticText}, URL: ${audioUrl}`);
 
+            // --- Preloading Strategy ---
+            const preloadAudio = () => {
+                if (!btn.dataset.preloaded) {
+                    const linter = new Audio();
+                    linter.preload = 'auto';
+                    linter.src = audioUrl;
+                    btn.dataset.preloaded = 'true';
+                    console.log(`[SWALPA Audio] Preloading: ${phoneticText}`);
+                }
+            };
+
+            btn.onmouseenter = preloadAudio;
+            btn.ontouchstart = preloadAudio;
+
             btn.onclick = function (e) {
                 e.preventDefault();
                 e.stopPropagation();
