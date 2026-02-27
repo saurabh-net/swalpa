@@ -440,7 +440,8 @@ function saveHistory(stepKey) {
         wallet: state.wallet,
         patience: state.patience,
         level: state.level,
-        stepKey: stepKey
+        stepKey: stepKey,
+        currentStep: state.currentStep
     });
 }
 
@@ -451,6 +452,7 @@ function undoStep() {
     state.wallet = prev.wallet;
     state.patience = prev.patience;
     state.level = prev.level;
+    state.currentStep = prev.stepKey;
     state.undosRemaining--;
     updateBackground();
     updateUI();
