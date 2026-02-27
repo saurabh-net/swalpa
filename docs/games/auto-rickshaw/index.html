@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Auto Protocol | SWALPA</title>
+    <title>Meter Haaki | SWALPA</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
         <div class="glass-container">
@@ -16,7 +20,9 @@
                 <div class="stats">
                     <div class="stat-item" id="respect-container">
                         <span class="label">RESPECT</span>
-                        <div class="meter-bg"><div id="respect-meter" class="meter-fill" style="width: 25%;"></div></div>
+                        <div class="meter-bg">
+                            <div id="respect-meter" class="meter-fill" style="width: 25%;"></div>
+                        </div>
                         <span class="value" id="respect-rank">Tourist</span>
                     </div>
                     <div class="stat-item">
@@ -26,7 +32,9 @@
                 </div>
                 <div class="patience-container">
                     <span class="label">PATIENCE</span>
-                    <div class="patience-bg"><div id="patience-meter" class="patience-fill" style="width: 100%;"></div></div>
+                    <div class="patience-bg">
+                        <div id="patience-meter" class="patience-fill" style="width: 100%;"></div>
+                    </div>
                 </div>
             </header>
 
@@ -34,7 +42,8 @@
                 <!-- Level content will be injected here -->
                 <div class="scene-intro">
                     <h1>Level 1: The Booking Standoff</h1>
-                    <p class="scenario-text">You are at a busy Metro exit. Three drivers are waiting. You need to pick one and get him to agree to a fare.</p>
+                    <p class="scenario-text">You are at a busy Metro exit. Three drivers are waiting. You need to pick
+                        one and get him to agree to a fare.</p>
                     <button id="start-btn" class="primary-btn">Begin Negotiation</button>
                 </div>
             </main>
@@ -50,4 +59,5 @@
     </div>
     <script type="module" src="js/game.js"></script>
 </body>
+
 </html>
