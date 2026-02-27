@@ -1,3 +1,6 @@
+---
+description: SWALPA is a free, practical guide to spoken Bangalore Kannada. Learn everyday phrases, auto-rickshaw negotiation, street slang, and survival vocabulary — all phonetically.
+---
 # Welcome to SWALPA
 
 Namaskara! Welcome to **SWALPA** (**S**poken **W**ords **A**nd **L**anguage **P**ractical **A**cquisition — and yes, we totally forced that backronym 🙃).

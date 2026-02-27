@@ -1,6 +1,8 @@
 site_name: SWALPA
 site_url: https://swalpa.org
-site_description: Spoken Words And Language Practical Acquisition - A Phonetic-Only Bangalore Kannada Resource
+site_description: Learn practical Bangalore Kannada through phonetics, flashcards, and street-level scenarios. Survival Kannada for expats, tech workers, and newcomers to Bengaluru.
+site_author: Saurabh Maurya
+copyright: '&copy; 2025 SWALPA. A phonetic-only Bangalore Kannada resource.'
 repo_url: https://github.com/saurabh-net/swalpa
 repo_name: saurabh-net/swalpa
 docs_dir: docs
@@ -34,6 +36,12 @@ theme:
   font:
     text: Inter
     code: Roboto Mono
+
+plugins:
+  - search:
+      lang: en
+  - sitemap:
+      pretty_print: true
 
 markdown_extensions:
   - admonition

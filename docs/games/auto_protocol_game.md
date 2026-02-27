@@ -1,3 +1,6 @@
+---
+description: Play Meter Haaki — an interactive Kannada language game set in Bangalore. Negotiate with auto-rickshaw drivers, give directions, and navigate street scenarios in Kannada.
+---
 # Meter Haaki
 
 Navigate Bangalore streets, negotiate fares, give directions and make friends — all in Kannada. Choose your words carefully!

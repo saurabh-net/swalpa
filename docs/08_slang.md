@@ -1,3 +1,6 @@
+---
+description: Bangalore slang, Kanglish, and street expressions every expat needs to know. From "macha" to "guru" to "sakkath" — the living dialect of Bengaluru explained.
+---
 # 07. Bangalore Slang & Kanglish
 
 Bengaluru spoken Kannada is a highly dynamic and syncretic dialect. It seamlessly blends *Hosagannada* ⟨HOH-sah-gun-nuh-dah⟩ (Modern Kannada) with English (forming "Kanglish"), incorporates loanwords from neighboring languages (like Tamil), and features a rich tapestry of local street slang. 

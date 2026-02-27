@@ -1,3 +1,6 @@
+---
+description: Practical Kannada for Bangalore delivery apps, landlords, plumbers, and office campuses. Covers Swiggy/Zomato logistics, renting vocabulary, and repair negotiations.
+---
 # 09. Everyday Logistics & Services
 
 While English is sufficient for navigating corporate spaces and modern hospitals in Bangalore, the city's vast network of delivery apps, service professionals, and housing logistics often operates primarily in Kannada (or Hindi). 

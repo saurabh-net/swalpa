@@ -1,3 +1,6 @@
+---
+description: Essential Kannada survival phrases for your first days in Bengaluru — auto-rickshaws, directions, emergencies, payments, and basic needs explained phonetically.
+---
 # 02. Survival, Logistics, and Emergencies
 
 Mastering this core vocabulary will allow you to survive your first few days in Bengaluru. These aren't just words; they are the communicative tools you need to negotiate, direct transport, fulfill basic needs, and handle critical situations.

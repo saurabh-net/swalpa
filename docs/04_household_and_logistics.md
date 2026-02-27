@@ -1,3 +1,6 @@
+---
+description: Kannada vocabulary for home management, groceries, domestic help, and personal services in Bangalore. Covers cleaning instructions, salon visits, tailors, and more.
+---
 # 10. Household, Groceries, and Logistics
 
 A core lexicon is required to manage the home, instruct domestic help, rent accommodation, and navigate grocery shopping effectively.

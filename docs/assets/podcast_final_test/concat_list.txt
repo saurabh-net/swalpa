@@ -1,0 +1,7 @@
+file '001_host.mp3'
+file '002_guru.mp3'
+file '003_host.mp3'
+file '004_guru.mp3'
+file '005_host.mp3'
+file '006_guru.mp3'
+file '007_host.mp3'

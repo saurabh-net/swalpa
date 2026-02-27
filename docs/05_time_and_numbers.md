@@ -1,3 +1,6 @@
+---
+description: Learn Kannada numbers, time expressions, and calendar vocabulary for Bangalore. Master counting 1–10 to unlock the full numerical system, phonetically transcribed.
+---
 # 04. Time, Numbers & Calendar
 
 Mastering the numbers 1 through 10 unlocks the logic for the entire numerical system. The days of the week match Hindi exactly, as both are derived from Sanskrit planetary names.

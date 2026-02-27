@@ -1,3 +1,6 @@
+---
+description: Understand Kannada's linguistic layers — Sanskrit, Dravidian, and Perso-Arabic roots — to instantly recognise thousands of words as an Indian language speaker.
+---
 # 01. History & Linguistic Nuances
 
 Kannada is structured like a "linguistic layer cake," reflecting millennia of history in its vocabulary. Understanding these historical layers gives you a massive head start in acquiring the language, allowing you to instantly recognize thousands of words if you speak any other Indian language.

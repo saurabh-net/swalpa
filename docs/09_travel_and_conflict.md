@@ -1,3 +1,6 @@
+---
+description: Kannada directions, traffic navigation, and conflict phrases for Bengaluru. Learn how to give auto-rickshaw directions, handle traffic police, and navigate disputes.
+---
 # 08. Travel, Directions, and Conflict
 
 Navigating Bengaluru traffic requires clear, authoritative directions. The core spatial markers you learned previously (*illi* ⟨ILL-lee⟩, *alli* ⟨ULL-lee⟩) are combined with these directional commands to form the "Auto-Rickshaw Protocol". Handling interactions on the street, including traffic police or minor conflicts, is also crucial.

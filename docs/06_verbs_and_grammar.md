@@ -1,3 +1,6 @@
+---
+description: Learn core Kannada verbs, tense patterns, and grammar building blocks. Understand the verb-final sentence structure and imperative forms for giving directions and commands.
+---
 # 05. Core Verbs & Grammar
 
 Memorizing the verb root alongside its imperative (command) form allows for immediate action. 

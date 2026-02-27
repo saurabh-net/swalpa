@@ -1,3 +1,6 @@
+---
+description: Kannada adjectives and descriptors for Bangalore daily life. Learn how to describe size, quality, colour, and feeling — with phonetic pronunciation guides.
+---
 # 06. Adjectives & Descriptors
 
 In Kannada, descriptive adjectives generally precede the noun they modify, maintaining the exact same syntactic order as English and Hindi (e.g., *Dodda mane* ⟨DOD-dah MUH-ney⟩ = Big house = *Bada ghar*). 
