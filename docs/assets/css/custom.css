@@ -34,12 +34,6 @@
     background-color: var(--md-primary-fg-color--transparent);
 }
 
-/* ROI Highlight */
-.roi-highlight {
-    color: var(--dosa-gold);
-    font-weight: bold;
-}
-
 /* Custom audio link styling for phonetic guides */
 .audio-phonetic-link {
     font-family: 'Roboto Mono', monospace;
