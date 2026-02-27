@@ -133,6 +133,7 @@ main {
     margin-bottom: 16px;
     background: linear-gradient(to bottom, #fff, #94A3B8);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -217,6 +218,42 @@ main {
 .choice-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--primary);
+}
+
+#game-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-muted);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+}
+
+.control-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    border-color: var(--primary);
+}
+
+.control-btn:disabled {
+    cursor: not-allowed;
+}
+
+.control-btn.secondary:hover {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
 }
 
 .hidden {

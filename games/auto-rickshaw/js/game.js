@@ -3,7 +3,9 @@ const state = {
     wallet: 500,
     patience: 100,
     level: 1,
-    currentStep: 'engagement'
+    currentStep: 'engagement',
+    history: [],
+    undosRemaining: 3
 };
 
 const levels = {
@@ -405,6 +407,7 @@ function updateUI() {
     const respectRank = document.getElementById('respect-rank');
     const walletValue = document.getElementById('wallet-value');
     const patienceMeter = document.getElementById('patience-meter');
+    const undoBtn = document.getElementById('undo-btn');
 
     respectMeter.style.width = `${state.respect}%`;
     walletValue.innerText = `₹${state.wallet}`;
@@ -414,6 +417,13 @@ function updateUI() {
     else if (state.respect <= 50) respectRank.innerText = "Resident";
     else if (state.respect <= 85) respectRank.innerText = "Local";
     else respectRank.innerText = "Macha";
+
+    if (undoBtn) {
+        const canUndo = state.history.length > 0 && state.undosRemaining > 0;
+        undoBtn.disabled = !canUndo;
+        undoBtn.innerText = `↩ Undo (${state.undosRemaining} left)`;
+        undoBtn.style.opacity = canUndo ? '1' : '0.4';
+    }
 }
 
 function updateBackground() {
@@ -422,6 +432,29 @@ function updateBackground() {
     if (bgPath && container) {
         container.style.backgroundImage = `linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('${bgPath}')`;
     }
+}
+
+function saveHistory(stepKey) {
+    state.history.push({
+        respect: state.respect,
+        wallet: state.wallet,
+        patience: state.patience,
+        level: state.level,
+        stepKey: stepKey
+    });
+}
+
+function undoStep() {
+    if (state.history.length === 0 || state.undosRemaining === 0) return;
+    const prev = state.history.pop();
+    state.respect = prev.respect;
+    state.wallet = prev.wallet;
+    state.patience = prev.patience;
+    state.level = prev.level;
+    state.undosRemaining--;
+    updateBackground();
+    updateUI();
+    showDialogue(prev.stepKey);
 }
 
 function showDialogue(stepKey) {
@@ -459,6 +492,7 @@ function showDialogue(stepKey) {
 }
 
 function handleChoice(choice) {
+    saveHistory(state.currentStep);
     if (choice.effect) {
         if (choice.effect.respect) state.respect = Math.min(100, Math.max(0, state.respect + choice.effect.respect));
         if (choice.effect.patience) state.patience = Math.min(100, Math.max(0, state.patience + choice.effect.patience));
@@ -470,6 +504,7 @@ function handleChoice(choice) {
 
     updateUI();
     if (choice.next) {
+        state.currentStep = choice.next;
         showDialogue(choice.next);
     }
 }
