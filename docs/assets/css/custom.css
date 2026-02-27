@@ -1,20 +1,65 @@
-/* custom audio link styling for phonetic guides */
+:root {
+    /* Karnataka Flag Branding Colors */
+    --kannada-yellow: #FFD200;
+    --kannada-red: #CE1126;
+    --vidhana-grey: #455A64;
+    --dosa-gold: #FFB300;
+
+    /* Material Theme Overrides (Light Mode) */
+    --md-primary-fg-color: var(--kannada-red);
+    --md-primary-fg-color--transparent: rgba(206, 17, 38, 0.1);
+    --md-accent-fg-color: var(--kannada-yellow);
+}
+
+[data-md-color-scheme="slate"] {
+    /* Material Theme Overrides (Dark Mode) */
+    --md-primary-fg-color: var(--kannada-yellow);
+    --md-primary-fg-color--transparent: rgba(255, 210, 0, 0.1);
+    --md-accent-fg-color: var(--kannada-red);
+}
+
+/* Phrase Cards */
+.phrase-card {
+    border-left: 4px solid var(--md-primary-fg-color);
+    padding: 12px 16px;
+    margin: 16px 0;
+    background-color: var(--md-code-bg-color);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.phrase-card:hover {
+    transform: translateX(4px);
+    background-color: var(--md-primary-fg-color--transparent);
+}
+
+/* ROI Highlight */
+.roi-highlight {
+    color: var(--dosa-gold);
+    font-weight: bold;
+}
+
+/* Custom audio link styling for phonetic guides */
 .audio-phonetic-link {
+    font-family: 'Roboto Mono', monospace;
+    font-style: italic;
     cursor: pointer;
-    background-color: transparent;
+    background-color: rgba(69, 90, 100, 0.05);
     border: none;
     border-radius: 4px;
-    padding: 0 4px;
+    padding: 2px 6px;
     margin: 0 2px;
     color: var(--md-primary-fg-color);
     font-size: 0.9em;
     display: inline-flex;
     align-items: center;
-    transition: background-color 0.2s, transform 0.1s;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .audio-phonetic-link:hover {
     background-color: var(--md-primary-fg-color--transparent);
+    transform: translateY(-1px);
 }
 
 .audio-phonetic-link:active {
@@ -23,18 +68,52 @@
 
 .audio-icon {
     font-style: normal;
-    margin-right: 2px;
+    margin-right: 6px;
     font-size: 1.1em;
 }
 
 /* Playing animation */
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .audio-playing .audio-icon {
     animation: pulse 0.8s infinite ease-in-out;
     color: var(--md-accent-fg-color);
+}
+
+/* Audio Error States */
+.audio-failed {
+    color: #f44336 !important;
+}
+
+/* Toast Notification */
+.swalpa-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #323232;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 10000;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.swalpa-toast.visible {
+    transform: translateX(-50%) translateY(0);
 }

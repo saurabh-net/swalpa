@@ -1,11 +1,15 @@
 # Welcome to SWALPA
 
-Namaskara! Welcome to **SWALPA** (Spoken Words And Language Practical Acquisition).
+Namaskara! Welcome to **SWALPA** (**S**poken **W**ords **A**nd **L**anguage **P**ractical **A**cquisition — and yes, we totally forced that backronym 🙃).
 
+![SWALPA Hero Illustration](assets/img/hero.png)
+
+<div class="phrase-card" markdown>
 ## 🎯 Our Mission
 Our goal is to provide a **phonetic-only, Bangalore-functional** Kannada learning resource. This guide is built specifically for non-Kannada speakers in Bangalore—such as IT professionals, recent migrants, and long-term residents—who want to survive and thrive through spoken language without needing to learn the formal written script.
 
-We focus on maximizing your return on investment (ROI) by teaching you high-frequency vocabulary and practical phrases that you can use immediately in your daily life in Namma Bengaluru.
+We focus on maximizing your <span class="roi-highlight">return on investment</span> by teaching you high-frequency vocabulary and practical phrases that you can use immediately in your daily life in Namma Bengaluru.
+</div>
 
 ## 👥 Target Audience
 This guide is for you if:

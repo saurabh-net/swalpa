@@ -38,9 +38,27 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Audio playback error:", e);
         if (currentPlayingButton) {
             currentPlayingButton.classList.remove('audio-playing');
+            currentPlayingButton.classList.add('audio-failed');
+            // Show a temporary "broken" state
+            setTimeout(() => {
+                currentPlayingButton.classList.remove('audio-failed');
+            }, 2000);
             currentPlayingButton = null;
         }
+        showToast("Audio failed to load. Please refresh.");
     });
+
+    function showToast(message) {
+        let toast = document.querySelector('.swalpa-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'swalpa-toast';
+            document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 3000);
+    }
 
     // Strategy: find all text nodes and replace the bracketed text with interactive span.
     // To do this safely without breaking other HTML, we use a TreeWalker.
@@ -86,27 +104,39 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.title = 'Listen to pronunciation';
             btn.innerHTML = `<span class="audio-icon">🔊</span>⟨${phoneticText}⟩`;
 
-            // Get base path from an existing stylesheet link
-            const stylesheet = document.querySelector('link[rel="stylesheet"][href*="assets/stylesheets/"]');
+            // --- Robust Path Resolution ---
+            // Try to find the common assets path prefix
             let basePath = '/';
+            const stylesheet = document.querySelector('link[rel="stylesheet"][href*="assets/stylesheets/"]');
+            const scriptTag = document.querySelector('script[src*="assets/js/audio.js"]');
+
             if (stylesheet) {
                 const href = stylesheet.getAttribute('href');
                 basePath = href.substring(0, href.indexOf('assets/stylesheets/'));
+            } else if (scriptTag) {
+                const src = scriptTag.getAttribute('src');
+                basePath = src.substring(0, src.indexOf('assets/js/audio.js'));
             }
 
-            // Always use selected native Kannada audio directory
-            const getAudioUrl = () => `${basePath}assets/${currentVoiceDir}/${safeFilename}.mp3`;
+            const audioUrl = `${basePath}assets/${currentVoiceDir}/${safeFilename}.mp3`;
+            console.log(`[SWALPA Audio] Found: ${phoneticText}, URL: ${audioUrl}`);
 
             btn.onclick = function (e) {
                 e.preventDefault();
                 e.stopPropagation();
 
+                console.log(`[SWALPA Audio] Playing: ${audioUrl}`);
+
                 if (currentPlayingButton) {
                     currentPlayingButton.classList.remove('audio-playing');
                 }
 
-                audioElement.src = getAudioUrl();
-                audioElement.play().catch(err => console.log("Playback failed:", err));
+                audioElement.src = audioUrl;
+                audioElement.play().then(() => {
+                    console.log(`[SWALPA Audio] Playback started: ${audioUrl}`);
+                }).catch(err => {
+                    console.error(`[SWALPA Audio] Playback failed: ${audioUrl}`, err);
+                });
 
                 btn.classList.add('audio-playing');
                 currentPlayingButton = btn;

@@ -7,28 +7,33 @@ docs_dir: docs
 
 theme:
   name: material
+  logo: assets/img/favicon.png
+  favicon: assets/img/favicon.png
   features:
     - navigation.sections
     - navigation.top
     - navigation.footer
     - search.suggest
     - search.highlight
-     - navigation.footer
+    - navigation.footer
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
+      primary: red
+      accent: yellow
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: yellow
+      accent: red
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+  font:
+    text: Inter
+    code: Roboto Mono
 
 markdown_extensions:
   - admonition
