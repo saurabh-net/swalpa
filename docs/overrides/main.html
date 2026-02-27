@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+{{ super() }}
+<!-- Open Graph / Social card -->
+<meta property="og:site_name" content="SWALPA" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://swalpa.org/assets/img/hero.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="SWALPA — Practical Bangalore Kannada" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://swalpa.org/assets/img/hero.png" />
+<meta name="twitter:title" content="{{ page.meta.title | default(page.title) }} | SWALPA" />
+<meta name="twitter:description" content="{{ page.meta.description | default(config.site_description) }}" />
+<!-- Keywords for language/location targeting -->
+<meta name="keywords"
+    content="Kannada, Bangalore Kannada, learn Kannada, Bengaluru, expat Bangalore, spoken Kannada, Kanglish, practical Kannada, phonetic Kannada" />
+{% endblock %}

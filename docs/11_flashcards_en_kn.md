@@ -1,3 +1,18 @@
+---
+description: Interactive Kannada flashcards — practice translating English to Kannada for everyday Bangalore life. Covers 100+ essential words and phrases, phonetically transcribed.
+---
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "English to Kannada Flashcards",
+    "description": "Practice translating English to Kannada with spaced repetition flashcards covering everyday Bangalore vocabulary.",
+    "educationalLevel": "Beginner",
+    "learningResourceType": "Flashcards",
+    "inLanguage": ["en", "kn"],
+    "provider": { "@type": "Organization", "name": "SWALPA", "url": "https://swalpa.org" }
+}
+</script>
 
 <script type="module" src="https://js.withorbit.com/orbit-web-component.js"></script>
 

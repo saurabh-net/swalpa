@@ -1,3 +1,18 @@
+---
+description: Interactive Kannada flashcards — practice recognising Kannada words and phrases in their English meaning. Spaced repetition for real Bangalore street vocabulary.
+---
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "Kannada to English Flashcards",
+    "description": "Practice recognising Kannada words and translating them to English with spaced repetition flashcards covering everyday Bangalore vocabulary.",
+    "educationalLevel": "Beginner",
+    "learningResourceType": "Flashcards",
+    "inLanguage": ["kn", "en"],
+    "provider": { "@type": "Organization", "name": "SWALPA", "url": "https://swalpa.org" }
+}
+</script>
 
 <script type="module" src="https://js.withorbit.com/orbit-web-component.js"></script>
 
