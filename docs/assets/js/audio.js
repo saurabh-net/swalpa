@@ -34,6 +34,46 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // --- Theme-Aware Branding ---
+    const updateBranding = () => {
+        const isDark = document.body.getAttribute('data-md-color-scheme') === 'slate';
+        const themeColor = isDark ? 'yellow' : 'red';
+
+        let basePath = '/';
+        const scriptTag = document.querySelector('script[src*="assets/js/audio.js"]');
+        if (scriptTag) {
+            const src = scriptTag.getAttribute('src');
+            basePath = src.substring(0, src.indexOf('assets/js/audio.js'));
+        }
+
+        // Update Favicon
+        const favicon = document.querySelector('link[rel="icon"]');
+        if (favicon) {
+            favicon.href = `${basePath}assets/img/favicon_${themeColor}.png`;
+        }
+
+        // Update Header Logo
+        const logo = document.querySelector('.md-header__button.md-logo img');
+        if (logo) {
+            logo.src = `${basePath}assets/img/logo_${themeColor}.png`;
+        }
+
+        console.log(`[SWALPA Branding] Applied ${themeColor} theme assets`);
+    };
+
+    // Listen for theme changes (MkDocs Material uses a mutation on body)
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'data-md-color-scheme') {
+                updateBranding();
+            }
+        });
+    });
+    observer.observe(document.body, { attributes: true });
+
+    // Initial call
+    updateBranding();
+
     audioElement.addEventListener('error', function (e) {
         console.error("Audio playback error:", e);
         if (currentPlayingButton) {
