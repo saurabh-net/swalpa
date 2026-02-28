@@ -23,13 +23,18 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
             const badgeDefs = window.BADGE_DEFINITIONS || {};
 
         // 1. Build the Rank Header Card
+        const currentStreak = window.localStorage.getItem('swalpa_streak') || 0;
         let html = `
             <div class="swalpa-profile-card">
                 <div class="swalpa-profile-rank-header">
                     <div class="sp-emoji">${progress.rank.title.split(' ')[0]}</div>
                     <div class="sp-details">
                         <h2>${progress.rank.title.split(' ').slice(1).join(' ')}</h2>
-                        <div class="sp-points">${progress.totalPoints} <span>RP</span></div>
+                        <div class="sp-points">
+                            ${progress.totalPoints} <span>RP</span>
+                            <span style="opacity: 0.5; margin: 0 8px;">|</span>
+                            🔥 ${currentStreak} <span style="font-size: 0.8em">Day Streak</span>
+                        </div>
                     </div>
                 </div>
                 <div class="swalpa-profile-progress-bar">
