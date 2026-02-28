@@ -2,7 +2,6 @@ site_name: SWALPA
 site_url: https://swalpa.org
 site_description: Learn practical Bangalore Kannada through phonetics, flashcards, and street-level scenarios. Survival Kannada for expats, tech workers, and newcomers to Bengaluru.
 site_author: Saurabh Maurya
-copyright: '&copy; 2025 SWALPA. A phonetic-only Bangalore Kannada resource.'
 repo_url: https://github.com/saurabh-net/swalpa
 repo_name: saurabh-net/swalpa
 docs_dir: docs
@@ -42,8 +41,8 @@ theme:
 plugins:
   - search:
       lang: en
-  - sitemap:
-      pretty_print: true
+#  - sitemap:
+#      pretty_print: true
 
 markdown_extensions:
   - admonition
@@ -56,6 +55,9 @@ markdown_extensions:
 
 extra:
   generator: false
+  analytics:
+    provider: google
+    property: G-QXYDQG6GGN
 
 extra_css:
   - assets/css/custom.css
@@ -76,8 +78,9 @@ nav:
       - 8. Travel & Conflict: 09_travel_and_conflict.md
       - 9. Renting & Repairs: 10_everyday_logistics_and_services.md
       - 10. Home & Groceries: 04_household_and_logistics.md
+      - Summary Slides: 12_summary_slides.md
   - Games:
-      - Meter Haaki: games/auto_protocol_game.md
+      - Meter Haaki: games/meter_haaki.md
   - Flashcards:
       - English to Kannada: 11_flashcards_en_kn.md
       - Kannada to English: 11_flashcards_kn_en.md

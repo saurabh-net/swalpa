@@ -3,6 +3,11 @@
  * Finds all ⟨phonetic⟩ tags, converts them, and handles native Kannada audio playback.
  */
 
+// Immediately apply hidden state to prevent flashing
+if (localStorage.getItem('swalpa_show_phonetics') !== 'true') {
+    document.documentElement.classList.add('hide-phonetics');
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const articleContent = document.querySelector('.md-content');
     if (!articleContent) return;
@@ -206,4 +211,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
         textNode.parentNode.replaceChild(fragment, textNode);
     });
+
+    // --- Global Phonetic Toggle (Only on Lessons 1-10) ---
+    const mainContent = document.querySelector('.md-content__inner');
+    const isLessonPage = /^\/(0[1-9]|10)_/.test(window.location.pathname);
+
+    if (mainContent && isLessonPage && !document.querySelector('.swalpa-phonetic-toggle-wrapper')) {
+        const toggleWrapper = document.createElement('div');
+        toggleWrapper.className = 'swalpa-phonetic-toggle-wrapper subtle-top-toggle';
+        toggleWrapper.innerHTML = `
+            <span class="swalpa-toggle-label">Phonetics & Audio</span>
+            <label class="swalpa-toggle-switch">
+                <input type="checkbox" id="phonetic-toggle-checkbox">
+                <span class="swalpa-slider"></span>
+            </label>
+        `;
+        // Find the first h1 to insert after
+        const firstH1 = mainContent.querySelector('h1');
+        if (firstH1) {
+            firstH1.parentNode.insertBefore(toggleWrapper, firstH1.nextSibling);
+        } else {
+            mainContent.insertBefore(toggleWrapper, mainContent.firstChild);
+        }
+
+        const showKey = 'swalpa_show_phonetics';
+        const checkbox = document.getElementById('phonetic-toggle-checkbox');
+
+        // Initialize state (defaults to false/hidden)
+        const isShown = localStorage.getItem(showKey) === 'true';
+        checkbox.checked = isShown;
+
+        if (!isShown) {
+            document.body.classList.add('hide-phonetics');
+        }
+
+        checkbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                localStorage.setItem(showKey, 'true');
+                document.body.classList.remove('hide-phonetics');
+            } else {
+                localStorage.setItem(showKey, 'false');
+                document.body.classList.add('hide-phonetics');
+            }
+        });
+    }
 });

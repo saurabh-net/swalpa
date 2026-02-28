@@ -4,115 +4,109 @@ const state = {
     patience: 100,
     level: 1,
     currentStep: 'engagement',
+    activeDriver: null, // Track selected driver
+    environment: {
+        traffic: 'Low',
+        weather: 'Sunny',
+        timeOfDay: 'Morning'
+    },
     history: [],
     undosRemaining: 3
 };
 
+const drivers = {
+    'Guru': {
+        name: 'Guru (The Stoic)',
+        voice: 'Deep',
+        modifiers: { respect: 0.8, patience: 1.0 },
+        description: 'Older, khaki uniform. Traditional and formal.'
+    },
+    'Anna': {
+        name: 'Anna (The Friendly)',
+        voice: 'Warm',
+        modifiers: { respect: 1.0, patience: 1.2 },
+        description: 'Middle-aged, big smile. Loves a good chat.'
+    },
+    'Macha': {
+        name: 'Macha (The Hustler)',
+        voice: 'Fast',
+        modifiers: { respect: 1.2, patience: 0.8 },
+        description: 'Young, sunglasses. Respects confidence and slang.'
+    }
+};
+
+// Note: In a full refactor, these would move to separate JSON files
+// For now, updating the structural content to match the expanded design
 const levels = {
     1: {
-        title: "The Booking Standoff",
-        scenario: "You are at a busy Metro exit. Three drivers are waiting. You need to pick one and get him to agree to a fare.",
+        title: "The Terminal Selection",
+        scenario: "Choose your driver at the Metro exit terminal. Each has a different vibe.",
         background: "assets/level_1_background.png",
         dialogue: {
             engagement: {
-                speaker: "Driver B",
-                text: "Ellige hogabeku saar?",
+                speaker: "System",
+                text: "Pick your driver to begin the protocol:",
+                choices: [
+                    { text: "Guru (The Stoic) - High Respect, Low Patience", driver: 'Guru', next: 'start_negotiation' },
+                    { text: "Anna (The Friendly) - Balanced, Loves Chatting", driver: 'Anna', next: 'start_negotiation' },
+                    { text: "Macha (The Hustler) - Fast, Loves confidence", driver: 'Macha', next: 'start_negotiation' },
+                    { text: "Wait for a modern app-based cab", effect: { patience: -30 }, next: 'start_negotiation' }
+                ]
+            },
+            start_negotiation: {
+                get speaker() { return state.activeDriver ? state.activeDriver : "Driver"; },
+                get text() {
+                    if (state.activeDriver === 'Guru') return "Namaskara saar. Indiranagar hog-thee-ra?";
+                    if (state.activeDriver === 'Macha') return "Yen guru, ellige?";
+                    return "Banni saar, ellige hogabeku?";
+                },
                 choices: [
                     {
-                        text: "Guru, 12th Main Indiranagar barthira?",
-                        effect: { respect: 15, patience: 10 },
-                        next: "fare_agreement_success"
+                        text: "⟨Namaskāra⟩ Anna, Indiranagar 12th Main banni.",
+                        effect: { respect: 15 },
+                        next: "fare_check"
                     },
                     {
-                        text: "Indiranagar, go?",
-                        effect: { respect: -5, patience: -5 },
-                        next: "fare_agreement_negotiation"
+                        text: "Indiranagar. ⟨Meter hāki⟩.",
+                        effect: { respect: 5, patience: -10 },
+                        next: "fare_check"
                     },
                     {
-                        text: "Indiranagar hogu.",
-                        effect: { respect: -15, patience: -15 },
-                        next: "fare_agreement_negotiation"
+                        text: "⟨Oota āytha⟩? Indiranagar banni.",
+                        effect: { respect: 25, patience: 10 },
+                        next: "fare_check"
                     },
                     {
-                        text: "Nange Indiranagar beku.",
-                        effect: { respect: -10, patience: -10 },
-                        next: "fare_agreement_negotiation"
+                        text: "Go to Indiranagar. Move fast.",
+                        isEnglish: true,
+                        effect: { respect: -15, patience: -20, barrier: true },
+                        next: "fare_check"
                     }
                 ]
             },
-            fare_agreement_negotiation: {
-                speaker: "Driver B",
-                text: "No saar, busy time. One-and-half only.",
+            fare_check: {
+                get speaker() { return state.activeDriver; },
+                text: "Meter plus 20 kodi saar. Thumba traffic ide.",
                 choices: [
                     {
-                        text: "Bēda guru, meter haaki.",
-                        effect: { respect: 10, patience: 5 },
-                        next: "fare_agreement_success"
-                    },
-                    {
-                        text: "Please put meter, sir.",
-                        effect: { respect: 0, patience: -5 },
-                        next: "fare_agreement_failure"
-                    },
-                    {
-                        text: "Meter haaku!",
-                        effect: { respect: -20, patience: -20 },
-                        next: "fare_agreement_failure"
-                    },
-                    {
-                        text: "Jaasthi kodi.",
-                        effect: { respect: -10, patience: -30 },
-                        next: "fare_agreement_failure"
-                    }
-                ]
-            },
-            fare_agreement_failure: {
-                speaker: "Driver B",
-                text: "No saar, not coming. Go back!",
-                choices: [
-                    {
-                        text: "Sari, bere auto nodthini.",
-                        effect: { respect: 0 },
-                        next: "level_failed"
-                    },
-                    {
-                        text: "Swalpa adjust maadi, guru...",
-                        effect: { patience: -10 },
-                        next: "engagement"
-                    },
-                    {
-                        text: "Oota aytha?",
-                        effect: { respect: 5, patience: 10 },
-                        next: "fare_agreement_negotiation"
-                    },
-                    {
-                        text: "Sari bidi.",
-                        effect: { end: 'reset' }
-                    }
-                ]
-            },
-            fare_agreement_success: {
-                speaker: "Driver B",
-                text: "Barthini, banni. Meter plus hattu kodi.",
-                choices: [
-                    {
-                        text: "Sari banni, hogona.",
-                        effect: { respect: 10 },
+                        text: "Sari anna, ⟨hogōṇa⟩.",
+                        effect: { respect: 10, wallet: -20 },
                         next: "level_complete"
                     },
                     {
-                        text: "Yes, let's go.",
-                        effect: { respect: 0 },
+                        text: "⟨Bēda⟩ guru, meter haaki.",
+                        effect: { respect: 15, patience: -10 },
                         next: "level_complete"
                     },
                     {
-                        text: "Hogu hogu!",
-                        effect: { respect: -10 },
-                        next: "fare_agreement_failure"
+                        text: "⟨Svalpa adjust māḍi⟩ anna, student naanu.",
+                        effect: { respect: 20 },
+                        next: "level_complete"
                     },
                     {
-                        text: "Oota aytha?",
-                        effect: { respect: 5 },
+                        text: "Fine, here's 50 extra. Just go.",
+                        isEnglish: true,
+                        effect: { respect: -10, wallet: -50 },
                         next: "level_complete"
                     }
                 ]
@@ -120,110 +114,87 @@ const levels = {
         }
     },
     2: {
-        title: "The Navigation Maze",
-        scenario: "The auto driver is taking a 'shortcut' through narrow gullies. You need to give precise directions.",
-        background: "assets/hero.png",
+        title: "The Maze (Navigation)",
+        scenario: "Navigate the narrow gullies of Malleshwaram. Guided by your driver.",
+        background: "assets/level_2_gullies.png",
         dialogue: {
             engagement: {
-                speaker: "Driver",
-                text: "Saar, layout olgade hogona?",
+                get speaker() { return state.activeDriver; },
+                text: "Saar, illi flyover work aagtide. Left-ah, right-ah?",
                 choices: [
                     {
-                        text: "Haudu, nēra hogi.",
-                        effect: { respect: 10, patience: 5 },
-                        next: "first_turn"
+                        text: "Illi ⟨balagaḍe thagoḷi⟩, aamele nera ⟨hōgi⟩.",
+                        effect: { respect: 15, patience: 10 },
+                        next: "shortcut_check"
                     },
                     {
-                        text: "Yes, go straight.",
-                        effect: { respect: 0, patience: 0 },
-                        next: "first_turn"
+                        text: "⟨Left hōgi⟩... alla alla, ⟨right thagoḷi⟩!",
+                        effect: { respect: -5, patience: -20 },
+                        next: "shortcut_check"
                     },
                     {
-                        text: "Alli nillisi!",
-                        effect: { respect: -5, patience: -10 },
-                        next: "first_turn"
+                        text: "⟨Svalpa adjust māḍi⟩ anna, full confusion.",
+                        effect: { respect: 10 },
+                        next: "shortcut_check"
                     },
                     {
-                        text: "Bega hogi!",
-                        effect: { respect: -5, patience: -5 },
-                        next: "first_turn"
+                        text: "Just follow the GPS. Take the next left.",
+                        isEnglish: true,
+                        effect: { respect: -10, patience: -15 },
+                        next: "shortcut_check"
                     }
                 ]
             },
-            first_turn: {
-                speaker: "Driver",
-                text: "Illi left ah, right ah?",
+            shortcut_check: {
+                get speaker() { return state.activeDriver; },
+                text: "Saar, shortcut thogolla? Time ulit-the.",
                 choices: [
                     {
-                        text: "Edagade thagonli.",
+                        text: "Haudu, gully olgade ⟨hōgi⟩.",
                         effect: { respect: 15, patience: 10 },
                         next: "destination_near"
                     },
                     {
-                        text: "Go right.",
-                        effect: { respect: 0, patience: 0 },
-                        next: "wrong_way"
+                        text: "⟨Bēda⟩, main road-alle ⟨hōgi⟩.",
+                        effect: { respect: 5, patience: -10 },
+                        next: "destination_near"
                     },
                     {
-                        text: "Sita hogi.",
-                        effect: { respect: -5, patience: -5 },
-                        next: "wrong_way"
+                        text: "Nimage ⟨gottidre⟩ thagoli anna.",
+                        effect: { respect: 20 },
+                        next: "destination_near"
                     },
                     {
-                        text: "Balagade thagonli.",
-                        effect: { respect: 5 },
-                        next: "wrong_way"
-                    }
-                ]
-            },
-            wrong_way: {
-                speaker: "Driver",
-                text: "Saar, munde daari illa!",
-                choices: [
-                    {
-                        text: "Swalpa hindhe banni.",
-                        effect: { respect: 10, patience: 5 },
-                        next: "first_turn"
-                    },
-                    {
-                        text: "Go back.",
-                        effect: { respect: 0, patience: -5 },
-                        next: "first_turn"
-                    },
-                    {
-                        text: "Kirik beda!",
-                        effect: { respect: -10, patience: -10 },
-                        next: "level_failed"
-                    },
-                    {
-                        text: "Oota aytha?",
-                        effect: { respect: -5, patience: -20 },
-                        next: "level_failed"
+                        text: "Whatever is faster. I have a meeting.",
+                        isEnglish: true,
+                        effect: { respect: -15, wallet: -20 },
+                        next: "destination_near"
                     }
                 ]
             },
             destination_near: {
-                speaker: "Driver",
-                text: "Destination banthu saar.",
+                get speaker() { return state.activeDriver; },
+                text: "Destination banthu saar. Illi nillisti-ni.",
                 choices: [
                     {
-                        text: "Illi nillisi, dhanyavada.",
+                        text: "⟨Dhanyavāda⟩ anna. Illi ⟨nillisi⟩.",
                         effect: { respect: 15 },
                         next: "level_complete"
                     },
                     {
-                        text: "Stop here, thanks.",
-                        effect: { respect: 0 },
+                        text: "⟨Svalpa munde nillisi⟩.",
+                        effect: { respect: 5 },
                         next: "level_complete"
                     },
                     {
-                        text: "Hoguthira?",
-                        effect: { respect: -5 },
-                        next: "destination_near"
+                        text: "Super anna, ⟨ārāmāgi iri⟩.",
+                        effect: { respect: 20 },
+                        next: "level_complete"
                     },
                     {
-                        text: "Swalpa adjust maadi.",
-                        effect: { respect: -5 },
+                        text: "Stop here. Keep the change.",
+                        isEnglish: true,
+                        effect: { wallet: -10, respect: -5 },
                         next: "level_complete"
                     }
                 ]
@@ -231,84 +202,62 @@ const levels = {
         }
     },
     3: {
-        title: "The Household Hero",
-        scenario: "You are coordinating with your domestic help at the door.",
-        background: "assets/hero.png",
+        title: "The Surge (Stormy Weather)",
+        scenario: "A sudden Bangalore downpour starts. The driver pulls over.",
+        background: "assets/level_3_rain.png",
         dialogue: {
             engagement: {
-                speaker: "Domestic Help",
-                text: "Saar, kasa elli haakbeku?",
+                get speaker() { return state.activeDriver; },
+                text: "Saar, thumba ⟨male⟩ barthide. Nilli-stini, illandre 200 kodi.",
                 choices: [
                     {
-                        text: "Horagade haaki.",
-                        effect: { respect: 10 },
-                        next: "cleaning_task"
+                        text: "Anna, thumba heavy ⟨male⟩ ide. 50 extra kodthini, ⟨banni⟩.",
+                        effect: { respect: 20 },
+                        next: "rain_negotiation"
                     },
                     {
-                        text: "Put it outside.",
-                        effect: { respect: 0 },
-                        next: "cleaning_task"
+                        text: "Why double? ⟨Meter hāki⟩ anna!",
+                        isEnglish: true,
+                        effect: { respect: -10, patience: -30 },
+                        next: "rain_negotiation"
                     },
                     {
-                        text: "Nela oresu.",
-                        effect: { respect: -5 },
-                        next: "cleaning_task"
+                        text: "Anna, ⟨svalpa adjust māḍi⟩. Patient naanu.",
+                        effect: { respect: 15 },
+                        next: "rain_negotiation"
                     },
                     {
-                        text: "Bagilu tegey.",
-                        effect: { respect: -5 },
-                        next: "cleaning_task"
+                        text: "⟨Devaru nimage oḷḷēdu māḍthāre⟩, banni.",
+                        effect: { respect: 30 },
+                        next: "rain_negotiation"
                     }
                 ]
             },
-            cleaning_task: {
-                speaker: "Domestic Help",
-                text: "Floor clean maadi aaythu. Next yenu?",
+            rain_negotiation: {
+                get speaker() { return state.activeDriver; },
+                get text() {
+                    if (state.respect > 40) return "Sari saar, ⟨banni hogōṇa⟩.";
+                    return "Bēda saar, thumba risk ide. Double kodi.";
+                },
                 choices: [
                     {
-                        text: "Paathre tolee.",
-                        effect: { respect: 10 },
-                        next: "payment"
-                    },
-                    {
-                        text: "Wash the dishes.",
-                        effect: { respect: 0 },
-                        next: "payment"
-                    },
-                    {
-                        text: "Batte ogey.",
-                        effect: { respect: 5 },
-                        next: "payment"
-                    },
-                    {
-                        text: "Kudlu chikkadagi maadi.",
-                        effect: { respect: -15 },
-                        next: "payment"
-                    }
-                ]
-            },
-            payment: {
-                speaker: "Domestic Help",
-                text: "Saar, duddu kodi.",
-                choices: [
-                    {
-                        text: "Eshtu aaguthe?",
-                        effect: { respect: 10 },
+                        text: "Sari anna, tumba kelsa ideya? ⟨Oota āytha⟩?",
+                        effect: { respect: 30, patience: 20 },
                         next: "level_complete"
                     },
                     {
-                        text: "How much?",
-                        effect: { respect: 0 },
+                        text: "Illi ⟨nillisi⟩, bere auto nodthini.",
+                        effect: { end: 'reset' }
+                    },
+                    {
+                        text: "⟨Dhanyavāda⟩ anna, help madidri.",
+                        effect: { respect: 15 },
                         next: "level_complete"
                     },
                     {
-                        text: "Change illa.",
-                        effect: { respect: -5 },
-                        next: "level_complete"
-                    },
-                    {
-                        text: "Sari bidi.",
-                        effect: { respect: -5 },
+                        text: "Fine, take the 200 rupees. Just drive.",
+                        isEnglish: true,
+                        effect: { wallet: -100, respect: -20 },
                         next: "level_complete"
                     }
                 ]
@@ -316,84 +265,284 @@ const levels = {
         }
     },
     4: {
-        title: "The Macha Promotion",
-        scenario: "You meet a colleague or driver you know well. Time for some brotherhood.",
-        background: "assets/hero.png",
+        title: "The Bottleneck (Traffic)",
+        scenario: "You are stuck in Silboard traffic. The driver is getting restless.",
+        background: "assets/level_4_traffic.png",
         dialogue: {
             engagement: {
-                speaker: "Macha",
-                text: "Yen guru, yen samachar?",
+                get speaker() { return state.activeDriver; },
+                text: "Yen guru, thumba traffic ide. Mathe?",
                 choices: [
                     {
-                        text: "Oota aytha maga?",
-                        effect: { respect: 20 },
-                        next: "the_vibe"
+                        text: "Sakkath traffic guru. ⟨Svalpa adjust māḍi⟩.",
+                        effect: { respect: 20, patience: 10 },
+                        next: "level_complete"
                     },
                     {
-                        text: "What's up bro?",
-                        effect: { respect: 5 },
-                        next: "the_vibe"
+                        text: "Indu thumba ⟨traffic⟩ ideya?",
+                        effect: { respect: 10 },
+                        next: "level_complete"
                     },
                     {
-                        text: "Swalpa busy iddini.",
-                        effect: { respect: -5 },
-                        next: "the_vibe"
-                    },
-                    {
-                        text: "Yenu beda.",
-                        effect: { respect: -10 },
-                        next: "the_vibe"
-                    }
-                ]
-            },
-            the_vibe: {
-                speaker: "Macha",
-                text: "Sakkath aagide guru!",
-                choices: [
-                    {
-                        text: "Bombaat!",
-                        effect: { respect: 15 },
-                        next: "farewell"
-                    },
-                    {
-                        text: "Great!",
-                        effect: { respect: 5 },
-                        next: "farewell"
-                    },
-                    {
-                        text: "Dabba service.",
-                        effect: { respect: -20 },
-                        next: "farewell"
-                    },
-                    {
-                        text: "Kirik maadi.",
-                        effect: { respect: -15 },
-                        next: "farewell"
-                    }
-                ]
-            },
-            farewell: {
-                speaker: "Macha",
-                text: "Sari, naale sigona.",
-                choices: [
-                    {
-                        text: "Hogi bartini!",
+                        text: "⟨Oota āytha⟩? Traffic problem common.",
                         effect: { respect: 15 },
                         next: "level_complete"
                     },
                     {
-                        text: "Bye bye.",
-                        effect: { respect: 0 },
+                        text: "Can we go faster? I'm missing my shift.",
+                        isEnglish: true,
+                        effect: { respect: -20, patience: -25 },
+                        next: "level_complete"
+                    }
+                ]
+            }
+        }
+    },
+    5: {
+        title: "The Detour (Blocked)",
+        scenario: "A 'No Entry' sign forces a long detour. Use your verbs.",
+        background: "assets/level_5_detour.png",
+        dialogue: {
+            engagement: {
+                get speaker() { return state.activeDriver; },
+                text: "Saar, illi daari illa. 'No Entry'. U-turn thonbond ⟨banni⟩.",
+                choices: [
+                    {
+                        text: "Sari anna, ⟨hōgi⟩.",
+                        effect: { respect: 15 },
                         next: "level_complete"
                     },
                     {
-                        text: "Nanu hogthini.",
-                        effect: { respect: -5 },
+                        text: "Alli ⟨nillisi⟩, nanu hog-theeni.",
+                        effect: { respect: 5, patience: -10 },
                         next: "level_complete"
                     },
                     {
-                        text: "Off-aago!",
-                        effect: { respect: -30 },
+                        text: "⟨Munde hōgi⟩, bere daari ide.",
+                        effect: { respect: 10 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "This is too long! Just find a way through.",
+                        isEnglish: true,
+                        effect: { respect: -15, patience: -20 },
+                        next: "level_complete"
+                    }
+                ]
+            }
+        }
+    },
+    6: {
+        title: "The Change (Payment)",
+        scenario: "You reached the destination. Time to pay up.",
+        background: "assets/level_6_payment.png",
+        dialogue: {
+            engagement: {
+                get speaker() { return state.activeDriver; },
+                text: "Banthu saar. 150 aaguthe.",
+                choices: [
+                    {
+                        text: "Sari anna, hattu rupayi extra kodi, change ⟨bēḍa⟩.",
+                        effect: { wallet: -160, respect: 25 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "Change illa saar, PhonePe ⟨māḍōṇa⟩?",
+                        effect: { wallet: -150, respect: 10 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "⟨Dhanyavāda⟩ anna. Change thagoli.",
+                        effect: { respect: 15 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "I only have a 500 note. Do you have change?",
+                        isEnglish: true,
+                        effect: { respect: -10, patience: -20 },
+                        next: "level_complete"
+                    }
+                ]
+            }
+        }
+    },
+    7: {
+        title: "The Electronic City Flyover Limbo",
+        scenario: "Stranded on the high-speed flyover. The engine has failed. Shankar Anna looks worried.",
+        background: "assets/level_7_flyover.png",
+        dialogue: {
+            engagement: {
+                get speaker() { return "Shankar Anna"; },
+                text: "... (Silence as the engine dies) ...",
+                choices: [
+                    {
+                        text: "Excuse me? Why did we stop? I'm late!",
+                        isEnglish: true,
+                        effect: { respect: -20, patience: -15 },
+                        next: "refund_negotiation"
+                    },
+                    {
+                        text: "Anna, ⟨yēnāythu⟩? Engine problem-aa?",
+                        effect: { respect: 15, patience: 10 },
+                        next: "refund_negotiation"
+                    },
+                    {
+                        text: "Auto stop aythu? ⟨Help bēkā⟩?",
+                        effect: { respect: 5, patience: 5 },
+                        next: "refund_negotiation"
+                    },
+                    {
+                        text: "Ayyo! Shankar Nag avru ididre sari madthidru!",
+                        effect: { respect: 30, patience: 20 },
+                        next: "refund_negotiation"
+                    }
+                ]
+            },
+            refund_negotiation: {
+                get speaker() { return "Shankar Anna"; },
+                text: "Engine dead saar. Full fare kodi mathu service charge beku.",
+                choices: [
+                    {
+                        text: "I’m not paying! You didn't drop me.",
+                        isEnglish: true,
+                        effect: { respect: -25, patience: -30, barrier: true },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "Anna, ⟨svalpa nyāya māthāḍi⟩. Half fare thagoli.",
+                        effect: { respect: 20, wallet: -75 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "Full fare ⟨bēḍa⟩. Discount kodi please.",
+                        effect: { respect: 5, wallet: -100 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "Anna, ⟨svalpa adjust māḍi⟩. Student naanu.",
+                        effect: { respect: 15, wallet: -80 },
+                        next: "level_complete"
+                    }
+                ]
+            }
+        }
+    },
+    8: {
+        title: "The Terminal (Majestic Chaos)",
+        scenario: "Majestic Bus Stand at 6:30 PM. Rain is starting. You need to go to Sarjapur.",
+        background: "assets/level_8_majestic.png",
+        dialogue: {
+            engagement: {
+                get speaker() { return "Manju"; },
+                text: "(Leaning against the auto, ignoring everyone)",
+                choices: [
+                    {
+                        text: "Are you free? Sarjapur ⟨banni⟩. Meter haaki.",
+                        isEnglish: true,
+                        effect: { respect: -20, patience: -15 },
+                        next: "surcharge_negotiation"
+                    },
+                    {
+                        text: "⟨Namaskāra⟩ Anna, Sarjapur bartira? Urgent ide.",
+                        effect: { respect: 20, patience: 15 },
+                        next: "surcharge_negotiation"
+                    },
+                    {
+                        text: "Sarjapur-aa? ⟨Meter hāki⟩ madi banni.",
+                        effect: { respect: 5, patience: 5 },
+                        next: "surcharge_negotiation"
+                    },
+                    {
+                        text: "Sarjapur? One-and-half... bartira?",
+                        effect: { respect: 25, patience: 20, wallet: -50 },
+                        next: "surcharge_negotiation"
+                    }
+                ]
+            },
+            surcharge_negotiation: {
+                get speaker() { return "Manju"; },
+                text: "200 kodi flat. Empty return ide, traffic ide.",
+                choices: [
+                    {
+                        text: "Ridiculous! I'll check Uber.",
+                        isEnglish: true,
+                        effect: { respect: -20, patience: -30, barrier: true },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "Anna, nanu student. One-forty-ge ⟨adjust māḍi⟩.",
+                        effect: { respect: 25, wallet: -140 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "One-fifty koddthini. ⟨Banni hogōṇa⟩.",
+                        effect: { respect: 10, wallet: -150 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "Anna, extra 30 koddthini. ⟨Hogōṇa⟩.",
+                        effect: { respect: 20, wallet: -180 },
+                        next: "level_complete"
+                    }
+                ]
+            }
+        }
+    },
+    9: {
+        title: "The High-Stakes Monsoon",
+        scenario: "Midnight. Indira Nagar. Heavy rain. You need Aster CMI Hospital immediately.",
+        background: "assets/level_9_emergency.png",
+        dialogue: {
+            engagement: {
+                get speaker() { return "Gowda"; },
+                text: "Thumbā ⟨male⟩ barthide. Manege hogabeku.",
+                choices: [
+                    {
+                        text: "Please stop! Emergency! I'll pay double!",
+                        isEnglish: true,
+                        effect: { respect: -15, wallet: -300 },
+                        next: "humanity_check"
+                    },
+                    {
+                        text: "Anna, dayavittu ⟨nillisi⟩. Hospital-ge ⟨hogabēku⟩.",
+                        effect: { respect: 30, patience: 20 },
+                        next: "humanity_check"
+                    },
+                    {
+                        text: "Emergency hospital. ⟨Bēga hogōṇa⟩ please.",
+                        effect: { respect: 10, patience: 5 },
+                        next: "humanity_check"
+                    },
+                    {
+                        text: "Anna, ⟨svalpa adjust māḍi⟩. Devaru nimage olledu madthare.",
+                        effect: { respect: 40, patience: 30 },
+                        next: "humanity_check"
+                    }
+                ]
+            },
+            humanity_check: {
+                get speaker() { return "Gowda"; },
+                text: "(Arrival at Hospital) Meter says 120. ⟨Banni⟩ saar.",
+                choices: [
+                    {
+                        text: "Here is 240 as promised. ⟨Dhanyavāda⟩.",
+                        isEnglish: true,
+                        effect: { respect: -10, wallet: -240 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "Anna, neevu devru thara bandri. 300 thagoli.",
+                        effect: { respect: 60, wallet: -300 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "Thanks Anna. ⟨Ārāmāgi iri⟩.",
+                        effect: { respect: 15, wallet: -120 },
+                        next: "level_complete"
+                    },
+                    {
+                        text: "Anna, Shankar Nag thara help madidri. ⟨Dhanyavāda⟩.",
+                        effect: { respect: 50, wallet: -120 },
                         next: "level_complete"
                     }
                 ]
@@ -481,23 +630,77 @@ function showDialogue(stepKey) {
 
     const step = levels[state.level].dialogue[stepKey];
     speakerName.innerText = step.speaker;
-    dialogueText.innerText = step.text;
+
+    // Phonetic Parsing: Transform ⟨text⟩ into interactive spans
+    dialogueText.innerHTML = parsePhonetics(step.text);
+
     choicesContainer.innerHTML = '';
+
+    // Play audio if available (simulated for now, hooks into audio.js style)
+    if (step.audio) {
+        playGameAudio(step.audio);
+    }
 
     step.choices.forEach(choice => {
         const btn = document.createElement('button');
         btn.className = 'choice-btn';
-        btn.innerText = choice.text;
+        btn.innerHTML = parsePhonetics(choice.text);
         btn.onclick = () => handleChoice(choice);
         choicesContainer.appendChild(btn);
     });
 }
 
+function parsePhonetics(text) {
+    return text.replace(/⟨([^⟩]+)⟩/g, (match, p1) => {
+        const safe = p1.replace(/[^a-zA-Z0-9_\-]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
+        return `<span class="audio-phonetic-link" onclick="playGameAudio('${safe}')"><span class="audio-icon">🔊</span>⟨${p1}⟩</span>`;
+    });
+}
+
+const gameAudio = new Audio();
+function playGameAudio(filename) {
+    // Sync with audio.js voice directory
+    const voiceDir = localStorage.getItem('swalpa_voice_dir') || 'audio_native_v4_male';
+    gameAudio.src = `../../assets/${voiceDir}/${filename}.mp3`;
+    gameAudio.play().catch(e => console.log("Audio play failed or missing:", filename));
+}
+
 function handleChoice(choice) {
     saveHistory(state.currentStep);
+
+    // Handle Driver Selection
+    if (choice.driver) {
+        state.activeDriver = choice.driver;
+    }
+
     if (choice.effect) {
-        if (choice.effect.respect) state.respect = Math.min(100, Math.max(0, state.respect + choice.effect.respect));
-        if (choice.effect.patience) state.patience = Math.min(100, Math.max(0, state.patience + choice.effect.patience));
+        const driverMod = state.activeDriver ? drivers[state.activeDriver].modifiers : { respect: 1, patience: 1 };
+        const rand = 0.8 + (Math.random() * 0.4);
+
+        // Language Barrier Mechanic: English penalty
+        let patiencePenalty = 1;
+        if (choice.isEnglish && state.respect < 40) {
+            patiencePenalty = 3; // 3x Patience decay
+            console.log("Language Barrier Active: Patience decay intensified.");
+        }
+
+        if (choice.effect.respect) {
+            state.respect = Math.min(100, Math.max(0, state.respect + (choice.effect.respect * driverMod.respect * rand)));
+        }
+        if (choice.effect.patience) {
+            state.patience = Math.min(100, Math.max(0, state.patience + (choice.effect.patience * driverMod.patience * rand * patiencePenalty)));
+        }
+        if (choice.effect.wallet) {
+            state.wallet += choice.effect.wallet;
+        }
+
+        // Adjust Maadi Reset
+        if (choice.text.includes("adjust maadi") && state.respect < 15) {
+            state.respect = 25;
+            state.patience = 50;
+            console.log("Adjust Maadi: NPC hostility reset.");
+        }
+
         if (choice.effect.end === 'reset') {
             location.reload();
             return;
@@ -505,10 +708,36 @@ function handleChoice(choice) {
     }
 
     updateUI();
+
+    // Check for Barrier Response trigger
+    if (choice.effect && choice.effect.barrier) {
+        showBarrierResponse(choice);
+        return;
+    }
+
     if (choice.next) {
         state.currentStep = choice.next;
         showDialogue(choice.next);
     }
+}
+
+function showBarrierResponse(choice) {
+    const dialogueText = document.getElementById('dialogue-text');
+    const choicesContainer = document.getElementById('choices-container');
+
+    dialogueText.innerText = "Kannada mathadi! English gothilla!";
+    choicesContainer.innerHTML = '';
+
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'choice-btn';
+    resetBtn.innerText = "Swalpa adjust maadi (Reset Negotiation)";
+    resetBtn.onclick = () => {
+        state.respect = 25;
+        state.patience += 10;
+        updateUI();
+        showDialogue(state.currentStep);
+    };
+    choicesContainer.appendChild(resetBtn);
 }
 
 function renderLevelFailed() {
@@ -555,24 +784,81 @@ function renderLevelComplete() {
     const dialogueBox = document.getElementById('dialogue-box');
     dialogueBox.classList.add('hidden');
 
+    const score = Math.floor((state.level * 100) + state.respect + (state.wallet / 10));
+    const rank = getRankSlang(score);
     const isLastLevel = state.level === Object.keys(levels).length;
 
     scene.innerHTML = `
-        <div class="scene-intro">
-            <h1>Level ${state.level} Complete!</h1>
-            <p class="scenario-text">Congratulations! You successfully cleared the scenario.</p>
-            <p class="stat-summary">Final Respect: ${state.respect} (${document.getElementById('respect-rank').innerText})</p>
-            ${isLastLevel ?
-            `<p class='scenario-text'>You are a true Macha! Bengaluru welcomes you.</p><button onclick="location.reload()" class="primary-btn">Play Again</button>` :
-            `<button id="next-level-btn" class="primary-btn">Next Level</button>`}
+        <div class="scene-intro animate-fade-in">
+            <h1 class="premium-text">Level ${state.level} Survived!</h1>
+            <div class="score-card">
+                <span class="label">BANGALORE RANK</span>
+                <h2 class="rank-slang">${rank.title}</h2>
+                <p class="rank-desc">${rank.desc}</p>
+                <div class="score-grid">
+                    <div class="score-item">
+                        <span class="label">RESPECT</span>
+                        <span class="value">${Math.floor(state.respect)}</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="label">WALLET</span>
+                        <span class="value">₹${state.wallet}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-actions">
+                ${isLastLevel ?
+            `<h2 class="premium-text">Vishwa-Guru Status!</h2><p class='scenario-text'>You have mastered the Auto-Rickshaw Protocol.</p>` :
+            `<button id="next-level-btn" class="primary-btn">Hogona! (Next Level)</button>`
+        }
+                <button class="control-btn whatsapp-btn" style="margin-top: 15px; width: 100%; padding: 12px;" id="whatsapp-share-btn">📲 Share on WhatsApp</button>
+                <div style="display: flex; gap: 8px; margin-top: 10px;">
+                    <button class="control-btn" style="flex: 1; padding: 12px;" id="share-btn">📋 Copy Result</button>
+                    <button class="control-btn" style="flex: 1; padding: 12px;" id="twitter-btn">🐦 Twitter</button>
+                </div>
+                <button class="control-btn secondary" style="margin-top: 10px; width: 100%; padding: 12px;" onclick="location.reload()">Restart</button>
+            </div>
         </div>
     `;
+
+    document.getElementById('whatsapp-share-btn').onclick = () => shareResult('whatsapp', rank.title, state.level);
+    document.getElementById('share-btn').onclick = () => shareResult('clipboard', rank.title, state.level);
+    document.getElementById('twitter-btn').onclick = () => shareResult('twitter', rank.title, state.level);
 
     if (!isLastLevel) {
         document.getElementById('next-level-btn').onclick = startNextLevel;
     }
 
     scene.classList.remove('hidden');
+}
+
+function getRankSlang(score) {
+    if (score < 400) return { title: "Outer Ring Roadie", desc: "You survived, but the drivers think you're a clueless 'it-park' bot. Speak more Kannada!" };
+    if (score < 700) return { title: "Sakkath Student", desc: "Solid effort! You're navigating the gullies with emerging confidence." };
+    if (score < 1000) return { title: "A True Macha", desc: "Boss! Your 'Adjust Maadi' game is strong. Drivers respect the swagger." };
+    return { title: "Legendary Vishwa-Guru", desc: "Namma Ooru Legend! You speak more Kannada than the local traffic police." };
+}
+
+function shareResult(platform, rank, level) {
+    const text = `🚕 I just survived ${level} levels of Bangalore Traffic in the Meter-Haaki game! \n\nMy Rank: ${rank}\n\nCan you handle the streets? Try it on SWALPA.org! #SWALPA #BangaloreKannada #MeterHaaki`;
+    const url = "https://swalpa.org/games/meter-haaki/";
+    const fullMessage = `${text} \n\n${url}`;
+
+    if (platform === 'whatsapp') {
+        const waUrl = `https://wa.me/?text=${encodeURIComponent(fullMessage)}`;
+        window.open(waUrl, '_blank');
+    } else if (platform === 'twitter') {
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fullMessage)}`;
+        window.open(twitterUrl, '_blank');
+    } else if (platform === 'clipboard') {
+        const shareBtn = document.getElementById('share-btn');
+        navigator.clipboard.writeText(fullMessage).then(() => {
+            const originalText = shareBtn.innerText;
+            shareBtn.innerText = "✅ Copied!";
+            setTimeout(() => shareBtn.innerText = originalText, 2000);
+        });
+    }
 }
 
 document.getElementById('start-btn').onclick = () => {

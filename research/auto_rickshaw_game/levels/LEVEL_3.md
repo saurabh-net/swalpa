@@ -1,26 +1,27 @@
 # Level 3: The Surge (Stormy Weather)
 
-**Scenario**: A sudden Bangalore downpour starts. Traffic is at a standstill. The driver wants double the fare to continue.
+**Scenario**: A sudden Bangalore downpour starts. The sky is dark, and the roads are flooded. The driver pulls over.
 
-## 🎴 Key Learning
-*   Adjectives (Module 07)
-*   Numbers (Module 05)
-*   Negotiation (Module 04)
+## 🌍 Environment Modifier
+*   **Active**: `Weather: Rain`
+*   **Effect**: Driver `Patience` drops by 5 every turn. `Price` expectations are 1.5x.
 
-## 💬 Dialogue Tree
+## 💬 Dialogue Tree: The Standstill
 
 ### Turn 1: The Rain Demand
-*   **Driver**: *"Saar, thumba male barthide. Double kodi, illandre nillisthini."* (Sir, heavy rain is coming. Give double, or I will stop)
-*   **Player Choice A**: *"Bēda anna, thumba jaasthi ide. Swalpa adjust maadi."* (No brother, that's too much. Please adjust a bit)
-    *   `Effect`: { Respect: +10, Price: Meter + 50 }
-*   **Player Choice B**: *"Why double? I already agreed meter!"*
-    *   `Effect`: { Patience: -30, Respect: -10 }
+*   **Driver**: *"Saar, thumba male barthide. Nilli-stini, illandre 200 kodi."* (Module 07/10)
+*   **Player Choice A (Sympathetic)**: *"Anna, thumba heavy male ide, gothu. Swalpa adjust maadi, 50 extra kodthini."* (Module 02/08/10)
+    *   `Effect (Anna)`: { Respect: +20, Success: Agree } -> *"Sari saar, banni."*
+    *   `Effect (Guru)`: { Respect: +10, Price: Meter+70 } -> *"Sari, adre bega nillisi."*
+*   **Player Choice B (Aggressive)**: *"Why double? Meter haaki anna!"* (Module 09)
+    *   `Effect (Macha)`: { Patience: -40, Respect: -10 } -> *"Hogi saar, bere auto nodi."*
 
-### Turn 2: The Softener
-*   **Player Choice A**: *"Metro terminal varge banni, innu hattu rupayi extra kodthini."* (Come till the Metro terminal, I'll give 10 rupees extra)
-    *   `Effect`: { Respect: +20, Success: True }
-*   **Player Choice B**: *"Illi nillisi, bere auto nodthini."* (Stop here, I'll see another auto)
-    *   `Effect`: { GameEnd: Failure }
+### Turn 2: The Softener (The Cultural "Oota")
+*   **Condition**: If Respect < 30.
+*   **Player Choice A**: *"Sari anna, tumba kelsa ideya? Oota aytha?"* (Module 03/10)
+    *   `Effect (Anna)`: { Respect: +30, Patience: +20 } -> *"Aythu saar, banni hogona."*
+*   **Player Choice B (Firm but fair)**: *"Illi nilli-sidre kelsa aagalla. Nera hogi, extra kodthini."* (Module 09)
+    *   `Effect`: { Respect: +10, Progress: +50% }
 
 ## 🎯 Victory Condition
-Arrive at the destination without paying more than 1.5x the meter or the driver abandoning you in the rain.
+Arrive at the destination without paying more than 1.5x the meter or being abandoned in the rain.
