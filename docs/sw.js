@@ -8,6 +8,7 @@ const ASSETS_TO_CACHE = [
     '/assets/img/hero.png',
     '/assets/js/scores.js',
     '/assets/js/progress.js',
+    '/assets/js/header.js',
     // Suffix Station
     '/games/play_suffix_station/',
     '/games/play_suffix_station/css/style.css',
