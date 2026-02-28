@@ -58,7 +58,7 @@ Finite verbs in Kannada must precisely mirror the subject.
 | **Kodi** | Give | Respectful imperative for requesting items |
 
 <div class="swalpa-share-widget">
-    <button class="swalpa-share-button" onclick="window.triggerShare('Gottilla! (I don\'t know!). Navigating Kannada verbs with SWALPA: https://swalpa.org/06_verbs_and_grammar')">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Gottilla! (I don\'t know!). Navigating Kannada verbs with SWALPA: https://swalpa.org/05_verbs_and_grammar')">
         <span class="share-icon">📤</span> Share
     </button>
 </div>

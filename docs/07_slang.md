@@ -41,7 +41,7 @@ Kanglish effortlessly integrates English nouns and verbs into Kannada. This is m
 | **Off-aago** ⟨off-AAH-goh⟩ | Get lost / Shut up | A rude dismissal. *"Summane ⟨SOOM-muh-ney⟩ off aago."* (Just quiet down/get lost). |
 
 <div class="swalpa-share-widget">
-    <button class="swalpa-share-button" onclick="window.triggerShare('Sakkath! (Awesome!). Mastering Bangalore slang with SWALPA: https://swalpa.org/08_slang')">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Sakkath! (Awesome!). Mastering Bangalore slang with SWALPA: https://swalpa.org/07_slang')">
         <span class="share-icon">📤</span> Share
     </button>
 </div>

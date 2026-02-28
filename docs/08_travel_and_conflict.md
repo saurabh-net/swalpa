@@ -84,7 +84,7 @@ If you need to quickly communicate distress to an auto driver, pharmacist, or by
 | **Estu aaguthe?** ⟨ESH-too AAH-goo-they⟩ | How much will it be?| Asking for an estimate before work begins. |
 
 <div class="swalpa-share-widget">
-    <button class="swalpa-share-button" onclick="window.triggerShare('Meter haaki! (Put the meter!). Surviving auto rides in Bengaluru with SWALPA: https://swalpa.org/09_travel_and_conflict')">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Meter haaki! (Put the meter!). Surviving auto rides in Bengaluru with SWALPA: https://swalpa.org/08_travel_and_conflict')">
         <span class="share-icon">📤</span> Share
     </button>
 </div>

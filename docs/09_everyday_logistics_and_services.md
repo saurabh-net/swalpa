@@ -64,7 +64,7 @@ Navigating a massive tech park involves short, functional interactions with secu
 | **Do you have time? (Are you free?)** | **Time ideya?** ⟨time ee-DAY-yah⟩ | A polite way to interrupt a colleague or ask a shuttle driver if they are ready to depart. |
 
 <div class="swalpa-share-widget">
-    <button class="swalpa-share-button" onclick="window.triggerShare('Owner bandiddaara? (Did the owner come?). Sorting out household phrases with SWALPA: https://swalpa.org/10_everyday_logistics_and_services')">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Owner bandiddaara? (Did the owner come?). Sorting out household phrases with SWALPA: https://swalpa.org/09_everyday_logistics_and_services')">
         <span class="share-icon">📤</span> Share
     </button>
 </div>

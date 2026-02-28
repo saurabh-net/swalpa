@@ -46,7 +46,7 @@ The five primary tastes. These are simple adjectives that can be used directly w
 *Note: Complex internal states and physical ailments (like hunger, pain, anger) are typically expressed using the "Experiencer Dative Paradigm" (e.g., 'Nanage ⟨nuh-nuh-GEY⟩ novu ⟨NOH-voo⟩ ide' - To me, there is pain).*
 
 <div class="swalpa-share-widget">
-    <button class="swalpa-share-button" onclick="window.triggerShare('Sakkat aagide! (It\\'s awesome!) Describing Bangalore on SWALPA: https://swalpa.org/07_adjectives')">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Sakkat aagide! (It\\'s awesome!) Describing Bangalore on SWALPA: https://swalpa.org/06_adjectives')">
         <span class="share-icon">📤</span> Share
     </button>
 </div>
