@@ -41,6 +41,7 @@ theme:
 plugins:
   - search:
       lang: en
+  - meta
 #  - sitemap:
 #      pretty_print: true
 
