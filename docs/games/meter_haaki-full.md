@@ -38,7 +38,7 @@ image: assets/img/social/og_meter_haaki.jpg
 </style>
 
 <div class="game-frame-container">
-    <iframe src="../play_meter_haaki/index.html" id="game-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
+    <iframe src="../play_meter_haaki/" id="game-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
 </div>
 
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; gap: 10px;">
