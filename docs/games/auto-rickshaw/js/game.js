@@ -1,4 +1,5 @@
 import { DRIVERS, LEVELS, RANKS } from './data.js';
+import { saveHighScore } from '../../assets/js/scores.js';
 
 const state = {
     respect: 25,
@@ -419,6 +420,8 @@ function renderLevelComplete() {
             </div>
         </div>
     `;
+
+    saveHighScore('meter-haaki', { level: state.level, respect: state.respect });
 
     document.getElementById('restart-game-btn').onclick = () => {
         localStorage.removeItem('meter_haaki_state');

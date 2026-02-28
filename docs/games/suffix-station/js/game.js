@@ -1,4 +1,5 @@
 import { getShuffledQuestions, shuffleArray } from './questions.js';
+import { saveHighScore } from '../../assets/js/scores.js';
 
 // ═══════════════════════════════════════════════
 // STATE
@@ -143,6 +144,9 @@ function endGame() {
     const rank = getRank(state.score, accuracy);
     els.rankTitle.textContent = rank.title;
     els.rankDesc.textContent = rank.desc;
+
+    // Save leaderboard
+    saveHighScore('suffix-station', state.score);
 }
 
 function getRank(score, accuracy) {

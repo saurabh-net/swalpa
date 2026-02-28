@@ -1,4 +1,5 @@
 import { NPCS, LEVELS, RANKS } from './data.js';
+import { saveHighScore } from '../../assets/js/scores.js';
 
 const state = {
     respect: 25,
@@ -367,6 +368,8 @@ function renderLevelComplete() {
             </div>
         </div>
     `;
+
+    saveHighScore('adjust-maadi', { level: state.level, respect: state.respect });
 
     document.getElementById('restart-game-btn').onclick = () => {
         localStorage.removeItem('adjust_maadi_state');
