@@ -1,5 +1,5 @@
 import { DRIVERS, LEVELS, RANKS } from './data.js';
-import { saveHighScore } from '../../assets/js/scores.js';
+import { saveHighScore } from '../../../assets/js/scores.js';
 
 const state = {
     respect: 25,

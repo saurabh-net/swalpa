@@ -1,5 +1,5 @@
 import { getShuffledQuestions, shuffleArray } from './questions.js';
-import { saveHighScore } from '../../assets/js/scores.js';
+import { saveHighScore } from '../../../assets/js/scores.js';
 
 // ═══════════════════════════════════════════════
 // STATE
