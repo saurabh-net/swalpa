@@ -37,6 +37,16 @@ const BADGE_DEFINITIONS = {
         title: 'Proper Local',
         description: 'Achieve the maximum rank on SWALPA.',
         emoji: '👑'
+    },
+    'regular_giraki': {
+        title: 'Regular Giraki',
+        description: 'Hit a 2-day learning streak.',
+        emoji: '🔄'
+    },
+    'dedicated_shishya': {
+        title: 'Dedicated Shishya',
+        description: 'Achieve a 5-day blazing streak.',
+        emoji: '🔥'
     }
 };
 

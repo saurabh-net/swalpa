@@ -68,21 +68,25 @@ function initWotd() {
             // Broke the streak (or time traveled backwards in testing)
             streakCount = 1;
         }
-    }
+        localStorage.setItem('swalpa_last_visit', todayStr);
+        localStorage.setItem('swalpa_streak', streakCount.toString());
 
-    localStorage.setItem('swalpa_last_visit', todayStr);
-    localStorage.setItem('swalpa_streak', streakCount.toString());
+        // Evaluate Streak Badges
+        if (window.unlockBadge) {
+            if (streakCount >= 2) window.unlockBadge('regular_giraki');
+            if (streakCount >= 5) window.unlockBadge('dedicated_shishya');
+        }
 
-    // Select Word
-    const wordIndex = getDeterministicWordIndex(todayStr);
-    const phrase = WOTD_PHRASES[wordIndex];
+        // Select Word
+        const wordIndex = getDeterministicWordIndex(todayStr);
+        const phrase = WOTD_PHRASES[wordIndex];
 
-    // Render HTML
-    const isActiveStreak = streakCount > 1;
-    const streakIcon = isActiveStreak ? '🔥' : '⏳';
+        // Render HTML
+        const isActiveStreak = streakCount > 1;
+        const streakIcon = isActiveStreak ? '🔥' : '⏳';
 
-    // Add toast to show it's interactive
-    root.innerHTML = `
+        // Add toast to show it's interactive
+        root.innerHTML = `
         <div class="swalpa-wotd-container" onclick="playWotdAudio('${phrase.audio}')">
             <div class="swalpa-wotd-header">
                 <h3>Word of the Day</h3>
@@ -103,6 +107,6 @@ function initWotd() {
             </div>
         </div>
     `;
-}
+    }
 
-document.addEventListener('DOMContentLoaded', initWotd);
+    document.addEventListener('DOMContentLoaded', initWotd);
