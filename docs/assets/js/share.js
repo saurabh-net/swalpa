@@ -64,7 +64,7 @@ function showShareModal(text, url) {
                     <span style="font-size: 18px;">𝕏</span> Share on X
                 </button>
                 <button class="share-modal-btn" id="modal-share-copy" style="background: rgba(255,255,255,0.1); color: white;">
-                    <span style="font-size: 18px;">📋</span> Copy Link
+                    <span style="font-size: 18px;">📋</span> Copy message
                 </button>
             </div>
             <button id="modal-share-close" style="margin-top: 25px; background: none; border: none; color: rgba(255,255,255,0.5); text-decoration: underline; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 14px;">Cancel</button>
