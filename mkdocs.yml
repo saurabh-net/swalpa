@@ -82,7 +82,6 @@ nav:
       - 9. Renting & Repairs: 10_everyday_logistics_and_services.md
       - 10. Home & Groceries: 04_household_and_logistics.md
       - Summary Slides: 12_summary_slides.md
-  - Podcasts: 13_podcasts.md
   - Games:
       - Meter Haaki: games/meter_haaki.md
       - Suffix Station: games/suffix_station.md
@@ -90,3 +89,7 @@ nav:
   - Flashcards:
       - English to Kannada: 11_flashcards_en_kn.md
       - Kannada to English: 11_flashcards_kn_en.md
+  - Podcasts:
+      - Overview: podcasts/overview.md
+      - Essentials: podcasts/essentials.md
+      - Suffixes: podcasts/suffixes.md
