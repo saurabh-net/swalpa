@@ -82,3 +82,9 @@ If you need to quickly communicate distress to an auto driver, pharmacist, or by
 | **Fan thirug-thilla** ⟨fan thee-ROOG-TILL-lah⟩ | Fan not turning | Broken appliance. |
 | **Switch work aag-thilla** ⟨switch work AAH-guh-TILL-lah⟩ | Switch not working| Broken switch. |
 | **Estu aaguthe?** ⟨ESH-too AAH-goo-they⟩ | How much will it be?| Asking for an estimate before work begins. |
+
+<div class="swalpa-share-widget">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Meter haaki! (Put the meter!). Surviving auto rides in Bengaluru with SWALPA: https://swalpa.org/09_travel_and_conflict')">
+        <span class="share-icon">📤</span> Share
+    </button>
+</div>

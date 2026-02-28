@@ -86,9 +86,3 @@ The days of the week share identical Sanskrit roots with Hindi. Add "-vaara" ⟨
         <span class="share-icon">📤</span> Share
     </button>
 </div>
-
-<div class="swalpa-share-widget">
-    <button class="swalpa-share-button" onclick="window.triggerShare('Eshtu aaythu? (How much?) Mastering rickshaw negotiations with SWALPA. https://swalpa.org/05_time_and_numbers')">
-        <span class="share-icon">📤</span> Share
-    </button>
-</div>

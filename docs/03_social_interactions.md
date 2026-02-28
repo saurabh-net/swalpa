@@ -65,3 +65,9 @@ Instead, the culturally accurate and polite way to take leave is to say:
 
 *   **Literal Meaning:** "Having gone, I will come back."
 *   **Context / Usage:** Use this when leaving a friend's house, wrapping up a conversational exchange, or saying goodbye to colleagues. It signifies respect, optimism, and the implicit promise that the relationship or connection will continue.
+
+<div class="swalpa-share-widget">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Naanu hogi bartini (I will go and come). The polite way to say goodbye in Bangalore. Learn more on SWALPA: https://swalpa.org/03_social_interactions')">
+        <span class="share-icon">📤</span> Share
+    </button>
+</div>

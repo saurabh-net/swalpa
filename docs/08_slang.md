@@ -39,3 +39,9 @@ Kanglish effortlessly integrates English nouns and verbs into Kannada. This is m
 | **Gand-u** ⟨GUN-doo⟩ | Strong / Cool | Context matters. Can mean "Boss style" or "Macho" (not abusive in this specific context). |
 | **Full-tight** | Drunk | *"Avnu full tight agidane ⟨ah-gee-DAA-ney⟩."* (He is completely drunk). |
 | **Off-aago** ⟨off-AAH-goh⟩ | Get lost / Shut up | A rude dismissal. *"Summane ⟨SOOM-muh-ney⟩ off aago."* (Just quiet down/get lost). |
+
+<div class="swalpa-share-widget">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Sakkath! (Awesome!). Mastering Bangalore slang with SWALPA: https://swalpa.org/08_slang')">
+        <span class="share-icon">📤</span> Share
+    </button>
+</div>

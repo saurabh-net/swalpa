@@ -53,6 +53,15 @@ Finite verbs in Kannada must precisely mirror the subject.
 | **They came yesterday.** | Avru ⟨UV-roo⟩ ninne ⟨NIN-ney⟩ **bandru** ⟨BUN-droo⟩. | **Past (3rd Person Plural/Respect):** Root (Baru) past tense form. "They came." |
 | **I will do it tomorrow.** | Nale ⟨NAA-ley⟩ **maadthini** ⟨MAAD-tee-nee⟩. | **Future Intent:** Present tense conjugation often acts as near future. "I will do." |
 | **Look, then speak.** | **Nodi** ⟨NOH-dee⟩, aamele ⟨AAH-may-ley⟩ **heli** ⟨HAY-lee⟩. | **Sequential Commands:** Use the respectful imperative chained together. |
+| **Maadi** | Do | Respectful imperative, essential for 'Kanglish' |
+| **Banni** | Come | Respectful imperative for requesting presence |
+| **Kodi** | Give | Respectful imperative for requesting items |
+
+<div class="swalpa-share-widget">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Gottilla! (I don\'t know!). Navigating Kannada verbs with SWALPA: https://swalpa.org/06_verbs_and_grammar')">
+        <span class="share-icon">📤</span> Share
+    </button>
+</div>
 
 ## 5. Core Conjunctions (Sentence Linking)
 These words form the backbone of complex conversational Kannada.
