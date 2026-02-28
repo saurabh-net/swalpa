@@ -73,33 +73,6 @@ function showShareModal(text, url) {
         // Required CSS for the buttons
         const style = document.createElement('style');
         style.innerHTML = `
-            .share-preview-box {
-                background: rgba(0, 0, 0, 0.2);
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                border-radius: 12px;
-                padding: 15px;
-                margin-bottom: 20px;
-                font-size: 14px;
-                color: #CBD5E1;
-                font-style: italic;
-                text-align: left;
-                position: relative;
-            }
-            .share-preview-box::before {
-                content: '"';
-                position: absolute;
-                top: 5px;
-                left: 10px;
-                font-size: 40px;
-                color: rgba(255, 255, 255, 0.1);
-                font-family: serif;
-                line-height: 1;
-            }
-            .share-preview-content {
-                position: relative;
-                z-index: 1;
-                line-height: 1.5;
-            }
             .share-modal-btn {
                 padding: 14px;
                 border: none;
@@ -218,3 +191,28 @@ window.triggerProfileShare = function (rankStr, streak, badgesArr) {
 
     window.triggerShare(msg, "https://swalpa.org/profile");
 };
+
+// Auto-hydrate static share widgets on Lesson Pages with an inline preview box
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.swalpa-share-widget').forEach(widget => {
+        const btn = widget.querySelector('.swalpa-share-button');
+        if (btn && !widget.querySelector('.share-preview-box')) {
+            const onclickAttr = btn.getAttribute('onclick');
+            if (!onclickAttr) return;
+
+            // Extract string literal from triggerShare('...')
+            const match = onclickAttr.match(/window\.triggerShare\(['"]([^'"]+)['"]/);
+            if (match && match[1]) {
+                const rawText = match[1].replace(/\\'/g, "'").replace(/\\"/g, '"');
+                const safeText = rawText.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                const formattedText = safeText.replace(/(https?:\/\/[^\s]+)/g, '<span style="color:var(--md-primary-fg-color); text-decoration: underline; opacity:0.8">$1</span>');
+
+                const preview = document.createElement('div');
+                preview.className = 'share-preview-box';
+                preview.innerHTML = `<div class="share-preview-content">${formattedText.replace(/\\n/g, '<br>')}</div>`;
+
+                widget.insertBefore(preview, btn);
+            }
+        }
+    });
+});

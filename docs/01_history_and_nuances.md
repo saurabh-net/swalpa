@@ -128,6 +128,6 @@ This is the binary engine of survival.
 
 <div class="swalpa-share-widget">
     <button class="swalpa-share-button" onclick="window.triggerShare('Did you know Tamil \'P\' becomes Kannada \'H\'? (ex: Paal -> Haalu). Learn more Bangalore language tricks on SWALPA: https://swalpa.org/01_history_and_nuances')">
-        <span class="share-icon">📤</span> Share this Phrase
+        <span class="share-icon">📤</span> Share
     </button>
 </div>

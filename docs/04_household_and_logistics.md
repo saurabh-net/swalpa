@@ -70,7 +70,7 @@ Essential vocabulary for the local market or instructing a cook.
 
 <div class="swalpa-share-widget">
     <button class="swalpa-share-button" onclick="window.triggerShare('Neeru barthilla (Water is not coming). Essential logistical Kannada at SWALPA: https://swalpa.org/04_household_and_logistics')">
-        <span class="share-icon">📤</span> Share this Phrase
+        <span class="share-icon">📤</span> Share
     </button>
 </div>
 | **Nimbehannu** ⟨NIM-bey-hun-noo⟩ | Lemon |

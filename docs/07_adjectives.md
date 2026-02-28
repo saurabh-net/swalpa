@@ -47,6 +47,6 @@ The five primary tastes. These are simple adjectives that can be used directly w
 
 <div class="swalpa-share-widget">
     <button class="swalpa-share-button" onclick="window.triggerShare('Sakkat aagide! (It\\'s awesome!) Describing Bangalore on SWALPA: https://swalpa.org/07_adjectives')">
-        <span class="share-icon">📤</span> Share this Phrase
+        <span class="share-icon">📤</span> Share
     </button>
 </div>

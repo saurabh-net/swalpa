@@ -84,6 +84,6 @@ Be extremely careful with these phrases. They are blunt and direct.
 
 <div class="swalpa-share-widget">
     <button class="swalpa-share-button" onclick="window.triggerShare('Bēku (I want) and Bēda (I don\\'t want). The two most important survival words in Bangalore. Master them on SWALPA: https://swalpa.org/02_survival_and_emergencies')">
-        <span class="share-icon">📤</span> Share this Phrase
+        <span class="share-icon">📤</span> Share
     </button>
 </div>

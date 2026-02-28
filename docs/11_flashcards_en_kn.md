@@ -19,6 +19,11 @@ description: Interactive Kannada flashcards — practice translating English to 
 
 # Flashcards (English to Kannada)
 
+> [!TIP] 🧠 **Master Kannada Faster with Spaced Repetition**
+> We use [Orbit](https://withorbit.com/) to power these interactive flashcards. Orbit uses a **spaced repetition algorithm** that perfectly times when you see a card again to maximize your memory retention—helping you internalize these lessons permanently.
+> 
+> **Your progress is saved entirely on your device (in local storage).** You won't lose your progress if you refresh the page or come back tomorrow!
+
 <orbit-reviewarea>
 <orbit-prompt question="What is the Kannada first-person singular pronoun for &quot;I&quot; or &quot;Me&quot;?" answer="**Naanu.**&#10;&#10;*(Used primarily in the nominative case; acts as the anchor for self-identification.)*"></orbit-prompt>
 <orbit-prompt question="Which polite second-person pronoun is the default for addressing strangers and colleagues in Bengaluru?" answer="**Neevu.**&#10;&#10;*(The absolute default for strangers, vendors, and colleagues in Bengaluru.)*"></orbit-prompt>

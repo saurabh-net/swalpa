@@ -65,6 +65,6 @@ Navigating a massive tech park involves short, functional interactions with secu
 
 <div class="swalpa-share-widget">
     <button class="swalpa-share-button" onclick="window.triggerShare('Owner bandiddaara? (Did the owner come?). Sorting out household phrases with SWALPA: https://swalpa.org/10_everyday_logistics_and_services')">
-        <span class="share-icon">📤</span> Share this Phrase
+        <span class="share-icon">📤</span> Share
     </button>
 </div>
