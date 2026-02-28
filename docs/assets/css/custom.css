@@ -188,3 +188,84 @@ input:checked+.swalpa-slider:before {
     transform: translateX(14px);
     background-color: var(--md-default-bg-color);
 }
+
+/* --- Header Progress UI --- */
+.swalpa-header-progress {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.swalpa-header-progress:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.shp-emoji {
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+.shp-rank {
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFD700;
+    margin-right: 8px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.shp-bar-wrapper {
+    width: 40px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-right: 6px;
+    display: flex;
+}
+
+.shp-bar-fill {
+    height: 100%;
+    background: #FFD700;
+}
+
+.shp-percent {
+    font-size: 10px;
+    color: #fff;
+    opacity: 0.9;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+/* On mobile screens, move the rank bar entirely underneath the header */
+@media (max-width: 768px) {
+    .swalpa-header-progress {
+        position: absolute;
+        top: 2.4rem;
+        /* Mkdocs mobile header height is 2.4rem/48px */
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin-left: 0;
+        padding: 6px 16px;
+        border-radius: 0;
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        background: var(--md-default-bg-color);
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 90;
+    }
+
+    /* Ensure the main page content isn't covered by the new drop-down bar */
+    body[data-md-color-scheme] .md-main {
+        padding-top: 28px !important;
+    }
+}

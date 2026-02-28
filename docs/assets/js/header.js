@@ -13,20 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const rankName = rankParts.slice(1).join(' ');
 
             const progressUi = `
-                <div title="${progress.percentToNext}% to ${progress.nextRank ? progress.nextRank.title : 'Max Rank'}" 
-                     style="display: flex; align-items: center; margin-left: 12px; background: rgba(0,0,0,0.2); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: background 0.2s;" 
-                     onclick="window.location.href='/'"
-                     onmouseover="this.style.background='rgba(0,0,0,0.4)'"
-                     onmouseout="this.style.background='rgba(0,0,0,0.2)'">
-                     
-                    <span style="font-size: 14px; margin-right: 6px;">${emoji}</span>
-                    <span style="font-size: 13px; font-weight: 700; color: #FFD700; margin-right: 8px; white-space: nowrap; font-family: 'Outfit', sans-serif;">${rankName}</span>
+                <div class="swalpa-header-progress" title="${progress.percentToNext}% to ${progress.nextRank ? progress.nextRank.title : 'Max Rank'}" onclick="window.location.href='/'">
+                    <span class="shp-emoji">${emoji}</span>
+                    <span class="shp-rank">${rankName}</span>
                     
-                    <div style="width: 40px; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; margin-right: 6px; display: flex;">
-                        <div style="width: ${progress.percentToNext}%; height: 100%; background: #FFD700;"></div>
+                    <div class="shp-bar-wrapper">
+                        <div class="shp-bar-fill" style="width: ${progress.percentToNext}%;"></div>
                     </div>
                     
-                    <span style="font-size: 10px; color: #fff; opacity: 0.9; font-weight: 600; font-family: 'Inter', sans-serif;">${progress.percentToNext}%</span>
+                    <span class="shp-percent">${progress.percentToNext}%</span>
                 </div>
             `;
 

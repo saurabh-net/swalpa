@@ -1,4 +1,4 @@
-const CACHE_NAME = 'swalpa-v3';
+const CACHE_NAME = 'swalpa-v4';
 const ASSETS_TO_CACHE = [
     '/',
 
