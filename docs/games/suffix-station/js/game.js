@@ -57,6 +57,7 @@ const els = {
     playAgainBtn: $('play-again-btn'),
     shareBtn: $('share-btn'),
     whatsappBtn: $('whatsapp-btn'),
+    xBtn: $('x-btn'),
 };
 
 // ═══════════════════════════════════════════════
@@ -181,10 +182,13 @@ function renderQuestion() {
     // Render suffix buttons (shuffled)
     const shuffledOptions = shuffleArray(q.options);
     els.suffixBank.innerHTML = '';
-    shuffledOptions.forEach(suffix => {
+    shuffledOptions.forEach((suffix, idx) => {
         const btn = document.createElement('button');
         btn.className = 'suffix-btn';
-        btn.textContent = suffix;
+        btn.innerHTML = `
+            <span class="choice-num">${idx + 1}</span>
+            <span class="suffix-text">${suffix}</span>
+        `;
         btn.dataset.suffix = suffix;
         btn.onclick = () => toggleSuffix(suffix, btn);
         els.suffixBank.appendChild(btn);
@@ -357,6 +361,8 @@ function shareResult(platform) {
 
     if (platform === 'whatsapp') {
         window.open(`https://wa.me/?text=${encodeURIComponent(fullMessage)}`, '_blank');
+    } else if (platform === 'x') {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(fullMessage)}`, '_blank');
     } else if (platform === 'clipboard') {
         navigator.clipboard.writeText(fullMessage).then(() => {
             els.shareBtn.textContent = '✅ Copied!';
@@ -378,6 +384,7 @@ els.playAgainBtn.onclick = () => {
 };
 els.shareBtn.onclick = () => shareResult('clipboard');
 els.whatsappBtn.onclick = () => shareResult('whatsapp');
+els.xBtn.onclick = () => shareResult('x');
 
 // Keyboard shortcut: Enter to submit
 document.addEventListener('keydown', e => {

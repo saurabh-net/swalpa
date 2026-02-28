@@ -148,7 +148,28 @@ body {
     height: 100%;
     background: var(--primary);
     box-shadow: 0 0 10px var(--primary-glow);
-    transition: width 0.3s ease;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rank-up {
+    animation: rankPulse 0.8s ease-out;
+}
+
+@keyframes rankPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 var(--primary);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px var(--primary);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 var(--primary);
+    }
 }
 
 .patience-container {
@@ -269,6 +290,22 @@ body {
     font-size: 14px;
     cursor: pointer;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.choice-num {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
 }
 
 .choice-btn:hover {

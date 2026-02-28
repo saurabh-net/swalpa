@@ -513,6 +513,23 @@ body {
     letter-spacing: 0.02em;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.choice-num {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary);
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 800;
+    flex-shrink: 0;
 }
 
 .suffix-btn:hover {
@@ -733,6 +750,17 @@ body {
 
 .clipboard-share:hover {
     background: rgba(255, 255, 255, 0.12);
+}
+
+.x-share {
+    background: #000;
+    color: #fff;
+    border: 1px solid var(--glass-border) !important;
+}
+
+.x-share:hover {
+    background: #1d1f23;
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.1);
 }
 
 .restart-btn {
