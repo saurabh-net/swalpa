@@ -23,7 +23,7 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
             const badgeDefs = window.BADGE_DEFINITIONS || {};
 
         // 1. Build the Rank Header Card
-        const currentStreak = window.localStorage.getItem('swalpa_streak') || 0;
+        const currentStreak = window.localStorage.getItem('swalpa_streak') || 1;
         let html = `
             <div class="swalpa-profile-card">
                 <div class="swalpa-profile-rank-header">
