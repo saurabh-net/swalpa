@@ -9,19 +9,19 @@ const ASSETS_TO_CACHE = [
     '/assets/js/scores.js',
     '/assets/js/progress.js',
     // Suffix Station
-    '/games/suffix-station/index.html',
-    '/games/suffix-station/css/style.css',
-    '/games/suffix-station/js/game.js',
+    '/games/play_suffix_station/index.html',
+    '/games/play_suffix_station/css/style.css',
+    '/games/play_suffix_station/js/game.js',
     // Meter Haaki
-    '/games/auto-rickshaw/index.html',
-    '/games/auto-rickshaw/css/style.css',
-    '/games/auto-rickshaw/js/game.js',
-    '/games/auto-rickshaw/js/data.js',
+    '/games/play_meter_haaki/index.html',
+    '/games/play_meter_haaki/css/style.css',
+    '/games/play_meter_haaki/js/game.js',
+    '/games/play_meter_haaki/js/data.js',
     // Adjust Maadi
-    '/games/adjust-maadi/index.html',
-    '/games/adjust-maadi/css/style.css',
-    '/games/adjust-maadi/js/game.js',
-    '/games/adjust-maadi/js/data.js'
+    '/games/play_adjust_maadi/index.html',
+    '/games/play_adjust_maadi/css/style.css',
+    '/games/play_adjust_maadi/js/game.js',
+    '/games/play_adjust_maadi/js/data.js'
 ];
 
 self.addEventListener('install', (event) => {

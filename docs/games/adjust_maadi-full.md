@@ -13,5 +13,5 @@ image: assets/img/social/og_adjust_maadi.jpg
 </div>
 
 <div class="game-frame-container" style="width: 100%; height: 100vh; overflow: hidden; background: #000;">
-    <iframe src="../adjust-maadi/index.html" style="width: 100%; height: 100%; border: none;"></iframe>
+    <iframe src="../play_adjust_maadi/index.html" style="width: 100%; height: 100%; border: none;"></iframe>
 </div>
