@@ -18,4 +18,7 @@ Kannada works like Lego blocks. In this episode, we explore how to build complex
 
 ---
 **Companion Materials:**
-*   [Play: Suffix Station](/games/suffix_station/)
+
+<ul class="swalpa-companion-list">
+    <li><a href="/games/suffix_station/">Play: Suffix Station</a></li>
+</ul>

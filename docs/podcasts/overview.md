@@ -17,4 +17,7 @@ In this overview episode, we break down the historical layers of the Kannada lan
 
 ---
 **Companion Materials:**
-*   [01. History & Linguistic Nuances](/01_history_and_nuances/)
+
+<ul class="swalpa-companion-list">
+    <li><a href="/01_history_and_nuances/">01. History & Linguistic Nuances</a></li>
+</ul>

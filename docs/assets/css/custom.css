@@ -352,6 +352,86 @@ input:checked+.swalpa-slider:before {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
+@media (max-width: 768px) {
+    .swalpa-profile-rank-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .sp-emoji {
+        font-size: 50px;
+    }
+
+    .sp-details h2 {
+        font-size: 24px !important;
+    }
+
+    .swalpa-profile-progress-text {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .swalpa-badge-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Mobile Overrides (Continued) --- */
+@media screen and (max-width: 768px) {
+    .swalpa-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Podcast Companion Materials --- */
+.swalpa-companion-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.swalpa-companion-list li {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.swalpa-companion-list li a {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background: rgba(128, 128, 128, 0.05);
+    border: 1px solid rgba(128, 128, 128, 0.1);
+    border-radius: 12px;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    color: var(--md-default-fg-color);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.swalpa-companion-list li a::before {
+    content: "📘";
+    /* Book emoji or similar for a resource */
+    margin-right: 12px;
+    font-size: 20px;
+}
+
+.swalpa-companion-list li a[href*="/games/"]::before {
+    content: "🎮";
+    /* Game pad emoji for game links */
+}
+
+.swalpa-companion-list li a:hover {
+    background: rgba(128, 128, 128, 0.1);
+    transform: translateY(-2px);
+}
+
 .swalpa-badge.unlocked {
     border-color: var(--md-accent-fg-color);
     background: linear-gradient(to bottom right, rgba(255, 210, 0, 0.05), transparent);

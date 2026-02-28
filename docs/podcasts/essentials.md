@@ -18,5 +18,8 @@ Dive into the practical realities of Bangalore living. We discuss the "Bēku/Bē
 
 ---
 **Companion Materials:**
-*   [02. Survival & Emergencies](/02_survival_and_emergencies/)
-*   [Play: Meter Haaki](/games/meter_haaki/)
+
+<ul class="swalpa-companion-list">
+    <li><a href="/02_survival_and_emergencies/">02. Survival & Emergencies</a></li>
+    <li><a href="/games/meter_haaki/">Play: Meter Haaki</a></li>
+</ul>
