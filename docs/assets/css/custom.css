@@ -386,3 +386,127 @@ input:checked+.swalpa-slider:before {
     color: var(--md-default-fg-color--light);
     line-height: 1.4;
 }
+
+/* --- Word of the Day & Steaks --- */
+.swalpa-wotd-container {
+    background: linear-gradient(to right, rgba(206, 17, 38, 0.03), rgba(255, 210, 0, 0.03));
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 32px 0;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.swalpa-wotd-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(to right, rgba(206, 17, 38, 0.05), rgba(255, 210, 0, 0.05));
+}
+
+.swalpa-wotd-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+    padding-bottom: 12px;
+}
+
+.swalpa-wotd-header h3 {
+    margin: 0 !important;
+    font-size: 14px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--md-default-fg-color--light);
+}
+
+.swalpa-streak-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(128, 128, 128, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.swalpa-streak-pill.active {
+    background: rgba(255, 140, 0, 0.15);
+    color: #FF8C00;
+}
+
+.swalpa-streak-pill.active .streak-icon {
+    animation: pulse-flame 2s infinite;
+}
+
+@keyframes pulse-flame {
+    0% {
+        transform: scale(1);
+        filter: brightness(1) drop-shadow(0 0 4px rgba(255, 140, 0, 0));
+    }
+
+    50% {
+        transform: scale(1.15);
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 140, 0, 0.4));
+    }
+
+    100% {
+        transform: scale(1);
+        filter: brightness(1) drop-shadow(0 0 4px rgba(255, 140, 0, 0));
+    }
+}
+
+.swalpa-wotd-body {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.swalpa-wotd-kan {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--md-primary-fg-color);
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.swalpa-wotd-dkan {
+    font-size: 20px;
+    color: var(--md-accent-fg-color);
+    margin-bottom: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+}
+
+.swalpa-wotd-eng {
+    font-size: 18px;
+    color: var(--md-default-fg-color);
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.swalpa-wotd-play {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--md-default-fg-color--light);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--md-default-bg-color);
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.swalpa-wotd-container:hover .swalpa-wotd-play {
+    opacity: 1;
+    background: rgba(206, 17, 38, 0.05);
+    border-color: rgba(206, 17, 38, 0.2);
+    color: var(--md-primary-fg-color);
+}

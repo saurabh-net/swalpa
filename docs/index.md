@@ -16,6 +16,8 @@ We focus on maximizing your return on investment by teaching you high-frequency 
 
 ---
 
+<div id="swalpa-wotd-root"></div>
+
 <div id="swalpa-progress-dashboard" style="margin: 20px 0; padding: 25px; background: rgba(30, 41, 59, 0.7); border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1); color: #F8FAFC; text-align: center; backdrop-filter: blur(12px);">
   <h2 style="margin-top: 0; color: #FFD700; font-family: 'Outfit', sans-serif;">🏆 Your Bangalore Journey</h2>
   
