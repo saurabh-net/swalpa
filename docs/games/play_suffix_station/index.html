@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suffix Station | SWALPA</title>
+    <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="manifest" href="../../manifest.json">
     <meta name="theme-color" content="#FFD700">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -172,15 +172,6 @@
         </div>
     </div>
     <script type="module" src="js/game.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('../../sw.js')
-                    .then(reg => console.log('SW Registered'))
-                    .catch(err => console.log('SW Failed', err));
-            });
-        }
-    </script>
 </body>
 
 </html>
