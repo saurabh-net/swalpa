@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.target.checked) {
                     if (!currentArr.includes(currentLessonId)) {
                         currentArr.push(currentLessonId);
+                        if (window.swalpaLogActivity) window.swalpaLogActivity(2);
                     }
                 } else {
                     currentArr = currentArr.filter(id => id !== currentLessonId);

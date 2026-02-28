@@ -14,11 +14,16 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
         const root = document.getElementById('swalpa-profile-root');
         if (!root) return;
 
-        // Ensure progress module is available (we might need to dynamically import it if it remains a module)
-        import('/assets/js/progress.js').then(module => {
-            const calculateProgress = module.calculateProgress;
+        // Ensure modules are available
+        Promise.all([
+            import('/assets/js/progress.js'),
+            import('/assets/js/activity.js')
+        ]).then(([progModule, actModule]) => {
+            const calculateProgress = progModule.calculateProgress;
+            const getActivityLog = actModule.getActivityLog;
             
             const progress = calculateProgress();
+            const activityLog = getActivityLog();
             const unlockedBadges = window.getUnlockedBadges ? window.getUnlockedBadges() : [];
             const badgeDefs = window.BADGE_DEFINITIONS || {};
 
@@ -42,6 +47,38 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                 </div>
                 <div class="swalpa-profile-progress-text">
                     ${progress.nextRank ? `<b>${progress.percentToNext}%</b> progress to ${progress.nextRank.title}` : 'Maximum Rank Achieved! You are a true Bangalorean.'}
+                </div>
+            </div>
+            
+            <!-- Heatmap Integration -->
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
+                <h3 style="margin-top: 0; margin-bottom: 12px; font-family: Outfit, sans-serif; font-size: 16px; color: var(--md-default-fg-color--light);">Consistency (Last 90 Days)</h3>
+                <div class="swalpa-heatmap-container">
+                    <div class="heatmap-grid">
+        `;
+        
+        // Generate last 90 days array
+        const todayD = new Date();
+        const dates = [];
+        for(let i=89; i>=0; i--) {
+            const d = new Date(todayD);
+            d.setDate(d.getDate() - i);
+            dates.push(d.toLocaleDateString('en-CA'));
+        }
+        
+        for(const dStr of dates) {
+            const count = activityLog[dStr] || 0;
+            let level = 0;
+            if(count > 0) level = 1;
+            if(count >= 3) level = 2;
+            if(count >= 6) level = 3;
+            if(count >= 10) level = 4;
+            
+            html += `<div class="heatmap-cell level-${level}" title="${count} actions on ${dStr}"></div>`;
+        }
+        
+        html += `
+                    </div>
                 </div>
             </div>
             

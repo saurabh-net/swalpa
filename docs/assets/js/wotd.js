@@ -71,6 +71,9 @@ function initWotd() {
         localStorage.setItem('swalpa_last_visit', todayStr);
         localStorage.setItem('swalpa_streak', streakCount.toString());
 
+        // Log daily activity for interacting with WOTD
+        if (window.swalpaLogActivity) window.swalpaLogActivity(1);
+
         // Evaluate Streak Badges
         if (window.unlockBadge) {
             if (streakCount >= 2) window.unlockBadge('regular_giraki');

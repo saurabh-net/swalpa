@@ -667,3 +667,64 @@ input:checked+.swalpa-slider:before {
 .profile-share-btn:hover {
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
+
+/* --- Consistency Heatmap --- */
+.swalpa-heatmap-container {
+    padding: 10px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    min-width: 300px;
+    /* Ensures cells don't get too tiny */
+}
+
+.heatmap-cell {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    transition: transform 0.2s;
+}
+
+.heatmap-cell:hover {
+    transform: scale(1.2);
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Heatmap Levels (GitHub style) */
+.heatmap-cell.level-0 {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.heatmap-cell.level-1 {
+    background: #0E4429;
+}
+
+/* Lightest green */
+.heatmap-cell.level-2 {
+    background: #006D32;
+}
+
+.heatmap-cell.level-3 {
+    background: #26A641;
+}
+
+.heatmap-cell.level-4 {
+    background: #39D353;
+}
+
+/* Brightest green */
+
+/* Mobile adjustment for heatmap */
+@media (max-width: 600px) {
+    .heatmap-grid {
+        grid-template-columns: repeat(15, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+    }
+}

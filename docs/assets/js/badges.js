@@ -80,6 +80,7 @@ function unlockBadge(badgeId) {
 
     unlocked.push(badgeId);
     saveUnlockedBadges(unlocked);
+    if (window.swalpaLogActivity) window.swalpaLogActivity(3);
     showBadgeToast(badgeId);
 }
 
