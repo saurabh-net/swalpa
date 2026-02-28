@@ -65,6 +65,7 @@ extra_css:
 extra_javascript:
   - assets/js/audio.js
   - assets/js/header.js
+  - assets/js/lessons.js
 
 nav:
   - Namaskara: index.md

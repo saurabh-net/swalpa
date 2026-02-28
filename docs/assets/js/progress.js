@@ -17,6 +17,15 @@ export function calculateProgress() {
     const scores = getHighScores();
     let totalPoints = 0;
 
+    // Lessons: 100 points per completed lesson
+    const completedStr = localStorage.getItem('swalpa_completed_lessons');
+    if (completedStr) {
+        try {
+            const completedArr = JSON.parse(completedStr);
+            totalPoints += (completedArr.length * 100);
+        } catch (e) { }
+    }
+
     // Suffix Station: 1 point per point
     totalPoints += scores['suffix-station'] || 0;
 
