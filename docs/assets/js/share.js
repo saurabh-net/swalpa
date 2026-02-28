@@ -52,7 +52,10 @@ function showShareModal(text, url) {
         // Create the inner HTML
         container.innerHTML = `
             <div style="font-size: 32px; margin-bottom: 10px;">📤</div>
-            <h2 style="margin-top: 0; margin-bottom: 20px; font-weight: 700; color: #FFF;">Share the Knowledge</h2>
+            <h2 style="margin-top: 0; margin-bottom: 15px; font-weight: 700; color: #FFF;">Share the Knowledge</h2>
+            
+            <div class="share-preview-box"></div>
+
             <div style="display: flex; flex-direction: column; gap: 12px;">
                 <button class="share-modal-btn" id="modal-share-wa" style="background: #25D366; color: white;">
                     <span style="font-size: 18px;">📲</span> Share on WhatsApp
@@ -70,6 +73,33 @@ function showShareModal(text, url) {
         // Required CSS for the buttons
         const style = document.createElement('style');
         style.innerHTML = `
+            .share-preview-box {
+                background: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                padding: 15px;
+                margin-bottom: 20px;
+                font-size: 14px;
+                color: #CBD5E1;
+                font-style: italic;
+                text-align: left;
+                position: relative;
+            }
+            .share-preview-box::before {
+                content: '"';
+                position: absolute;
+                top: 5px;
+                left: 10px;
+                font-size: 40px;
+                color: rgba(255, 255, 255, 0.1);
+                font-family: serif;
+                line-height: 1;
+            }
+            .share-preview-content {
+                position: relative;
+                z-index: 1;
+                line-height: 1.5;
+            }
             .share-modal-btn {
                 padding: 14px;
                 border: none;
@@ -104,6 +134,19 @@ function showShareModal(text, url) {
         });
         document.getElementById('modal-share-close').addEventListener('click', closeShareModal);
     }
+
+    // Wait for DOM to append before accessing
+    setTimeout(() => {
+        // Hydrate the preview box
+        const previewBox = modal.querySelector('.share-preview-box');
+        if (previewBox) {
+            // Escape HTML just in case
+            const safeText = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            // Highlight URLs subtly
+            const formattedText = safeText.replace(/(https?:\/\/[^\s]+)/g, '<span style="color:var(--md-primary-fg-color); text-decoration: underline; opacity:0.8">$1</span>');
+            previewBox.innerHTML = `<div class="share-preview-content">${formattedText.replace(/\\n/g, '<br>')}</div>`;
+        }
+    }, 0);
 
     // Attach listeners for specific payloads (rebinding to current text)
     const waBtn = document.getElementById('modal-share-wa');
