@@ -1,5 +1,6 @@
 import { NPCS, LEVELS, RANKS } from './data.js';
 import { saveHighScore } from '../../../assets/js/scores.js';
+import { unlockBadge } from '../../../assets/js/badges.js';
 
 const state = {
     respect: 25,
@@ -370,6 +371,7 @@ function renderLevelComplete() {
     `;
 
     saveHighScore('adjust-maadi', { level: state.level, respect: state.respect });
+    unlockBadge('adjust_maadi_master');
 
     document.getElementById('restart-game-btn').onclick = () => {
         localStorage.removeItem('adjust_maadi_state');

@@ -264,8 +264,125 @@ input:checked+.swalpa-slider:before {
         z-index: 90;
     }
 
-    /* Ensure the main page content isn't covered by the new drop-down bar */
     body[data-md-color-scheme] .md-main {
         padding-top: 28px !important;
     }
+}
+
+/* --- Profile Page Dashboard --- */
+.swalpa-profile-card {
+    background: linear-gradient(135deg, rgba(206, 17, 38, 0.05), rgba(255, 210, 0, 0.05));
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.swalpa-profile-rank-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.sp-emoji {
+    font-size: 64px;
+    line-height: 1;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.sp-details h2 {
+    margin: 0 !important;
+    font-size: 28px !important;
+    font-family: 'Outfit', sans-serif;
+    color: var(--md-primary-fg-color);
+}
+
+.sp-points {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--md-accent-fg-color);
+    margin-top: 4px;
+}
+
+.sp-points span {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.swalpa-profile-progress-bar {
+    height: 12px;
+    background: rgba(128, 128, 128, 0.2);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.sp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
+    border-radius: 6px;
+    transition: width 1s ease-out;
+}
+
+.swalpa-profile-progress-text {
+    font-size: 14px;
+    color: var(--md-default-fg-color--light);
+    text-align: right;
+}
+
+/* --- Badge Grid --- */
+.swalpa-badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.swalpa-badge {
+    background: var(--md-default-bg-color);
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.swalpa-badge.unlocked {
+    border-color: var(--md-accent-fg-color);
+    background: linear-gradient(to bottom right, rgba(255, 210, 0, 0.05), transparent);
+}
+
+.swalpa-badge.unlocked:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.swalpa-badge.locked {
+    opacity: 0.6;
+    filter: grayscale(0.8);
+    background: rgba(128, 128, 128, 0.05);
+}
+
+.badge-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.badge-title {
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    color: var(--md-default-fg-color);
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.badge-desc {
+    font-size: 13px;
+    color: var(--md-default-fg-color--light);
+    line-height: 1.4;
 }

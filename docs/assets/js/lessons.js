@@ -79,8 +79,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 localStorage.setItem(showKey, JSON.stringify(currentArr));
 
-                // Reload to instantly update header rank and nav checkmarks
-                window.location.reload();
+                // Check if this is the first lesson ever completed to award the badge
+                if (e.target.checked && currentArr.length === 1 && window.unlockBadge) {
+                    window.unlockBadge('first_lesson');
+                    // Delay reload so they can see the toast
+                    setTimeout(() => window.location.reload(), 3500);
+                } else if (e.target.checked && currentLessonId === '08_slang' && window.unlockBadge) {
+                    window.unlockBadge('local_insider');
+                    setTimeout(() => window.location.reload(), 3500);
+                } else {
+                    // Reload to instantly update header rank and nav checkmarks
+                    window.location.reload();
+                }
             });
         }
     }

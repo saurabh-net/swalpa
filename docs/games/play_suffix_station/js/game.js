@@ -1,5 +1,6 @@
 import { getShuffledQuestions, shuffleArray } from './questions.js';
 import { saveHighScore } from '../../../assets/js/scores.js';
+import { unlockBadge } from '../../../assets/js/badges.js';
 
 // ═══════════════════════════════════════════════
 // STATE
@@ -147,6 +148,9 @@ function endGame() {
 
     // Save leaderboard
     saveHighScore('suffix-station', state.score);
+    if (state.score >= 10) {
+        unlockBadge('suffix_scientist');
+    }
 }
 
 function getRank(score, accuracy) {

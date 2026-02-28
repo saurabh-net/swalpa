@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rankName = rankParts.slice(1).join(' ');
 
             const progressUi = `
-                <div class="swalpa-header-progress" title="${progress.percentToNext}% to ${progress.nextRank ? progress.nextRank.title : 'Max Rank'}" onclick="window.location.href='/'">
+                <div class="swalpa-header-progress" title="${progress.percentToNext}% to ${progress.nextRank ? progress.nextRank.title : 'Max Rank'}" onclick="window.location.href='/profile/'">
                     <span class="shp-emoji">${emoji}</span>
                     <span class="shp-rank">${rankName}</span>
                     

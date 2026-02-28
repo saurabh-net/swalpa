@@ -65,11 +65,13 @@ extra_css:
 
 extra_javascript:
   - assets/js/audio.js
+  - assets/js/badges.js
   - assets/js/header.js
   - assets/js/lessons.js
 
 nav:
   - Namaskara: index.md
+  - Profile: profile.md
   - Lessons:
       - 1. History & Nuances: 01_history_and_nuances.md
       - 2. Survival & Emergencies: 02_survival_and_emergencies.md
