@@ -40,6 +40,15 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                 </div>
             </div>
             
+            <div style="text-align: center; margin-top: 25px;">
+                <button class="swalpa-share-button profile-share-btn" onclick="
+                    const arr = [${unlockedBadges.slice(0, 3).map(id => `{emoji: '${badgeDefs[id].emoji}', title: '${badgeDefs[id].title}'}`).join(',')}];
+                    window.triggerProfileShare('${progress.rank.title}', window.localStorage.getItem('swalpa_streak'), arr);
+                ">
+                    <span class="share-icon">📤</span> Share My Progress
+                </button>
+            </div>
+            
             <h2 style="margin-top: 40px; margin-bottom: 20px;">🏆 Achiever Badges</h2>
             <div class="swalpa-badge-grid">
         `;

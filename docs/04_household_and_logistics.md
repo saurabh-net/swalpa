@@ -66,8 +66,13 @@ Essential vocabulary for the local market or instructing a cook.
 | **Menasinakai** ⟨may-nuh-see-nuh-KAI⟩ | Chilli |
 | **Aloogadde** ⟨ah-LOO-gud-dey⟩ | Potato |
 | **Tenginakaye** ⟨ten-gee-nuh-KAA-yey⟩ | Coconut |
-| **Balehannu** ⟨BAH-ley-hun-noo⟩ | Banana |
 | **Mavinahannu** ⟨MAA-vee-nah-hun-noo⟩ | Mango |
+
+<div class="swalpa-share-widget">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Neeru barthilla (Water is not coming). Essential logistical Kannada at SWALPA: https://swalpa.org/04_household_and_logistics')">
+        <span class="share-icon">📤</span> Share this Phrase
+    </button>
+</div>
 | **Nimbehannu** ⟨NIM-bey-hun-noo⟩ | Lemon |
 | **Soute-kai** ⟨SOW-tey-kai⟩ | Cucumber |
 | **Tomato** | Tomato |

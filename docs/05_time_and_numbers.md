@@ -80,3 +80,15 @@ The days of the week share identical Sanskrit roots with Hindi. Add "-vaara" ⟨
 *   **Naale** ⟨NAA-ley⟩ **(Tomorrow):** "Naale sigona ⟨see-GOH-nah⟩" (Let's meet tomorrow).
 *   **Ninne** ⟨NIN-ney⟩ **(Yesterday):** "Ninne bandru ⟨BUN-droo⟩" (Came yesterday).
 *   **Nadiddu** ⟨nuh-DID-doo⟩ **(Day after tomorrow):** "Nadiddu banni" (Come the day after).
+
+<div class="swalpa-share-widget">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Eshtu aaythu? (How much?) Mastering rickshaw negotiations with SWALPA. https://swalpa.org/05_time_and_numbers')">
+        <span class="share-icon">📤</span> Share this Phrase
+    </button>
+</div>
+
+<div class="swalpa-share-widget">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Eshtu aaythu? (How much?) Mastering rickshaw negotiations with SWALPA. https://swalpa.org/05_time_and_numbers')">
+        <span class="share-icon">📤</span> Share this Phrase
+    </button>
+</div>

@@ -81,3 +81,9 @@ Be extremely careful with these phrases. They are blunt and direct.
 | **Hogo! / Hogi!** ⟨HOH-goh / HOH-gee⟩ | Go! / Get lost! | *Hogo* is a rude dismissal. *Hogi* is the respectful "Please go". |
 | **Police kares-thini** ⟨police kuh-RACE-tee-nee⟩ | I will call police | A direct threat for severe harassment. |
 | **Nanna thappu aaythu** ⟨NUN-nah THUP-poo AAY-too⟩ | My mistake happened | The safest way to apologize to authority or police. |
+
+<div class="swalpa-share-widget">
+    <button class="swalpa-share-button" onclick="window.triggerShare('Bēku (I want) and Bēda (I don\\'t want). The two most important survival words in Bangalore. Master them on SWALPA: https://swalpa.org/02_survival_and_emergencies')">
+        <span class="share-icon">📤</span> Share this Phrase
+    </button>
+</div>

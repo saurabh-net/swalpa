@@ -69,6 +69,7 @@ extra_javascript:
   - assets/js/header.js
   - assets/js/lessons.js
   - assets/js/wotd.js
+  - assets/js/share.js
 
 nav:
   - Namaskara: index.md

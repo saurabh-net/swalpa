@@ -510,3 +510,50 @@ input:checked+.swalpa-slider:before {
     border-color: rgba(206, 17, 38, 0.2);
     color: var(--md-primary-fg-color);
 }
+
+/* --- Share functionality --- */
+.swalpa-share-widget {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(30, 41, 59, 0.4);
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.swalpa-share-button {
+    background: linear-gradient(135deg, rgba(206, 17, 38, 0.8), rgba(206, 17, 38, 0.6));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(206, 17, 38, 0.2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.swalpa-share-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(206, 17, 38, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.swalpa-share-button .share-icon {
+    font-size: 18px;
+}
+
+.profile-share-btn {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.8), rgba(218, 165, 32, 0.8));
+    color: #1E293B;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.profile-share-btn:hover {
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
