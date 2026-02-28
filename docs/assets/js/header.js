@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Unregister any lingering Service Workers from previous PWA setups
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            for (let registration of registrations) {
+                registration.unregister();
+            }
+        });
+    }
+
     // Dynamically import progress module so it works across all site pages
     import('/assets/js/progress.js').then(module => {
         const progress = module.calculateProgress();
