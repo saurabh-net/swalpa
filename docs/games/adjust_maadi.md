@@ -1,5 +1,6 @@
 ---
 description: Play Adjust Maadi — an interactive Kannada language scenario generator. Negotiate with landlords, vendors, and neighbours in Bangalore.
+image: assets/img/social/og_adjust_maadi.jpg
 ---
 # Adjust Maadi: Everyday Scenarios
 

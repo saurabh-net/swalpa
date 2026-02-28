@@ -1,8 +1,9 @@
 /**
  * Question Bank for The Agglutination & Matching Station
- * 
+ * 50 Questions across 6 categories
+ *
  * Each question has:
- *   type: 'spatial' | 'respect' | 'pronoun' | 'kanglish'
+ *   type: 'spatial' | 'respect' | 'pronoun' | 'kanglish' | 'pronoun_hogu' | 'pronoun_baru'
  *   target: English phrase to translate
  *   base: Kannada base word (what gets displayed as the stem)
  *   displayBase: How the base word is shown in the UI (may include pronoun prefix)
@@ -15,7 +16,7 @@
 
 export const QUESTIONS = [
     // ═══════════════════════════════════════════════
-    // SECTION 1: Spatial Suffixes (Agglutination)
+    // SECTION 1: Spatial Suffixes — Mane (House)
     // ═══════════════════════════════════════════════
     {
         type: 'spatial',
@@ -72,7 +73,10 @@ export const QUESTIONS = [
         category: 'Spatial Suffixes',
         hint: '-gal = Plural marker, then add -alli for "in"'
     },
-    // Extra spatial: Office (Kacheri)
+
+    // ═══════════════════════════════════════════════
+    // SECTION 2: Spatial Suffixes — Kacheri (Office)
+    // ═══════════════════════════════════════════════
     {
         type: 'spatial',
         target: 'In the office',
@@ -97,6 +101,21 @@ export const QUESTIONS = [
     },
     {
         type: 'spatial',
+        target: 'From the office',
+        base: 'Kacheri',
+        displayBase: 'Kacheri',
+        options: ['-alli', '-ge', '-inda', '-gal'],
+        correct: ['-inda'],
+        result: 'Kacherinda',
+        category: 'Spatial Suffixes',
+        hint: '-inda = "From" — origin marker'
+    },
+
+    // ═══════════════════════════════════════════════
+    // SECTION 3: Spatial Suffixes — Halli (Village)
+    // ═══════════════════════════════════════════════
+    {
+        type: 'spatial',
         target: 'From the village',
         base: 'Halli',
         displayBase: 'Halli',
@@ -106,9 +125,68 @@ export const QUESTIONS = [
         category: 'Spatial Suffixes',
         hint: '-inda = "From" — origin marker'
     },
+    {
+        type: 'spatial',
+        target: 'To the village',
+        base: 'Halli',
+        displayBase: 'Halli',
+        options: ['-alli', '-ge', '-inda', '-olage'],
+        correct: ['-ge'],
+        result: 'Hallige',
+        category: 'Spatial Suffixes',
+        hint: '-ge = "To" — direction towards'
+    },
+    {
+        type: 'spatial',
+        target: 'In the village',
+        base: 'Halli',
+        displayBase: 'Halli',
+        options: ['-alli', '-ge', '-inda', '-olage'],
+        correct: ['-alli'],
+        result: 'Hallialli',
+        category: 'Spatial Suffixes',
+        hint: '-alli = "In" — locative suffix'
+    },
 
     // ═══════════════════════════════════════════════
-    // SECTION 2: Respect Filter (Polite Verb Suffixes)
+    // SECTION 4: Spatial Suffixes — Angadi (Shop)
+    // ═══════════════════════════════════════════════
+    {
+        type: 'spatial',
+        target: 'In the shop',
+        base: 'Angadi',
+        displayBase: 'Angadi',
+        options: ['-alli', '-ge', '-inda', '-gal'],
+        correct: ['-alli'],
+        result: 'Angadialli',
+        category: 'Spatial Suffixes',
+        hint: '-alli = "In" — locative suffix for any place'
+    },
+    {
+        type: 'spatial',
+        target: 'To the shop',
+        base: 'Angadi',
+        displayBase: 'Angadi',
+        options: ['-alli', '-ge', '-inda', '-gal'],
+        correct: ['-ge'],
+        result: 'Angadige',
+        category: 'Spatial Suffixes',
+        hint: '-ge = "To" — going towards the shop'
+    },
+    {
+        type: 'spatial',
+        target: 'To the shops (Plural)',
+        base: 'Angadi',
+        displayBase: 'Angadi',
+        options: ['-alli', '-ge', '-inda', '-gal'],
+        correct: ['-gal', '-ge'],
+        result: 'Angadigalge',
+        category: 'Spatial Suffixes',
+        hint: '-gal = Plural, then -ge = "To"'
+    },
+
+    // ═══════════════════════════════════════════════
+    // SECTION 5: Respect Filter (Polite Verb Suffixes)
     // ═══════════════════════════════════════════════
     {
         type: 'respect',
@@ -176,9 +254,53 @@ export const QUESTIONS = [
         category: 'Respect Filter',
         hint: 'Nodu → Nodi (Polite "See/Look")'
     },
+    {
+        type: 'respect',
+        target: 'Tell (Polite)',
+        base: 'Helu',
+        displayBase: 'Helu',
+        options: ['-nni', '-gi', '-li', '-di'],
+        correct: ['-li'],
+        result: 'Heli',
+        category: 'Respect Filter',
+        hint: 'Helu → Heli (Polite "Tell/Say")'
+    },
+    {
+        type: 'respect',
+        target: 'Ask (Polite)',
+        base: 'Kelu',
+        displayBase: 'Kelu',
+        options: ['-nni', '-gi', '-li', '-di'],
+        correct: ['-li'],
+        result: 'Keli',
+        category: 'Respect Filter',
+        hint: 'Kelu → Keli (Polite "Ask/Listen")'
+    },
+    {
+        type: 'respect',
+        target: 'Eat (Polite)',
+        base: 'Tinnu',
+        displayBase: 'Tinnu',
+        options: ['-nni', '-gi', '-di', '-ni'],
+        correct: ['-ni'],
+        result: 'Tinni',
+        category: 'Respect Filter',
+        hint: 'Tinnu → Tinni (Polite "Eat")'
+    },
+    {
+        type: 'respect',
+        target: 'Send (Polite)',
+        base: 'Kalsu',
+        displayBase: 'Kalsu',
+        options: ['-si', '-gi', '-di', '-li'],
+        correct: ['-si'],
+        result: 'Kalsi',
+        category: 'Respect Filter',
+        hint: 'Kalsu → Kalsi (Polite "Send")'
+    },
 
     // ═══════════════════════════════════════════════
-    // SECTION 3: Pronoun Mirroring (Subject-Verb)
+    // SECTION 6: Pronoun Mirroring — Maadth- (Will Do)
     // ═══════════════════════════════════════════════
     {
         type: 'pronoun',
@@ -215,6 +337,17 @@ export const QUESTIONS = [
     },
     {
         type: 'pronoun',
+        target: 'Will you do? (Casual)',
+        base: 'Maadt',
+        displayBase: 'Neenu Maadt-',
+        options: ['-ini', '-ivi', '-iya', '-ira', '-ane', '-ale', '-are'],
+        correct: ['-iya'],
+        result: 'Maadtiya',
+        category: 'Pronoun Mirroring',
+        hint: 'Neenu (You-Casual) → -iya ending'
+    },
+    {
+        type: 'pronoun',
         target: 'He will do',
         base: 'Maadth',
         displayBase: 'Avanu Maadth-',
@@ -248,7 +381,129 @@ export const QUESTIONS = [
     },
 
     // ═══════════════════════════════════════════════
-    // SECTION 4: Kanglish Converter (Euphonic -u)
+    // SECTION 7: Pronoun Mirroring — Hogth- (Will Go)
+    // ═══════════════════════════════════════════════
+    {
+        type: 'pronoun_hogu',
+        target: 'I will go',
+        base: 'Hogth',
+        displayBase: 'Naanu Hogth-',
+        options: ['-ini', '-ivi', '-iya', '-ira', '-ane', '-ale', '-are'],
+        correct: ['-ini'],
+        result: 'Hogthini',
+        category: 'Pronoun Mirroring',
+        hint: 'Naanu (I) → -ini. Root: Hogu (to go)'
+    },
+    {
+        type: 'pronoun_hogu',
+        target: 'She will go',
+        base: 'Hogth',
+        displayBase: 'Avalu Hogth-',
+        options: ['-ini', '-ivi', '-iya', '-ira', '-ane', '-ale', '-are'],
+        correct: ['-ale'],
+        result: 'Hogthale',
+        category: 'Pronoun Mirroring',
+        hint: 'Avalu (She) → -ale. Root: Hogu (to go)'
+    },
+    {
+        type: 'pronoun_hogu',
+        target: 'They will go',
+        base: 'Hogth',
+        displayBase: 'Avru Hogth-',
+        options: ['-ini', '-ivi', '-iya', '-ira', '-ane', '-ale', '-are'],
+        correct: ['-are'],
+        result: 'Hogthare',
+        category: 'Pronoun Mirroring',
+        hint: 'Avru (They) → -are. Root: Hogu (to go)'
+    },
+    {
+        type: 'pronoun_hogu',
+        target: 'We will go',
+        base: 'Hogth',
+        displayBase: 'Naavu Hogth-',
+        options: ['-ini', '-ivi', '-iya', '-ira', '-ane', '-ale', '-are'],
+        correct: ['-ivi'],
+        result: 'Hogthivi',
+        category: 'Pronoun Mirroring',
+        hint: 'Naavu (We) → -ivi. Root: Hogu (to go)'
+    },
+
+    // ═══════════════════════════════════════════════
+    // SECTION 8: Pronoun Mirroring — Barth- (Will Come)
+    // ═══════════════════════════════════════════════
+    {
+        type: 'pronoun_baru',
+        target: 'I will come',
+        base: 'Barth',
+        displayBase: 'Naanu Barth-',
+        options: ['-ini', '-ivi', '-iya', '-ira', '-ane', '-ale', '-are'],
+        correct: ['-ini'],
+        result: 'Barthini',
+        category: 'Pronoun Mirroring',
+        hint: 'Naanu (I) → -ini. Root: Baru (to come)'
+    },
+    {
+        type: 'pronoun_baru',
+        target: 'We will come',
+        base: 'Barth',
+        displayBase: 'Naavu Barth-',
+        options: ['-ini', '-ivi', '-iya', '-ira', '-ane', '-ale', '-are'],
+        correct: ['-ivi'],
+        result: 'Barthivi',
+        category: 'Pronoun Mirroring',
+        hint: 'Naavu (We) → -ivi. Root: Baru (to come)'
+    },
+    {
+        type: 'pronoun_baru',
+        target: 'He will come',
+        base: 'Barth',
+        displayBase: 'Avanu Barth-',
+        options: ['-ini', '-ivi', '-iya', '-ira', '-ane', '-ale', '-are'],
+        correct: ['-ane'],
+        result: 'Barthane',
+        category: 'Pronoun Mirroring',
+        hint: 'Avanu (He) → -ane. Root: Baru (to come)'
+    },
+    {
+        type: 'pronoun_baru',
+        target: 'They will come',
+        base: 'Barth',
+        displayBase: 'Avru Barth-',
+        options: ['-ini', '-ivi', '-iya', '-ira', '-ane', '-ale', '-are'],
+        correct: ['-are'],
+        result: 'Barthare',
+        category: 'Pronoun Mirroring',
+        hint: 'Avru (They) → -are. Root: Baru (to come)'
+    },
+
+    // ═══════════════════════════════════════════════
+    // SECTION 9: Genitive Suffix (Possessive)
+    // ═══════════════════════════════════════════════
+    {
+        type: 'spatial',
+        target: "Saurabh's house",
+        base: 'Saurabh',
+        displayBase: 'Saurabh-na Mane',
+        options: ['-na', '-ge', '-alli', '-inda'],
+        correct: ['-na'],
+        result: 'Saurabh-na',
+        category: 'Genitive Suffix',
+        hint: '-na = "Of" / possessive. "Saurabh-na Mane" = Saurabh\'s house'
+    },
+    {
+        type: 'spatial',
+        target: "Driver's auto",
+        base: 'Driver',
+        displayBase: 'Driver-na Auto',
+        options: ['-na', '-ge', '-alli', '-inda'],
+        correct: ['-na'],
+        result: 'Driver-na',
+        category: 'Genitive Suffix',
+        hint: '-na = Possessive suffix. Works with any noun!'
+    },
+
+    // ═══════════════════════════════════════════════
+    // SECTION 10: Kanglish Converter (Euphonic -u)
     // ═══════════════════════════════════════════════
     {
         type: 'kanglish',
@@ -304,7 +559,40 @@ export const QUESTIONS = [
         result: 'Paper-u',
         category: 'Kanglish Converter',
         hint: 'Paper-u — Documents, newspapers, all of it.'
-    }
+    },
+    {
+        type: 'kanglish',
+        target: 'Say "Coffee" in Kanglish',
+        base: 'Coffee',
+        displayBase: 'Coffee',
+        options: ['-a', '-i', '-u', '-e'],
+        correct: ['-u'],
+        result: 'Coffee-u',
+        category: 'Kanglish Converter',
+        hint: 'Coffee-u — The fuel of Bengaluru!'
+    },
+    {
+        type: 'kanglish',
+        target: 'Say "Meeting" in Kanglish',
+        base: 'Meeting',
+        displayBase: 'Meeting',
+        options: ['-a', '-i', '-u', '-e'],
+        correct: ['-u'],
+        result: 'Meeting-u',
+        category: 'Kanglish Converter',
+        hint: 'Meeting-u — Office life runs on these.'
+    },
+    {
+        type: 'kanglish',
+        target: 'Say "Phone" in Kanglish',
+        base: 'Phone',
+        displayBase: 'Phone',
+        options: ['-a', '-i', '-u', '-e'],
+        correct: ['-u'],
+        result: 'Phone-u',
+        category: 'Kanglish Converter',
+        hint: 'Phone-u — Essential modern vocabulary!'
+    },
 ];
 
 /**

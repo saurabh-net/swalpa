@@ -5,6 +5,8 @@ hide:
   - header
   - footer
 title: Meter Haaki
+description: Play Meter Haaki — negotiate auto fares in Kannada!
+image: assets/img/social/og_meter_haaki.jpg
 ---
 
 <style>

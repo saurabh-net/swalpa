@@ -1,5 +1,6 @@
 ---
 description: Play Suffix Station — a time-attack Kannada grammar game. Build words by gluing the right suffixes to base words. Learn agglutination, polite verb forms, and pronoun matching.
+image: assets/img/social/og_suffix_station.jpg
 ---
 # Suffix Station
 
