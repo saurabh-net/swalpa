@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!onclickAttr) return;
 
             // Extract string literal from triggerShare('...')
-            const match = onclickAttr.match(/window\.triggerShare\(['"]([^'"]+)['"]/);
+            const match = onclickAttr.match(/window\.triggerShare\(['"](.*)['"]\)/);
             if (match && match[1]) {
                 const rawText = match[1].replace(/\\'/g, "'").replace(/\\"/g, '"');
                 const safeText = rawText.replace(/</g, "&lt;").replace(/>/g, "&gt;");

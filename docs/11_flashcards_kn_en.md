@@ -17,6 +17,23 @@ description: Interactive Kannada flashcards — practice recognising Kannada wor
 
 <script type="module" src="https://js.withorbit.com/orbit-web-component.js"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new MutationObserver(() => {
+        const reviewAreas = document.querySelectorAll('orbit-reviewarea');
+        if (reviewAreas.length > 0) {
+            reviewAreas.forEach(area => {
+                area.addEventListener('click', () => {
+                    if (window.unlockBadge) window.unlockBadge('flashcard_starter');
+                }, { once: true });
+            });
+            observer.disconnect();
+        }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+});
+</script>
+
 # Flashcards (Kannada to English)
 
 > [!TIP] 🧠 **Master Kannada Faster with Spaced Repetition**
