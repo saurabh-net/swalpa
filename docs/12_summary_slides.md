@@ -1,4 +1,5 @@
 ---
+image: assets/img/social/og_lesson_12.jpg
 description: Download or view the summarized presentation slides for all 10 SWALPA lessons. Perfect for quick review and on-the-go reference.
 ---
 

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suffix Station | SWALPA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <meta name="description"
+        content="Play Suffix Station — a time-attack Kannada grammar game. Build words by gluing the right suffixes to base words. Learn agglutination, verb politeness, and pronoun matching.">
+    <link rel="alternate" hreflang="en" href="https://swalpa.org/games/suffix_station/" />
+    <link rel="alternate" hreflang="kn" href="https://swalpa.org/games/suffix_station/" />
+    <link rel="canonical" href="https://swalpa.org/games/suffix_station/" />
+    <meta property="og:title" content="Suffix Station | SWALPA">
+    <meta property="og:description"
+        content="A time-attack Kannada grammar game. Build words by gluing the right suffixes. Learn how Kannada stacks meaning!">
+    <meta property="og:url" content="https://swalpa.org/games/suffix_station/">
+    <meta property="og:type" content="website">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LearningResource",
+        "name": "Suffix Station",
+        "description": "A time-attack game to practice Kannada agglutination, verb respect forms, and pronoun mirroring by building words with suffixes.",
+        "url": "https://swalpa.org/games/suffix_station/",
+        "inLanguage": "kn",
+        "educationalLevel": "Beginner",
+        "learningResourceType": "Game",
+        "provider": {
+            "@type": "Organization",
+            "name": "SWALPA",
+            "url": "https://swalpa.org"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="glass-container">
+
+            <!-- ═══════ HEADER BAR ═══════ -->
+            <div class="header-bar">
+                <div class="stats-row">
+                    <div class="stat-chip timer-chip" id="timer-chip">
+                        <span class="label">TIME</span>
+                        <span class="value" id="timer-display">1:00</span>
+                    </div>
+                    <div class="stat-chip score-chip">
+                        <span class="label">SCORE</span>
+                        <span class="value" id="score-display">0</span>
+                    </div>
+                    <div class="stat-chip streak-chip" id="streak-chip">
+                        <span class="value" id="streak-display"></span>
+                    </div>
+                </div>
+                <div class="timer-bar-bg">
+                    <div class="timer-bar-fill" id="timer-bar"></div>
+                </div>
+            </div>
+
+            <!-- ═══════ START SCREEN ═══════ -->
+            <div class="screen" id="start-screen">
+                <div class="start-card animate-fade-in">
+                    <span class="game-emoji">🧩</span>
+                    <h1 class="game-title">Suffix Station</h1>
+                    <p class="game-subtitle">Build Kannada words by clicking the right suffixes.<br>Race the clock!</p>
+
+                    <div class="setting-row">
+                        <label for="timer-input">Timer</label>
+                        <input type="number" id="timer-input" value="60" min="10" max="300" step="10">
+                        <span>seconds</span>
+                    </div>
+
+                    <ul class="rules-list">
+                        <li>Read the target English phrase and the Kannada base word</li>
+                        <li>Click suffix buttons to build the word (some need multiple!)</li>
+                        <li>Hit Submit (or press Enter) to check your answer</li>
+                        <li>Score as many points as you can before time runs out</li>
+                    </ul>
+
+                    <button id="start-btn" class="primary-btn">Shuru Maadi! 🚀</button>
+                </div>
+            </div>
+
+            <!-- ═══════ GAME SCREEN ═══════ -->
+            <div class="screen hidden" id="game-screen">
+                <div class="game-area">
+                    <!-- Category pill -->
+                    <span class="category-label" id="category-label">Spatial Suffixes</span>
+
+                    <!-- Target card -->
+                    <div class="target-card">
+                        <div class="target-label">Translate to Kannada</div>
+                        <div class="target-phrase" id="target-phrase">In the house</div>
+                        <div class="base-word-row">
+                            <span class="base-label">Base:</span>
+                            <span class="base-word" id="base-word">Mane</span>
+                        </div>
+                    </div>
+
+                    <!-- Assembled word preview -->
+                    <div class="assembled-card">
+                        <div class="assembled-label">Your Word</div>
+                        <div class="assembled-word" id="assembled-word">Mane</div>
+                    </div>
+
+                    <!-- Suffix buttons -->
+                    <div class="suffix-bank" id="suffix-bank">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="action-row">
+                        <button class="action-secondary" id="undo-btn">↩ Undo</button>
+                        <button class="submit-btn" id="submit-btn" disabled>Submit ↵</button>
+                        <button class="action-secondary" id="clear-btn">✕ Clear</button>
+                    </div>
+
+                    <!-- Feedback area -->
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            </div>
+
+            <!-- ═══════ GAME OVER SCREEN ═══════ -->
+            <div class="screen hidden" id="gameover-screen">
+                <div class="gameover-card animate-fade-in">
+                    <h2 class="gameover-title">⏰ Samaya Mugithu!</h2>
+
+                    <div class="rank-badge">
+                        <div class="rank-title" id="rank-title">🌱 Fresh Tourist</div>
+                        <div class="rank-desc" id="rank-desc">Every journey starts with Swalpa.</div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-label">Score</span>
+                            <span class="stat-value" id="final-score">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Accuracy</span>
+                            <span class="stat-value" id="final-accuracy">0%</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Best Streak</span>
+                            <span class="stat-value" id="final-streak">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Answered</span>
+                            <span class="stat-value" id="final-answered">0</span>
+                        </div>
+                    </div>
+
+                    <div class="share-row">
+                        <button class="share-btn whatsapp-share" id="whatsapp-btn">📲 WhatsApp</button>
+                        <button class="share-btn clipboard-share" id="share-btn">📋 Copy Result</button>
+                    </div>
+
+                    <button class="restart-btn" id="play-again-btn">↻ Play Again</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="module" src="js/game.js"></script>
+</body>
+
+</html>

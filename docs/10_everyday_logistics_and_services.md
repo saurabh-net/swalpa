@@ -1,4 +1,5 @@
 ---
+image: assets/img/social/og_lesson_10.jpg
 description: Practical Kannada for Bangalore delivery apps, landlords, plumbers, and office campuses. Covers Swiggy/Zomato logistics, renting vocabulary, and repair negotiations.
 ---
 # 09. Everyday Logistics & Services

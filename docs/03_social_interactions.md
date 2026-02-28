@@ -1,4 +1,5 @@
 ---
+image: assets/img/social/og_lesson_03.jpg
 description: Master Bangalore's social and professional etiquette in Kannada. Learn respectful greetings, office phrases, and polite expressions to move from visitor to local colleague.
 ---
 # 03. Social & Professional

@@ -1,4 +1,5 @@
 ---
+image: assets/img/social/og_lesson_11.jpg
 description: Interactive Kannada flashcards — practice translating English to Kannada for everyday Bangalore life. Covers 100+ essential words and phrases, phonetically transcribed.
 ---
 <script type="application/ld+json">
