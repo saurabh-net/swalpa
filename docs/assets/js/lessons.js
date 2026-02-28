@@ -60,7 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span style="font-size: 12px; color: #94A3B8; margin-left: auto;">Awards 100 Respect Points</span>
             `;
 
-            mainContent.appendChild(toggleWrapper);
+            const shareWidget = mainContent.querySelector('.swalpa-share-widget');
+            if (shareWidget) {
+                mainContent.insertBefore(toggleWrapper, shareWidget);
+            } else {
+                mainContent.appendChild(toggleWrapper);
+            }
 
             const checkbox = document.getElementById('lesson-finish-toggle-checkbox');
             const isCompleted = completedLessons.includes(currentLessonId);
@@ -84,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.unlockBadge('first_lesson');
                     // Delay reload so they can see the toast
                     setTimeout(() => window.location.reload(), 3500);
-                } else if (e.target.checked && currentLessonId === '08_slang' && window.unlockBadge) {
+                } else if (e.target.checked && currentLessonId === '07_slang' && window.unlockBadge) {
                     window.unlockBadge('local_insider');
                     setTimeout(() => window.location.reload(), 3500);
                 } else {
