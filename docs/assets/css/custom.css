@@ -740,6 +740,96 @@ input:checked+.swalpa-slider:before {
     opacity: 0.9;
 }
 
+/* --- High-Impact Feature Lists (Games/Podcasts) --- */
+.swalpa-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 32px 0;
+}
+
+.swalpa-feature-item {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent);
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
+    text-decoration: none !important;
+}
+
+.swalpa-feature-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, rgba(206, 17, 38, 0.05), rgba(255, 210, 0, 0.05));
+    border-color: rgba(255, 210, 0, 0.4);
+}
+
+.swalpa-feature-icon {
+    font-size: 56px;
+    margin-right: 24px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+.swalpa-feature-content {
+    flex-grow: 1;
+}
+
+.swalpa-feature-content h3 {
+    margin: 0 0 8px 0 !important;
+    font-family: 'Outfit', sans-serif;
+    color: var(--md-primary-fg-color);
+    font-size: 24px !important;
+}
+
+.swalpa-feature-content p {
+    margin: 0 !important;
+    color: var(--md-default-fg-color--light);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.swalpa-feature-action a.swalpa-button {
+    background: linear-gradient(135deg, rgba(206, 17, 38, 0.9), rgba(220, 30, 50, 0.9));
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 30px;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.2s;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(206, 17, 38, 0.2);
+}
+
+.swalpa-feature-item:hover .swalpa-feature-action a.swalpa-button {
+    box-shadow: 0 6px 16px rgba(206, 17, 38, 0.4);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .swalpa-feature-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .swalpa-feature-icon {
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+
+    .swalpa-feature-action {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .swalpa-feature-action a.swalpa-button {
+        display: block;
+    }
+}
+
 /* --- Cloud Sync & Auth UI --- */
 .swalpa-sync-card {
     background: rgba(255, 255, 255, 0.03);
