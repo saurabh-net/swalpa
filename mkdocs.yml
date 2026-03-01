@@ -83,10 +83,10 @@ nav:
       - 8. Travel & Conflict: 08_travel_and_conflict.md
       - 9. Renting & Repairs: 09_everyday_logistics_and_services.md
       - 10. Home & Groceries: 10_household_and_logistics.md
-      - Summary Slides: 12_summary_slides.md
+      - Summary Slides: summary_slides.md
   - Engage:
       - Games: games/index.md
       - Podcasts: podcasts/index.md
       - Flashcards:
-          - English to Kannada: 11_flashcards_en_kn.md
-          - Kannada to English: 11_flashcards_kn_en.md
+          - English to Kannada: flashcards_en_kn.md
+          - Kannada to English: flashcards_kn_en.md
