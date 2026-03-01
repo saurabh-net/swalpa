@@ -10,7 +10,8 @@ export function getHighScores() {
     return scores || {
         'suffix-station': 0,
         'meter-haaki': { level: 0, respect: 0 },
-        'adjust-maadi': { level: 0, respect: 0 }
+        'adjust-maadi': { level: 0, respect: 0 },
+        'kelisi-gurtisi': 0
     };
 }
 

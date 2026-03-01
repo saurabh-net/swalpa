@@ -26,6 +26,13 @@ Welcome to the SWALPA Play Zone! These games are designed to test your "street l
         <p>Master the art of negotiation. Figure out the right prices for services, repairs, and daily interactions in the city.</p>
         <a href="adjust_maadi/" class="swalpa-button">Play Now</a>
     </div>
+
+    <div class="swalpa-card">
+        <div class="swalpa-card-icon">🎧</div>
+        <h3>Kelisi & Gurtisi</h3>
+        <p>Listen & Identify. Train your ears to recognize spoken Kannada phrases used on the streets of Bangalore.</p>
+        <a href="play_kelisi_gurtisi/" class="swalpa-button">Play Now</a>
+    </div>
 </div>
 
 ---
