@@ -1,0 +1,7 @@
+# Force browser to revalidate HTML files every time
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Static assets can be cached but should be revalidated
+/assets/*
+  Cache-Control: public, max-age=0, must-revalidate

@@ -59,18 +59,18 @@ extra:
     property: G-QXYDQG6GGN
 
 extra_css:
-  - assets/css/custom.css
+  - assets/css/custom.css?v=1.0.1
 
 extra_javascript:
   - https://sdk.userbase.com/2/userbase.js
-  - assets/js/storage.js
-  - assets/js/auth.js
-  - assets/js/init.js
-  - assets/js/audio.js
-  - assets/js/header.js
-  - assets/js/lessons.js
-  - assets/js/wotd.js
-  - assets/js/share.js
+  - assets/js/storage.js?v=1.0.1
+  - assets/js/auth.js?v=1.0.1
+  - assets/js/init.js?v=1.0.1
+  - assets/js/audio.js?v=1.0.1
+  - assets/js/header.js?v=1.0.1
+  - assets/js/lessons.js?v=1.0.1
+  - assets/js/wotd.js?v=1.0.1
+  - assets/js/share.js?v=1.0.1
 
 nav:
   - Namaskara: index.md
