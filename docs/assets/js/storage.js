@@ -10,26 +10,30 @@ class SwalpaStorageManager {
         this.user = null;
         this.isSyncing = false;
         this.syncCallbacks = [];
+        this.unsubscribe = null;
     }
 
     async init() {
-        if (!window.userbase) {
-            console.error('Userbase SDK not found.');
+        if (!window.auth) {
+            console.error('Firebase Auth not found.');
             return;
         }
 
-        try {
-            if (!window.userbase) throw new Error('Userbase SDK not available');
-            const session = await window.userbase.init({ appId: USERBASE_APP_ID });
-            if (session.user) {
-                this.user = session.user;
+        // Listen for authentication state changes
+        window.auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                this.user = user;
+                console.log('Firebase user logged in:', user.email);
                 await this.syncDown();
+            } else {
+                this.user = null;
+                if (this.unsubscribe) {
+                    this.unsubscribe();
+                    this.unsubscribe = null;
+                }
             }
             this._notifySyncChange();
-        } catch (e) {
-            console.warn('Userbase init failed (Sync disabled):', e.message);
-            this._notifySyncChange(); // Still notify so UI can render Guest state
-        }
+        });
     }
 
     /**
@@ -43,17 +47,16 @@ class SwalpaStorageManager {
         };
         localStorage.setItem(key, JSON.stringify(timestampedData));
 
-        // 2. Sync to Userbase if logged in
+        // 2. Sync to Firestore if logged in
         if (this.user) {
             try {
-                await window.userbase.putItem({
-                    databaseName: 'swalpa_progress',
-                    item: timestampedData,
-                    itemId: key
-                });
+                await window.db.collection('users')
+                    .doc(this.user.uid)
+                    .collection('progress')
+                    .doc(key)
+                    .set(timestampedData);
             } catch (e) {
-                console.error(`Cloud save failed for ${key}:`, e);
-                // We don't block on failure; localStorage is the primary source
+                console.error(`Firebase save failed for ${key}:`, e);
             }
         }
     }
@@ -68,12 +71,12 @@ class SwalpaStorageManager {
             const parsed = JSON.parse(raw);
             return (parsed && parsed._data !== undefined) ? parsed._data : parsed;
         } catch (e) {
-            return raw; // Fallback for plain strings
+            return raw;
         }
     }
 
     /**
-     * Fetch all items from Userbase and update localStorage if newer.
+     * Fetch all items from Firestore and update localStorage if newer.
      */
     async syncDown() {
         if (!this.user) return;
@@ -81,12 +84,14 @@ class SwalpaStorageManager {
         this._notifySyncChange();
 
         try {
-            await window.userbase.openDatabase({
-                databaseName: 'swalpa_progress',
-                changeHandler: (items) => {
-                    items.forEach(item => {
-                        const key = item.itemId;
-                        const cloudData = item.item;
+            // Real-time listener performance optimization: we only update local if cloud is newer
+            this.unsubscribe = window.db.collection('users')
+                .doc(this.user.uid)
+                .collection('progress')
+                .onSnapshot((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        const key = doc.id;
+                        const cloudData = doc.data();
                         const localRaw = localStorage.getItem(key);
 
                         let shouldUpdate = true;
@@ -100,33 +105,33 @@ class SwalpaStorageManager {
                         }
 
                         if (shouldUpdate) {
-                            if (typeof cloudData === 'string') {
-                                localStorage.setItem(key, cloudData);
-                            } else {
-                                localStorage.setItem(key, JSON.stringify(cloudData));
-                            }
+                            localStorage.setItem(key, JSON.stringify(cloudData));
                         }
                     });
                     this.isSyncing = false;
                     this._notifySyncChange();
-                    // Dispatch global event for UI components to refresh
                     window.dispatchEvent(new CustomEvent('swalpa-data-synced'));
-                }
-            });
+                }, (error) => {
+                    console.error('Firestore listener error:', error);
+                    this.isSyncing = false;
+                    this._notifySyncChange();
+                });
         } catch (e) {
-            console.error('Cloud sync down failed:', e);
+            console.error('Firebase sync down failed:', e);
             this.isSyncing = false;
             this._notifySyncChange();
         }
     }
 
     /**
-     * Push all local SWALPA data to cloud (used after first signup).
+     * Push all local SWALPA data to cloud.
      */
     async syncUp() {
         if (!this.user) return;
 
-        const swalpaKeys = Object.keys(localStorage).filter(key => key.startsWith('swalpa_') || key.includes('_haaki_') || key.includes('_maadi_'));
+        const swalpaKeys = Object.keys(localStorage).filter(key =>
+            key.startsWith('swalpa_') || key.includes('_haaki_') || key.includes('_maadi_')
+        );
 
         for (const key of swalpaKeys) {
             const data = this.load(key);
@@ -141,7 +146,7 @@ class SwalpaStorageManager {
     _notifySyncChange() {
         const status = {
             isLoggedIn: !!this.user,
-            username: this.user ? this.user.username : null,
+            username: this.user ? this.user.email.split('@')[0] : null,
             isSyncing: this.isSyncing
         };
         this.syncCallbacks.forEach(cb => cb(status));

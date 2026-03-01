@@ -186,7 +186,7 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
             if (window.swalpaStorage.user || window.swalpaStorage.isSyncing !== undefined) {
                renderProfile({ 
                    isLoggedIn: !!window.swalpaStorage.user, 
-                   username: window.swalpaStorage.user ? window.swalpaStorage.user.username : null,
+                   username: window.swalpaStorage.user ? (window.swalpaStorage.user.username || window.swalpaStorage.user.email.split('@')[0]) : null,
                    isSyncing: window.swalpaStorage.isSyncing 
                });
             }
