@@ -2,7 +2,7 @@
  * SWALPA Badge tracking and Toast Notification logic.
  */
 
-const BADGE_DEFINITIONS = {
+export const BADGE_DEFINITIONS = {
     'first_lesson': {
         title: 'Filter Coffee First',
         description: 'Finish your very first lesson.',
@@ -52,7 +52,7 @@ const BADGE_DEFINITIONS = {
 
 const STORAGE_KEY = 'swalpa_unlocked_badges';
 
-function getUnlockedBadges() {
+export function getUnlockedBadges() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     try {
@@ -66,7 +66,7 @@ function saveUnlockedBadges(badges) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(badges));
 }
 
-function unlockBadge(badgeId) {
+export function unlockBadge(badgeId) {
     if (!BADGE_DEFINITIONS[badgeId]) {
         console.warn(`Attempted to unlock unknown badge: ${badgeId}`);
         return;

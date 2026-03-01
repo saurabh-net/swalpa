@@ -62,9 +62,8 @@ extra_css:
   - assets/css/custom.css
 
 extra_javascript:
-  - assets/js/activity.js
+  - assets/js/init.js
   - assets/js/audio.js
-  - assets/js/badges.js
   - assets/js/header.js
   - assets/js/lessons.js
   - assets/js/wotd.js

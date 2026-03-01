@@ -1,6 +1,7 @@
 import { DRIVERS, LEVELS, RANKS } from './data.js';
 import { saveHighScore } from '../../../assets/js/scores.js';
 import { unlockBadge } from '../../../assets/js/badges.js';
+import { logActivity } from '../../../assets/js/activity.js';
 
 const state = {
     respect: 25,
@@ -424,6 +425,7 @@ function renderLevelComplete() {
 
     saveHighScore('meter-haaki', { level: state.level, respect: state.respect });
     unlockBadge('meter_haaki_pro');
+    if (typeof logActivity === 'function') logActivity(5);
 
     document.getElementById('restart-game-btn').onclick = () => {
         localStorage.removeItem('meter_haaki_state');
