@@ -90,7 +90,7 @@ function initWotd() {
 
     // Add toast to show it's interactive
     root.innerHTML = `
-        <div class="swalpa-wotd-container" onclick="playWotdAudio('${phrase.audio}')">
+        <div class="swalpa-wotd-container">
             <div class="swalpa-wotd-header">
                 <h3>Phrase of the Day</h3>
                 <div class="swalpa-streak-pill ${isActiveStreak ? 'active' : ''}" title="Your daily streak">
@@ -100,13 +100,8 @@ function initWotd() {
             </div>
             
             <div class="swalpa-wotd-body">
-                <div class="swalpa-wotd-kan">${phrase.kan}</div>
-                <div class="swalpa-wotd-dkan">⟨${phrase.dKan}⟩</div>
                 <div class="swalpa-wotd-eng">"${phrase.eng}"</div>
-                
-                <div class="swalpa-wotd-play">
-                    <span class="audio-icon">🔊</span> Tap to Play
-                </div>
+                <div class="swalpa-wotd-dkan">⟨${phrase.dKan}⟩</div>
             </div>
         </div>
     `;
