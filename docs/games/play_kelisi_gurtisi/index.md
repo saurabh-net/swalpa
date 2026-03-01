@@ -219,6 +219,10 @@ hide:
     color: var(--md-primary-fg-color);
 }
 
+.hidden {
+    display: none !important;
+}
+
 @media (max-width: 500px) {
     .choices-grid {
         grid-template-columns: 1fr;
