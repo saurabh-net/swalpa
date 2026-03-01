@@ -76,7 +76,9 @@ nav:
   - Namaskara: index.md
   - Lesson Slides: summary_slides.md
   - Nanna Profile: nanna_profile.md
-  - Behind Swalpa: behind_swalpa.md
+  - Behind Swalpa:
+      - Why?: behind_swalpa/why.md
+      - AI Workflows and Architecture: behind_swalpa/architecture.md
   - Engage:
       - Games: games/index.md
       - Podcasts: podcasts/index.md
