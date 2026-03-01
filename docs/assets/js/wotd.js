@@ -36,7 +36,7 @@ function getDeterministicWordIndex(dateStr) {
 // Ensure the WSD (Words Service Dictionary) audio is ready
 const wotdAudio = new Audio();
 window.playWotdAudio = function (filename) {
-    const voiceDir = localStorage.getItem('swalpa_voice_dir') || 'audio_native_v4_male';
+    const voiceDir = StorageManager.load('swalpa_voice_dir') || 'audio_native_v4_male';
     wotdAudio.src = `/assets/${voiceDir}/${filename}.mp3`;
     wotdAudio.play().catch(e => console.log("WOTD Audio play failed:", filename));
 };
@@ -50,8 +50,8 @@ function initWotd() {
     const todayStr = `${todayDateObj.getFullYear()}-${(todayDateObj.getMonth() + 1).toString().padStart(2, '0')}-${todayDateObj.getDate().toString().padStart(2, '0')}`;
 
     // Streak Calculation
-    let lastVisitStr = localStorage.getItem('swalpa_last_visit');
-    let streakCount = parseInt(localStorage.getItem('swalpa_streak')) || 0;
+    let lastVisitStr = StorageManager.load('swalpa_last_visit');
+    let streakCount = parseInt(StorageManager.load('swalpa_streak')) || 0;
 
     if (!lastVisitStr) {
         // First visit
@@ -68,8 +68,8 @@ function initWotd() {
             // Broke the streak (or time traveled backwards in testing)
             streakCount = 1;
         }
-        localStorage.setItem('swalpa_last_visit', todayStr);
-        localStorage.setItem('swalpa_streak', streakCount.toString());
+        StorageManager.save('swalpa_last_visit', todayStr);
+        StorageManager.save('swalpa_streak', streakCount.toString());
 
         // Log daily activity for interacting with WOTD
         if (window.swalpaLogActivity) window.swalpaLogActivity(1);

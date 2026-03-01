@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // --- Voice Style Preference ---
     const swalpaAudioVoiceKey = 'swalpa_voice_dir';
     // Default to the new Chirp3 Male Voice
-    let currentVoiceDir = localStorage.getItem(swalpaAudioVoiceKey) || 'audio_native_v4_male';
+    let currentVoiceDir = StorageManager.load(swalpaAudioVoiceKey) || 'audio_native_v4_male';
     // --- End Voice Style Preference ---
     // We need to parse text nodes finding the pattern ⟨...⟩
     const pattern = /⟨([^⟩]+)⟩/g;
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const checkbox = document.getElementById('phonetic-toggle-checkbox');
 
         // Initialize state (defaults to false/hidden)
-        const isShown = localStorage.getItem(showKey) === 'true';
+        const isShown = StorageManager.load(showKey) === 'true';
         checkbox.checked = isShown;
 
         if (!isShown) {
@@ -247,10 +247,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         checkbox.addEventListener('change', (e) => {
             if (e.target.checked) {
-                localStorage.setItem(showKey, 'true');
+                StorageManager.save(showKey, 'true');
                 document.body.classList.remove('hide-phonetics');
             } else {
-                localStorage.setItem(showKey, 'false');
+                StorageManager.save(showKey, 'false');
                 document.body.classList.add('hide-phonetics');
             }
         });

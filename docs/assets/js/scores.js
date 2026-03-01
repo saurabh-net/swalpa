@@ -6,8 +6,8 @@
 const SCORES_KEY = 'swalpa_high_scores';
 
 export function getHighScores() {
-    const scores = localStorage.getItem(SCORES_KEY);
-    return scores ? JSON.parse(scores) : {
+    const scores = StorageManager.load(SCORES_KEY);
+    return scores || {
         'suffix-station': 0,
         'meter-haaki': { level: 0, respect: 0 },
         'adjust-maadi': { level: 0, respect: 0 }
@@ -30,6 +30,6 @@ export function saveHighScore(gameId, data) {
         }
     }
 
-    localStorage.setItem(SCORES_KEY, JSON.stringify(scores));
+    StorageManager.save(SCORES_KEY, scores);
     return scores;
 }

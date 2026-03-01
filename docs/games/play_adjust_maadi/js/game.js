@@ -101,20 +101,19 @@ function updateBackground() {
 }
 
 function saveGame() {
-    localStorage.setItem('adjust_maadi_state', JSON.stringify({
+    StorageManager.save('adjust_maadi_state', {
         respect: state.respect,
         wallet: state.wallet,
         patience: state.patience,
         level: state.level,
         currentStep: state.currentStep
-    }));
+    });
 }
 
 function loadGame() {
-    const saved = localStorage.getItem('adjust_maadi_state');
+    const saved = StorageManager.load('adjust_maadi_state');
     if (saved) {
-        const parsed = JSON.parse(saved);
-        Object.assign(state, parsed);
+        Object.assign(state, saved);
     }
 }
 
@@ -420,7 +419,7 @@ function shareResult(platform, rank, level) {
 
 const gameAudio = new Audio();
 window.playGameAudio = function (filename) {
-    const voiceDir = localStorage.getItem('swalpa_voice_dir') || 'audio_native_v4_male';
+    const voiceDir = StorageManager.load('swalpa_voice_dir') || 'audio_native_v4_male';
     gameAudio.src = `../../assets/${voiceDir}/${filename}.mp3`;
     gameAudio.play().catch(e => console.log("Audio play missing:", filename));
 };

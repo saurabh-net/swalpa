@@ -739,3 +739,149 @@ input:checked+.swalpa-slider:before {
     font-size: 0.9em;
     opacity: 0.9;
 }
+
+/* --- Cloud Sync & Auth UI --- */
+.swalpa-sync-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.swalpa-sync-card.synced {
+    background: rgba(0, 255, 100, 0.05);
+    border-color: rgba(0, 255, 100, 0.2);
+}
+
+.sync-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    color: var(--md-default-fg-color);
+}
+
+.sync-info p {
+    margin: 0;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.sync-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: Outfit, sans-serif;
+    white-space: nowrap;
+}
+
+.sync-btn.login {
+    background: #ce1126;
+    color: white;
+}
+
+.sync-btn.logout {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--md-default-fg-color);
+}
+
+.swalpa-modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.swalpa-modal-content {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.auth-toggle {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 4px;
+    margin: 20px 0;
+}
+
+.auth-toggle button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    opacity: 0.6;
+}
+
+.auth-toggle button.active {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+#swalpa-auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+
+#auth-submit-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #ce1126;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.auth-error-msg {
+    color: #ff4444;
+    font-size: 0.85em;
+    margin-bottom: 12px;
+}
+
+@media screen and (max-width: 600px) {
+    .swalpa-sync-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}

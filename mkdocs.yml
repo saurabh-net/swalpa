@@ -62,6 +62,9 @@ extra_css:
   - assets/css/custom.css
 
 extra_javascript:
+  - https://js.userbase.com/2/userbase.js
+  - assets/js/storage.js
+  - assets/js/auth.js
   - assets/js/init.js
   - assets/js/audio.js
   - assets/js/header.js

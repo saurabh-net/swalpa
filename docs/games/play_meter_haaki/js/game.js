@@ -100,21 +100,20 @@ function updateBackground() {
 }
 
 function saveGame() {
-    localStorage.setItem('meter_haaki_state', JSON.stringify({
+    StorageManager.save('meter_haaki_state', {
         respect: state.respect,
         wallet: state.wallet,
         patience: state.patience,
         level: state.level,
         currentStep: state.currentStep,
         activeDriver: state.activeDriver
-    }));
+    });
 }
 
 function loadGame() {
-    const saved = localStorage.getItem('meter_haaki_state');
+    const saved = StorageManager.load('meter_haaki_state');
     if (saved) {
-        const parsed = JSON.parse(saved);
-        Object.assign(state, parsed);
+        Object.assign(state, saved);
     }
 }
 
@@ -288,7 +287,7 @@ function handleChoice(choice) {
         }
 
         if (choice.effect.end === 'reset') {
-            localStorage.removeItem('meter_haaki_state');
+            localStorage.removeItem('meter_haaki_state'); // We can leave removeItem as is or use save(null)
             location.reload();
             return;
         }
@@ -473,7 +472,7 @@ function shareResult(platform, rank, level) {
 // Global Audio Helper (linked from game.js for internal use)
 const gameAudio = new Audio();
 window.playGameAudio = function (filename) {
-    const voiceDir = localStorage.getItem('swalpa_voice_dir') || 'audio_native_v4_male';
+    const voiceDir = StorageManager.load('swalpa_voice_dir') || 'audio_native_v4_male';
     gameAudio.src = `../../assets/${voiceDir}/${filename}.mp3`;
     gameAudio.play().catch(e => console.log("Audio play failed:", filename));
 };

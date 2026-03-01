@@ -5,7 +5,31 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
 <div id="swalpa-profile-root">
     <!-- The JavaScript will dynamically render the Rank Card and Badge Grid here -->
     <div style="text-align: center; padding: 40px; color: var(--md-default-fg-color--light);">
-        <i>Loading profile data... if this remains, ensure JavaScript is enabled.</i>
+        <i>Loading profile data... if this remains, ensure JavaScript is enabled and the sync manager is initialized.</i>
+    </div>
+</div>
+
+<!-- Auth Modal (Hidden by default) -->
+<div id="swalpa-auth-modal" class="swalpa-modal" style="display: none;">
+    <div class="swalpa-modal-content">
+        <span class="close-modal" onclick="closeAuthModal()">&times;</span>
+        <div id="auth-form-container">
+            <h2 id="auth-title">Enable Cloud Sync</h2>
+            <p id="auth-desc">Your progress will be encrypted and available on all your devices.</p>
+            <div class="auth-toggle">
+                <button id="toggle-to-login" onclick="switchAuthMode('login')">Login</button>
+                <button id="toggle-to-signup" onclick="switchAuthMode('signup')" class="active">Sign Up</button>
+            </div>
+            <form id="swalpa-auth-form" onsubmit="handleAuthSubmit(event)">
+                <input type="text" id="auth-username" placeholder="Username" required autocomplete="username">
+                <input type="password" id="auth-password" placeholder="Password" required autocomplete="new-password">
+                <div id="auth-error" class="auth-error-msg" style="display: none;"></div>
+                <button type="submit" id="auth-submit-btn">Create Account & Sync</button>
+            </form>
+            <p style="font-size: 0.8em; margin-top: 15px; opacity: 0.7;">
+                Note: This account is for progress sync only. Comments still use GitHub.
+            </p>
+        </div>
     </div>
 </div>
 
@@ -22,14 +46,34 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
             const calculateProgress = progModule.calculateProgress;
             const getActivityLog = actModule.getActivityLog;
             
-            const progress = calculateProgress();
-            const activityLog = getActivityLog();
-            const unlockedBadges = window.getUnlockedBadges ? window.getUnlockedBadges() : [];
-            const badgeDefs = window.BADGE_DEFINITIONS || {};
+            const renderProfile = (syncStatus = null) => {
+                const progress = calculateProgress();
+                const activityLog = getActivityLog();
+                const unlockedBadges = window.getUnlockedBadges ? window.getUnlockedBadges() : [];
+                const badgeDefs = window.BADGE_DEFINITIONS || {};
+                const currentStreak = StorageManager.load('swalpa_streak') || 1;
+                
+                let html = '';
 
-        // 1. Build the Rank Header Card
-        const currentStreak = window.localStorage.getItem('swalpa_streak') || 1;
-        let html = `
+                // 0. Cloud Sync Status Card
+                if (syncStatus) {
+                    html += `
+                        <div class="swalpa-sync-card ${syncStatus.isLoggedIn ? 'synced' : 'guest'}">
+                            <div class="sync-info">
+                                <h3>${syncStatus.isLoggedIn ? '✅ Cloud Sync Active' : '☁️ Sync Your Progress'}</h3>
+                                <p>${syncStatus.isLoggedIn 
+                                    ? `Logged in as <b>${syncStatus.username}</b>. Your data is encrypted and synced.` 
+                                    : 'Your progress is currently saved only on this browser. Enable sync to access it anywhere.'}
+                                </p>
+                            </div>
+                            <div class="sync-actions">
+                                ${syncStatus.isLoggedIn 
+                                    ? `<button class="sync-btn logout" onclick="AuthManager.logout()">Logout</button>` 
+                                    : `<button class="sync-btn login" onclick="openAuthModal()">Enable Cloud Sync</button>`}
+                            </div>
+                        </div>
+                    `;
+                }
             <div class="swalpa-profile-card">
                 <div class="swalpa-profile-rank-header">
                     <div class="sp-emoji">${progress.rank.title.split(' ')[0]}</div>
@@ -114,6 +158,90 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
 
         html += `</div>`; // Close grid
         root.innerHTML = html;
+        };
+
+        // Initial render
+        renderProfile();
+
+        // Listen for sync status changes
+        if (window.StorageManager) {
+            StorageManager.onSyncChange((status) => {
+                renderProfile(status);
+            });
+            // Also listen for data refresh from cloud
+            window.addEventListener('swalpa-data-synced', () => renderProfile());
+            
+            // If already initialized, update UI
+            if (StorageManager.user || StorageManager.isSyncing !== undefined) {
+               renderProfile({ 
+                   isLoggedIn: !!StorageManager.user, 
+                   username: StorageManager.user ? StorageManager.user.username : null,
+                   isSyncing: StorageManager.isSyncing 
+               });
+            }
+        }
         });
     });
+
+    // --- Auth UI Helpers ---
+    window.openAuthModal = function() {
+        document.getElementById('swalpa-auth-modal').style.display = 'flex';
+        switchAuthMode('signup');
+    }
+
+    window.closeAuthModal = function() {
+        document.getElementById('swalpa-auth-modal').style.display = 'none';
+        document.getElementById('auth-error').style.display = 'none';
+    }
+
+    window.switchAuthMode = function(mode) {
+        authMode = mode;
+        const title = document.getElementById('auth-title');
+        const desc = document.getElementById('auth-desc');
+        const btn = document.getElementById('auth-submit-btn');
+        const sgTab = document.getElementById('toggle-to-signup');
+        const lgTab = document.getElementById('toggle-to-login');
+
+        if (mode === 'signup') {
+            title.innerText = 'Create Progress Account';
+            desc.innerText = 'Keep your badges and lessons safe in the cloud.';
+            btn.innerText = 'Create Account & Sync';
+            sgTab.classList.add('active');
+            lgTab.classList.remove('active');
+        } else {
+            title.innerText = 'Cloud Sync Login';
+            desc.innerText = 'Resume your progress from another device.';
+            btn.innerText = 'Login & Restore Progress';
+            lgTab.classList.add('active');
+            sgTab.classList.remove('active');
+        }
+    }
+
+    window.handleAuthSubmit = async function(e) {
+        e.preventDefault();
+        const user = document.getElementById('auth-username').value;
+        const pass = document.getElementById('auth-password').value;
+        const errorEl = document.getElementById('auth-error');
+        const btn = document.getElementById('auth-submit-btn');
+
+        errorEl.style.display = 'none';
+        btn.disabled = true;
+        btn.innerText = 'Connecting...';
+
+        let result;
+        if (authMode === 'signup') {
+            result = await AuthManager.signUp(user, pass);
+        } else {
+            result = await AuthManager.signIn(user, pass);
+        }
+
+        if (result.success) {
+            closeAuthModal();
+        } else {
+            errorEl.innerText = result.error;
+            errorEl.style.display = 'block';
+            btn.disabled = false;
+            btn.innerText = authMode === 'signup' ? 'Create Account & Sync' : 'Login & Restore Progress';
+        }
+    }
 </script>
