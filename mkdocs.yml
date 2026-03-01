@@ -71,7 +71,7 @@ extra_javascript:
 
 nav:
   - Namaskara: index.md
-  - Profile: profile.md
+  - Your Profile: profile.md
   - Lessons:
       - 1. History & Nuances: 01_history_and_nuances.md
       - 2. Survival & Emergencies: 02_survival_and_emergencies.md
@@ -87,6 +87,4 @@ nav:
   - Engage:
       - Games: games/index.md
       - Podcasts: podcasts/index.md
-      - Flashcards:
-          - English to Kannada: flashcards_en_kn.md
-          - Kannada to English: flashcards_kn_en.md
+      - Flashcards: flashcards/index.md

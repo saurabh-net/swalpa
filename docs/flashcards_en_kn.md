@@ -36,9 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 # Flashcards (English to Kannada)
 
-> [!TIP] 🧠 **Master Kannada Faster with Spaced Repetition**
-> We use [Orbit](https://withorbit.com/) to power these interactive flashcards. Orbit uses a **spaced repetition algorithm** that perfectly times when you see a card again to maximize your memory retention—helping you internalize these lessons permanently.
-> 
+> [!TIP]
 > **Your progress is saved entirely on your device (in local storage).** You won't lose your progress if you refresh the page or come back tomorrow!
 
 <orbit-reviewarea>
