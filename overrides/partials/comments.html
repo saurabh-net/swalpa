@@ -1,4 +1,4 @@
-{% if not page.is_homepage and page.meta.comments != false %}
+{% if page.meta.comments or (not page.is_homepage and page.meta.comments != false) %}
 <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
 
 <!-- 
