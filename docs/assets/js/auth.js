@@ -4,37 +4,16 @@
  */
 
 window.AuthManager = {
-    // Firebase uses email/password. We emulsify username by appending a domain.
-    _getUserEmail(username) {
-        return `${username.toLowerCase().trim()}@swalpa.app`;
-    },
-
-    async signUp(username, password) {
+    async signInWithGoogle() {
         try {
-            const userCredential = await window.auth.createUserWithEmailAndPassword(
-                this._getUserEmail(username),
-                password
-            );
-            window.swalpaStorage.user = userCredential.user;
-            await window.swalpaStorage.syncUp(); // Migrate local progress to new Firestore account
-            window.swalpaStorage._notifySyncChange();
-            return { success: true };
-        } catch (e) {
-            return { success: false, error: e.message };
-        }
-    },
-
-    async signIn(username, password) {
-        try {
-            const userCredential = await window.auth.signInWithEmailAndPassword(
-                this._getUserEmail(username),
-                password
-            );
-            window.swalpaStorage.user = userCredential.user;
+            const provider = new firebase.auth.GoogleAuthProvider();
+            const result = await window.auth.signInWithPopup(provider);
+            window.swalpaStorage.user = result.user;
             await window.swalpaStorage.syncDown();
             window.swalpaStorage._notifySyncChange();
             return { success: true };
         } catch (e) {
+            console.error("Google Sign-In failed:", e);
             return { success: false, error: e.message };
         }
     },

@@ -14,22 +14,20 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
 
 <!-- Auth Modal (Hidden by default) -->
 <div id="swalpa-auth-modal" class="swalpa-modal" style="display: none;">
-    <div class="swalpa-modal-content">
+    <div class="swalpa-modal-content" style="max-width: 400px; text-align: center; padding: 40px;">
         <span class="close-modal" onclick="closeAuthModal()">&times;</span>
         <div id="auth-form-container">
-            <h2 id="auth-title">Enable Cloud Sync</h2>
-            <p id="auth-desc">Your progress will be encrypted and available on all your devices.</p>
-            <div class="auth-toggle">
-                <button id="toggle-to-login" onclick="switchAuthMode('login')">Login</button>
-                <button id="toggle-to-signup" onclick="switchAuthMode('signup')" class="active">Sign Up</button>
-            </div>
-            <form id="swalpa-auth-form" onsubmit="handleAuthSubmit(event)">
-                <input type="text" id="auth-username" placeholder="Username" required autocomplete="username">
-                <input type="password" id="auth-password" placeholder="Password" required autocomplete="new-password">
-                <div id="auth-error" class="auth-error-msg" style="display: none;"></div>
-                <button type="submit" id="auth-submit-btn">Create Account & Sync</button>
-            </form>
-            <p style="font-size: 0.8em; margin-top: 15px; opacity: 0.7;">
+            <h2 id="auth-title" style="margin-top: 0;">Enable Cloud Sync</h2>
+            <p id="auth-desc" style="margin-bottom: 30px; opacity: 0.8;">Securely sync your respect points and badges across all your devices using your Google account.</p>
+            
+            <button id="google-signin-btn" onclick="handleGoogleSignIn()" class="swalpa-google-btn">
+                <img src="/assets/img/google-icon.svg" alt="Google" style="width: 20px; height: 20px;">
+                <span>Sign in with Google</span>
+            </button>
+
+            <div id="auth-error" class="auth-error-msg" style="display: none; margin-top: 20px; color: #ff5252;"></div>
+            
+            <p style="font-size: 0.8em; margin-top: 30px; opacity: 0.6;">
                 Note: This account is for progress sync only. Comments still use GitHub.
             </p>
         </div>
@@ -197,7 +195,6 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
     // --- Auth UI Helpers ---
     window.openAuthModal = function() {
         document.getElementById('swalpa-auth-modal').style.display = 'flex';
-        switchAuthMode('signup');
     }
 
     window.closeAuthModal = function() {
@@ -205,46 +202,15 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
         document.getElementById('auth-error').style.display = 'none';
     }
 
-    window.switchAuthMode = function(mode) {
-        authMode = mode;
-        const title = document.getElementById('auth-title');
-        const desc = document.getElementById('auth-desc');
-        const btn = document.getElementById('auth-submit-btn');
-        const sgTab = document.getElementById('toggle-to-signup');
-        const lgTab = document.getElementById('toggle-to-login');
-
-        if (mode === 'signup') {
-            title.innerText = 'Create Progress Account';
-            desc.innerText = 'Keep your badges and lessons safe in the cloud.';
-            btn.innerText = 'Create Account & Sync';
-            sgTab.classList.add('active');
-            lgTab.classList.remove('active');
-        } else {
-            title.innerText = 'Cloud Sync Login';
-            desc.innerText = 'Resume your progress from another device.';
-            btn.innerText = 'Login & Restore Progress';
-            lgTab.classList.add('active');
-            sgTab.classList.remove('active');
-        }
-    }
-
-    window.handleAuthSubmit = async function(e) {
-        e.preventDefault();
-        const user = document.getElementById('auth-username').value;
-        const pass = document.getElementById('auth-password').value;
+    window.handleGoogleSignIn = async function() {
         const errorEl = document.getElementById('auth-error');
-        const btn = document.getElementById('auth-submit-btn');
+        const btn = document.getElementById('google-signin-btn');
 
         errorEl.style.display = 'none';
         btn.disabled = true;
-        btn.innerText = 'Connecting...';
+        btn.classList.add('loading');
 
-        let result;
-        if (authMode === 'signup') {
-            result = await AuthManager.signUp(user, pass);
-        } else {
-            result = await AuthManager.signIn(user, pass);
-        }
+        const result = await AuthManager.signInWithGoogle();
 
         if (result.success) {
             closeAuthModal();
@@ -252,7 +218,7 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
             errorEl.innerText = result.error;
             errorEl.style.display = 'block';
             btn.disabled = false;
-            btn.innerText = authMode === 'signup' ? 'Create Account & Sync' : 'Login & Restore Progress';
+            btn.classList.remove('loading');
         }
     }
 </script>
