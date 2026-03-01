@@ -987,8 +987,16 @@ input:checked+.swalpa-slider:before {
         margin-right: 0 !important;
     }
 }
+
 /* Centering and width restriction for better readability on wide screens */
 @media screen and (min-width: 60em) {
+
+    /* Reduce perceived empty space on the left/right by widening the main grid container */
+    .md-grid {
+        max-width: 100rem;
+        /* ~1600px: Brings the sidebar closer to the edge on wide monitors */
+    }
+
     .md-content__inner {
         max-width: 45rem;
         margin-left: auto;
