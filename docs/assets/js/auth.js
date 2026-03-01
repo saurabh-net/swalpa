@@ -1,6 +1,6 @@
 /**
  * SWALPA Authentication Logic
- * Refers to window.swalpaStorage and userbase SDK.
+ * Refers to window.swalpaStorage and Firebase SDK.
  */
 
 window.AuthManager = {
