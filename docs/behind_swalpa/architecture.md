@@ -1,21 +1,21 @@
 # AI Workflows
 
-While language is the focus of the site, the underlying platform serves as an experimental playground for modern web architecture and AI workflows.
+While language is the focus of the site, the underlying platform serves as an experimental playground for AI assisted development and workflows.
 
 ## The Stack (Local-First)
 The platform is designed to be high-performance, private, and extremely low-maintenance.
 
 - **Frontend**: Built on MkDocs Material (static site generation) heavily augmented with Vanilla Javascript.
 - **Persistence**: We use a **Local-First** architecture. Progress is instantly saved to your browser's `localStorage` ensuring sub-millisecond UI feedback. We integrate **Userbase.com** for optional end-to-end cloud sync, allowing you to back up your streak across devices.
-- **Interactivity**: Custom-built JS game engines, Orbit-powered Spaced Repetition (SRS) flashcards, and a Giscus-powered feedback system.
+- **Interactivity**: Custom-built JS game engines, Orbit-powered Spaced Repetition (SRS) flashcards, NotebookLM authored podcasts and slides, and a Giscus-powered feedback system.
 
 ---
 
 ## AI-Assisted, Human-Led Workflow
 The core 10 lessons serve as the manually curated "Source of Truth," constructed after weeks of research. However, the interactive layers built on top of them are powered by AI:
 
-- **Audio Generation**: We utilize Python scripts to interface with Google Cloud's advanced Text-to-Speech models (like Chirp3-HD) to generate the native-sounding, street-accurate pronunciation clips.
 - **Agentic Coding**: The game engines, UI features, and cloud sync logic were co-developed alongside **Antigravity** (an agentic coding AI).
+- **Audio Generation**: We utilize Python scripts to interface with Google Cloud's advanced Text-to-Speech models (like Chirp3-HD) to generate the native-sounding, street-accurate pronunciation clips.
 - **Content Expansion**: Workflows utilizing Gemini Deep Research and NotebookLM help process grammar rules, generate podcast scripts, and maintain architectural consistency across the Markdown codebase.
 
 ---
