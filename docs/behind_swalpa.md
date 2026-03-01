@@ -1,4 +1,4 @@
-# 📖 The SWALPA Story
+# 📖 Behind SWALPA
 
 Welcome to the engine room! SWALPA started as a simple New Year’s resolution to finally learn Kannada. It began as a small collection of personal notes and evolved into an interactive platform specifically designed for people living and working in Bengaluru.
 

@@ -74,9 +74,9 @@ extra_javascript:
 
 nav:
   - Namaskara: index.md
-  - Nanna Profile: nanna_profile.md
   - Lesson Slides: summary_slides.md
-  - Namma Story: namma_story.md
+  - Nanna Profile: nanna_profile.md
+  - Behind Swalpa: behind_swalpa.md
   - Engage:
       - Games: games/index.md
       - Podcasts: podcasts/index.md
