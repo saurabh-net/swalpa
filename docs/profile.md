@@ -53,8 +53,8 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                 const badgeDefs = window.BADGE_DEFINITIONS || {};
                 
                 let currentStreak = 1;
-                if (window.StorageManager && typeof window.StorageManager.load === 'function') {
-                    currentStreak = window.StorageManager.load('swalpa_streak') || 1;
+                if (window.swalpaStorage && typeof window.swalpaStorage.load === 'function') {
+                    currentStreak = window.swalpaStorage.load('swalpa_streak') || 1;
                 } else {
                     currentStreak = localStorage.getItem('swalpa_streak') || 1;
                 }
@@ -172,19 +172,19 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
         renderProfile();
 
         // Listen for sync status changes
-        if (window.StorageManager) {
-            window.StorageManager.onSyncChange((status) => {
+        if (window.swalpaStorage) {
+            window.swalpaStorage.onSyncChange((status) => {
                 renderProfile(status);
             });
             // Also listen for data refresh from cloud
             window.addEventListener('swalpa-data-synced', () => renderProfile());
             
             // If already initialized, update UI
-            if (window.StorageManager.user || window.StorageManager.isSyncing !== undefined) {
+            if (window.swalpaStorage.user || window.swalpaStorage.isSyncing !== undefined) {
                renderProfile({ 
-                   isLoggedIn: !!window.StorageManager.user, 
-                   username: window.StorageManager.user ? window.StorageManager.user.username : null,
-                   isSyncing: window.StorageManager.isSyncing 
+                   isLoggedIn: !!window.swalpaStorage.user, 
+                   username: window.swalpaStorage.user ? window.swalpaStorage.user.username : null,
+                   isSyncing: window.swalpaStorage.isSyncing 
                });
             }
         }

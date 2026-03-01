@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper to get array of completed lesson IDs
     function getCompletedLessons() {
-        return window.StorageManager.load(showKey) || [];
+        return window.swalpaStorage.load(showKey) || [];
     }
 
     const completedLessons = getCompletedLessons();
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentArr = currentArr.filter(id => id !== currentLessonId);
                 }
 
-                window.StorageManager.save(showKey, currentArr);
+                window.swalpaStorage.save(showKey, currentArr);
 
                 // Check if this is the first lesson ever completed to award the badge
                 if (e.target.checked && currentArr.length === 1 && window.unlockBadge) {

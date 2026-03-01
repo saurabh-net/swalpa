@@ -6,14 +6,14 @@
 export function logActivity(points = 1) {
     try {
         const today = new Date().toLocaleDateString('en-CA'); // 'YYYY-MM-DD' local time
-        let log = window.StorageManager.load('swalpa_activity_log') || {};
+        let log = window.swalpaStorage.load('swalpa_activity_log') || {};
 
         if (!log[today]) {
             log[today] = 0;
         }
 
         log[today] += points;
-        window.StorageManager.save('swalpa_activity_log', log);
+        window.swalpaStorage.save('swalpa_activity_log', log);
 
         console.log(`[SWALPA] Activity logged for ${today}: +${points} (Total: ${log[today]})`);
     } catch (e) {
@@ -23,7 +23,7 @@ export function logActivity(points = 1) {
 
 export function getActivityLog() {
     try {
-        return window.StorageManager.load('swalpa_activity_log') || {};
+        return window.swalpaStorage.load('swalpa_activity_log') || {};
     } catch (e) {
         console.error("Failed to parse SWALPA activity log:", e);
     }

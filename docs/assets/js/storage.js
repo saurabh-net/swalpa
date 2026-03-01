@@ -5,7 +5,7 @@
 
 const USERBASE_APP_ID = '060290bd-6c76-4d3a-bab1-04c578bc6c41'; // Production App ID
 
-class StorageManager {
+class SwalpaStorageManager {
     constructor() {
         this.user = null;
         this.isSyncing = false;
@@ -149,5 +149,5 @@ class StorageManager {
 }
 
 // Global instance
-window.StorageManager = new StorageManager();
-document.addEventListener('DOMContentLoaded', () => window.StorageManager.init());
+window.swalpaStorage = new SwalpaStorageManager();
+document.addEventListener('DOMContentLoaded', () => window.swalpaStorage.init());

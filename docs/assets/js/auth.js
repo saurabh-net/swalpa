@@ -1,15 +1,15 @@
 /**
  * SWALPA Authentication Logic
- * Refers to window.StorageManager and userbase SDK.
+ * Refers to window.swalpaStorage and userbase SDK.
  */
 
 window.AuthManager = {
     async signUp(username, password) {
         try {
             const user = await window.userbase.signUp({ username, password, rememberMe: 'local' });
-            window.StorageManager.user = user;
-            await window.StorageManager.syncUp(); // Migrate local progress to new account
-            window.StorageManager._notifySyncChange();
+            window.swalpaStorage.user = user;
+            await window.swalpaStorage.syncUp(); // Migrate local progress to new account
+            window.swalpaStorage._notifySyncChange();
             return { success: true };
         } catch (e) {
             return { success: false, error: e.message };
@@ -19,9 +19,9 @@ window.AuthManager = {
     async signIn(username, password) {
         try {
             const user = await window.userbase.signIn({ username, password, rememberMe: 'local' });
-            window.StorageManager.user = user;
-            await window.StorageManager.syncDown();
-            window.StorageManager._notifySyncChange();
+            window.swalpaStorage.user = user;
+            await window.swalpaStorage.syncDown();
+            window.swalpaStorage._notifySyncChange();
             return { success: true };
         } catch (e) {
             return { success: false, error: e.message };
@@ -31,8 +31,8 @@ window.AuthManager = {
     async logout() {
         try {
             await window.userbase.signOut();
-            window.StorageManager.user = null;
-            window.StorageManager._notifySyncChange();
+            window.swalpaStorage.user = null;
+            window.swalpaStorage._notifySyncChange();
             return { success: true };
         } catch (e) {
             return { success: false, error: e.message };
