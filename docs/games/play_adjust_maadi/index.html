@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script>
-        // Proxy SWALPA storage to the parent window to support shared modules (scores, badges, activity)
+        // Resilient SWALPA storage proxy
         Object.defineProperty(window, 'swalpaStorage', {
             get: function () {
                 try {
@@ -19,7 +19,21 @@
                         return window.parent.swalpaStorage;
                     }
                 } catch (e) { }
-                return { load: function () { return null; }, save: function () { } };
+                // Local fallback for standalone mode or if proxy fails
+                return {
+                    load: function (key) {
+                        const raw = localStorage.getItem(key);
+                        if (!raw) return null;
+                        try {
+                            const parsed = JSON.parse(raw);
+                            return (parsed && parsed._data !== undefined) ? parsed._data : parsed;
+                        } catch (e) { return raw; }
+                    },
+                    save: function (key, data) {
+                        const timestampedData = { _data: data, _updatedAt: Date.now() };
+                        localStorage.setItem(key, JSON.stringify(timestampedData));
+                    }
+                };
             }
         });
     </script>
@@ -104,7 +118,7 @@
             </footer>
         </div>
     </div>
-    <script type="module" src="js/game.js?v=6"></script>
+    <script type="module" src="js/game.js?v=8"></script>
 </body>
 
 </html>

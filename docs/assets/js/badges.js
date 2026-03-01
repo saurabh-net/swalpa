@@ -47,6 +47,21 @@ export const BADGE_DEFINITIONS = {
         title: 'Dedicated Shishya',
         description: 'Achieve a 5-day blazing streak.',
         emoji: '🔥'
+    },
+    'kivi_kodu': {
+        title: 'Kivi Kodu (Lend an Ear)',
+        description: 'Listened to your first SWALPA podcast.',
+        emoji: '🎧'
+    },
+    'flashcard_shishya': {
+        title: 'Flashcard Shishya',
+        description: 'Attempted your first Kannada flashcard stack.',
+        emoji: '🗂️'
+    },
+    'sound_engineer': {
+        title: 'Local Sound Engineer',
+        description: 'Toggled the phonetic audio settings for the first time.',
+        emoji: '🎛️'
     }
 };
 

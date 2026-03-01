@@ -1,7 +1,7 @@
-import { DRIVERS, LEVELS, RANKS } from './data.js?v=6';
-import { saveHighScore } from '../../../assets/js/scores.js?v=6';
-import { unlockBadge } from '../../../assets/js/badges.js?v=6';
-import { logActivity } from '../../../assets/js/activity.js?v=6';
+import { DRIVERS, LEVELS, RANKS } from './data.js?v=8';
+import { saveHighScore } from '../../../assets/js/scores.js?v=8';
+import { unlockBadge } from '../../../assets/js/badges.js?v=8';
+import { logActivity } from '../../../assets/js/activity.js?v=8';
 
 const state = {
     respect: 25,
@@ -156,10 +156,6 @@ async function typeWriter(text, element) {
             const span = document.createElement('span');
             span.className = 'audio-phonetic-link';
             span.innerHTML = `⟨${part.value}⟩`;
-            span.onclick = (e) => {
-                e.stopPropagation();
-                playGameAudio(part.value);
-            };
             element.appendChild(span);
             await new Promise(r => setTimeout(r, 100)); // Pause briefly on tags
         }
@@ -194,7 +190,7 @@ function showDialogue(stepKey) {
     // Resolve dynamic speaker/text
     let speaker = step.speaker;
     if (speaker === "Driver") {
-        speaker = state.activeDriver ? DRIVERS[state.activeDriver].name : "Driver";
+        speaker = (state.activeDriver && DRIVERS[state.activeDriver]) ? DRIVERS[state.activeDriver].name : "Driver";
     }
 
     let text = step.text;
@@ -238,7 +234,7 @@ function showDialogue(stepKey) {
 
 function parsePhoneticsOnly(text) {
     return text.replace(/⟨([^⟩]+)⟩/g, (match, p1) => {
-        return `<span class="audio-phonetic-link" onclick="event.stopPropagation(); playGameAudio('${p1}')">⟨${p1}⟩</span>`;
+        return `<span class="audio-phonetic-link">⟨${p1}⟩</span>`;
     });
 }
 
@@ -474,14 +470,7 @@ function shareResult(platform, rank, level) {
     }
 }
 
-// Global Audio Helper (linked from game.js for internal use)
-const gameAudio = new Audio();
-window.playGameAudio = function (filename) {
-    const storage = window.swalpaStorage || window.parent.swalpaStorage;
-    const voiceDir = (storage && storage.load('swalpa_voice_dir')) || 'audio_native_v4_male';
-    gameAudio.src = `../../../assets/${voiceDir}/${filename}.mp3`;
-    gameAudio.play().catch(e => console.log("Audio play failed:", filename));
-};
+
 
 // Start the game on load
 window.addEventListener('load', init);

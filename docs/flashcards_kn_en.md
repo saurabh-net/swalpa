@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reviewAreas.length > 0) {
             reviewAreas.forEach(area => {
                 area.addEventListener('click', () => {
-                    if (window.unlockBadge) window.unlockBadge('flashcard_starter');
+                    if (window.unlockBadge) window.unlockBadge('flashcard_shishya');
                 }, { once: true });
             });
             observer.disconnect();

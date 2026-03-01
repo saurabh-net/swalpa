@@ -13,7 +13,7 @@ Deep dives into the linguistic "layer cake" of Bangalore. Our podcasts focus on 
             <p>An introduction to the SWALPA methodology and why we focus on street survival over academic grammar.</p>
         </div>
         <div class="swalpa-feature-action">
-            <a href="overview/" class="swalpa-button">Listen Now</a>
+            <a href="overview/" class="swalpa-button" onclick="if(window.unlockBadge) window.unlockBadge('kivi_kodu');">Listen Now</a>
         </div>
     </div>
 
@@ -24,7 +24,7 @@ Deep dives into the linguistic "layer cake" of Bangalore. Our podcasts focus on 
             <p>A deep dive into the "Bēku/Bēda" necessity engine and how to navigate everyday emergencies.</p>
         </div>
         <div class="swalpa-feature-action">
-            <a href="essentials/" class="swalpa-button">Listen Now</a>
+            <a href="essentials/" class="swalpa-button" onclick="if(window.unlockBadge) window.unlockBadge('kivi_kodu');">Listen Now</a>
         </div>
     </div>
 
@@ -35,7 +35,7 @@ Deep dives into the linguistic "layer cake" of Bangalore. Our podcasts focus on 
             <p>Understanding the architecture of Kannada suffixes and how to stack them like building blocks.</p>
         </div>
         <div class="swalpa-feature-action">
-            <a href="suffixes/" class="swalpa-button">Listen Now</a>
+            <a href="suffixes/" class="swalpa-button" onclick="if(window.unlockBadge) window.unlockBadge('kivi_kodu');">Listen Now</a>
         </div>
     </div>
 </div>
