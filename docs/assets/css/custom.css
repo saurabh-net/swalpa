@@ -975,3 +975,14 @@ input:checked+.swalpa-slider:before {
         text-align: center;
     }
 }
+
+/* --- Global UI Refinement: Hide TOC --- */
+.md-sidebar--secondary {
+    display: none !important;
+}
+
+@media screen and (min-width: 60em) {
+    .md-content {
+        margin-right: 0 !important;
+    }
+}

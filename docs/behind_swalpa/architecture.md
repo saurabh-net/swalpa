@@ -1,4 +1,4 @@
-# AI Workflows & Architecture
+# AI Workflows
 
 While language is the focus of the site, the underlying platform serves as an experimental playground for modern web architecture and AI workflows.
 
