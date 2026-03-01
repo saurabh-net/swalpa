@@ -76,6 +76,9 @@ This guide is for you if:
 - You relate well to Hindi logical bridges, which we use to make grammar easier to grasp intuitively (e.g., using Hindi parallels like *Mujhe* -> *Nanage*).
 
 ## 📖 Course Preview
+
+Short on time? **[Just skim through the Lesson Slides](summary_slides.md)** to get the essentials in 5 minutes.
+
 Here is a sneak peek at what you will learn in the upcoming modules:
 
 *   **[1. History & Nuances](01_history_and_nuances.md)**: Understand the cultural context, the Bangalore dialect, and how this guide approaches learning.
