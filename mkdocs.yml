@@ -75,6 +75,11 @@ extra_javascript:
 nav:
   - Namaskara: index.md
   - My Profile: profile.md
+  - Lesson Summary: summary_slides.md
+  - Engage:
+      - Games: games/index.md
+      - Podcasts: podcasts/index.md
+      - Flashcards: flashcards/index.md
   - Lessons:
       - 1. History & Nuances: 01_history_and_nuances.md
       - 2. Survival & Emergencies: 02_survival_and_emergencies.md
@@ -86,8 +91,3 @@ nav:
       - 8. Travel & Conflict: 08_travel_and_conflict.md
       - 9. Renting & Repairs: 09_everyday_logistics_and_services.md
       - 10. Home & Groceries: 10_household_and_logistics.md
-      - Summary Slides: summary_slides.md
-    - Engage:
-      - Games: games/index.md
-      - Podcasts: podcasts/index.md
-      - Flashcards: flashcards/index.md
