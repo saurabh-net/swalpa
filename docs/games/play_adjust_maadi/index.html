@@ -13,7 +13,14 @@
     <script>
         // Proxy SWALPA storage to the parent window to support shared modules (scores, badges, activity)
         Object.defineProperty(window, 'swalpaStorage', {
-            get: function () { return window.parent.swalpaStorage; }
+            get: function () {
+                try {
+                    if (window !== window.parent && window.parent && window.parent.swalpaStorage) {
+                        return window.parent.swalpaStorage;
+                    }
+                } catch (e) { }
+                return { load: function () { return null; }, save: function () { } };
+            }
         });
     </script>
     <link

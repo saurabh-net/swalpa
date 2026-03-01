@@ -149,13 +149,11 @@ async function typeWriter(text, element) {
                 await new Promise(r => setTimeout(r, 20));
             }
         } else {
-            const safe = part.value.replace(/[^a-zA-Z0-9_\-]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
             const span = document.createElement('span');
             span.className = 'audio-phonetic-link';
-            span.innerHTML = `<span class="audio-icon">🔊</span>⟨${part.value}⟩`;
-            span.onclick = () => playGameAudio(safe);
+            span.innerHTML = `⟨${part.value}⟩`;
             element.appendChild(span);
-            await new Promise(r => setTimeout(r, 100));
+            await new Promise(r => setTimeout(r, 100)); // Pause briefly on tags
         }
     }
 
@@ -214,8 +212,7 @@ function showDialogue(stepKey) {
 
 function parsePhoneticsOnly(text) {
     return text.replace(/⟨([^⟩]+)⟩/g, (match, p1) => {
-        const safe = p1.replace(/[^a-zA-Z0-9_\-]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
-        return `<span class="audio-phonetic-link" onclick="playGameAudio('${safe}')"><span class="audio-icon">🔊</span>⟨${p1}⟩</span>`;
+        return `<span class="audio-phonetic-link">⟨${p1}⟩</span>`;
     });
 }
 
