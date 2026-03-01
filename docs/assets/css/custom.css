@@ -728,3 +728,14 @@ input:checked+.swalpa-slider:before {
         grid-template-rows: repeat(6, 1fr);
     }
 }
+
+/* --- Sidebar Hierarchy Refinement --- */
+/* Indent nested navigation items for better scannability */
+.md-nav__item .md-nav {
+    margin-left: 1.2rem;
+}
+
+.md-nav__item .md-nav__link {
+    font-size: 0.9em;
+    opacity: 0.9;
+}

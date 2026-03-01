@@ -1,4 +1,6 @@
 ---
+hide:
+  - toc
 image: assets/img/social/og_lesson_05.jpg
 description: Learn Kannada numbers, time expressions, and calendar vocabulary for Bangalore. Master counting 1–10 to unlock the full numerical system, phonetically transcribed.
 ---

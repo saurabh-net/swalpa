@@ -1,4 +1,6 @@
 ---
+hide:
+  - toc
 image: assets/img/social/og_lesson_02.jpg
 description: Essential Kannada survival phrases for your first days in Bengaluru — auto-rickshaws, directions, emergencies, payments, and basic needs explained phonetically.
 ---

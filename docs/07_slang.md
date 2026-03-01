@@ -1,4 +1,6 @@
 ---
+hide:
+  - toc
 image: assets/img/social/og_lesson_08.jpg
 description: Bangalore slang, Kanglish, and street expressions every expat needs to know. From "macha" to "guru" to "sakkath" — the living dialect of Bengaluru explained.
 ---

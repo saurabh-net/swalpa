@@ -1,4 +1,6 @@
 ---
+hide:
+  - toc
 image: assets/img/social/og_lesson_09.jpg
 description: Kannada directions, traffic navigation, and conflict phrases for Bengaluru. Learn how to give auto-rickshaw directions, handle traffic police, and navigate disputes.
 ---

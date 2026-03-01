@@ -1,4 +1,6 @@
 ---
+hide:
+  - toc
 image: assets/img/social/og_lesson_07.jpg
 description: Kannada adjectives and descriptors for Bangalore daily life. Learn how to describe size, quality, colour, and feeling — with phonetic pronunciation guides.
 ---

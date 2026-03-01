@@ -1,4 +1,6 @@
 ---
+hide:
+  - toc
 image: assets/img/social/og_lesson_01.jpg
 description: Understand Kannada's linguistic layers — Sanskrit, Dravidian, and Perso-Arabic roots — to instantly recognise thousands of words as an Indian language speaker.
 comments: true
