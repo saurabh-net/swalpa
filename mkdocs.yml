@@ -12,6 +12,7 @@ theme:
   logo: assets/img/favicon.png
   favicon: assets/img/favicon.png
   features:
+    - navigation.sections
     - navigation.top
     - navigation.footer
     - navigation.breadcrumbs
