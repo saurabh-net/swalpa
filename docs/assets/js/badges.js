@@ -53,13 +53,20 @@ export const BADGE_DEFINITIONS = {
 const STORAGE_KEY = 'swalpa_unlocked_badges';
 
 export function getUnlockedBadges() {
-    const raw = window.StorageManager.load(STORAGE_KEY);
-    if (!raw) return [];
-    try {
-        return JSON.parse(raw);
-    } catch (e) {
-        return [];
+    const data = window.StorageManager.load(STORAGE_KEY);
+    if (!data) return [];
+    if (Array.isArray(data)) return data;
+
+    // Fallback for older string-based formats
+    if (typeof data === 'string') {
+        try {
+            const parsed = JSON.parse(data);
+            return Array.isArray(parsed) ? parsed : [];
+        } catch (e) {
+            return [];
+        }
     }
+    return [];
 }
 
 function saveUnlockedBadges(badges) {
