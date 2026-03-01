@@ -53,7 +53,7 @@ export const BADGE_DEFINITIONS = {
 const STORAGE_KEY = 'swalpa_unlocked_badges';
 
 export function getUnlockedBadges() {
-    const raw = StorageManager.load(STORAGE_KEY);
+    const raw = window.StorageManager.load(STORAGE_KEY);
     if (!raw) return [];
     try {
         return JSON.parse(raw);
@@ -63,7 +63,7 @@ export function getUnlockedBadges() {
 }
 
 function saveUnlockedBadges(badges) {
-    StorageManager.save(STORAGE_KEY, badges);
+    window.StorageManager.save(STORAGE_KEY, badges);
 }
 
 export function unlockBadge(badgeId) {

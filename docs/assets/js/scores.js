@@ -6,7 +6,7 @@
 const SCORES_KEY = 'swalpa_high_scores';
 
 export function getHighScores() {
-    const scores = StorageManager.load(SCORES_KEY);
+    const scores = window.StorageManager.load(SCORES_KEY);
     return scores || {
         'suffix-station': 0,
         'meter-haaki': { level: 0, respect: 0 },
@@ -31,6 +31,6 @@ export function saveHighScore(gameId, data) {
         }
     }
 
-    StorageManager.save(SCORES_KEY, scores);
+    window.StorageManager.save(SCORES_KEY, scores);
     return scores;
 }
