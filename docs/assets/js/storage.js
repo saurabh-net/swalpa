@@ -3,7 +3,7 @@
  * Handles local-first persistence with optional Userbase.com cloud sync.
  */
 
-const USERBASE_APP_ID = 'YOUR_USERBASE_APP_ID_HERE'; // Placeholder
+const USERBASE_APP_ID = '060290bd-6c76-4d3a-bab1-04c578bc6c41'; // Production App ID
 
 class StorageManager {
     constructor() {
