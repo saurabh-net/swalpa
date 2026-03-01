@@ -74,7 +74,7 @@ extra_javascript:
 
 nav:
   - Namaskara: index.md
-  - Your Profile: profile.md
+  - My Profile: profile.md
   - Lessons:
       - 1. History & Nuances: 01_history_and_nuances.md
       - 2. Survival & Emergencies: 02_survival_and_emergencies.md
