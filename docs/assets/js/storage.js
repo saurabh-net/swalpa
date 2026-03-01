@@ -100,7 +100,11 @@ class StorageManager {
                         }
 
                         if (shouldUpdate) {
-                            localStorage.setItem(key, JSON.stringify(cloudData));
+                            if (typeof cloudData === 'string') {
+                                localStorage.setItem(key, cloudData);
+                            } else {
+                                localStorage.setItem(key, JSON.stringify(cloudData));
+                            }
                         }
                     });
                     this.isSyncing = false;
