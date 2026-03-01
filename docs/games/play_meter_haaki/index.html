@@ -10,6 +10,12 @@
     <meta name="theme-color" content="#FFD700">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script>
+        // Proxy SWALPA storage to the parent window to support shared modules (scores, badges, activity)
+        Object.defineProperty(window, 'swalpaStorage', {
+            get: function () { return window.parent.swalpaStorage; }
+        });
+    </script>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"
         rel="stylesheet">
