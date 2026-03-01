@@ -51,7 +51,13 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                 const activityLog = getActivityLog();
                 const unlockedBadges = window.getUnlockedBadges ? window.getUnlockedBadges() : [];
                 const badgeDefs = window.BADGE_DEFINITIONS || {};
-                const currentStreak = StorageManager.load('swalpa_streak') || 1;
+                
+                let currentStreak = 1;
+                if (window.StorageManager && typeof StorageManager.load === 'function') {
+                    currentStreak = StorageManager.load('swalpa_streak') || 1;
+                } else {
+                    currentStreak = localStorage.getItem('swalpa_streak') || 1;
+                }
                 
                 let html = '';
 

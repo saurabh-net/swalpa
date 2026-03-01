@@ -19,6 +19,7 @@ class StorageManager {
         }
 
         try {
+            if (!window.userbase) throw new Error('Userbase SDK not available');
             const session = await userbase.init({ appId: USERBASE_APP_ID });
             if (session.user) {
                 this.user = session.user;
@@ -26,7 +27,8 @@ class StorageManager {
             }
             this._notifySyncChange();
         } catch (e) {
-            console.error('Userbase init failed:', e);
+            console.warn('Userbase init failed (Sync disabled):', e.message);
+            this._notifySyncChange(); // Still notify so UI can render Guest state
         }
     }
 
