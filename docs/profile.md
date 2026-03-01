@@ -80,6 +80,8 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                         </div>
                     `;
                 }
+                
+                html += `
             <div class="swalpa-profile-card">
                 <div class="swalpa-profile-rank-header">
                     <div class="sp-emoji">${progress.rank.title.split(' ')[0]}</div>
