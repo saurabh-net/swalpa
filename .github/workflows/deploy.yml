@@ -7,6 +7,7 @@ permissions:
   contents: write
 jobs:
   build-and-deploy:
+    if: github.repository == 'saurabh-net/swalpa'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
