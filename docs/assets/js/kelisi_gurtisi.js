@@ -100,7 +100,7 @@ function nextRound() {
 }
 
 function playAudio() {
-    const voiceDir = StorageManager.load('swalpa_voice_dir') || 'audio_native_v4_male';
+    const voiceDir = window.StorageManager.load('swalpa_voice_dir') || 'audio_native_v4_male';
     gameAudio.src = `/assets/${voiceDir}/${state.currentPhrase.audio}.mp3`;
     gameAudio.play().catch(e => console.error("Audio error:", e));
 }
