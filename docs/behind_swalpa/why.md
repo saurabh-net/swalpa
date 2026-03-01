@@ -34,4 +34,4 @@ A lot of places in Bengaluru have interesting etymologies:
 - **-pete** (e.g., Chickpet, Balepet): This means *Market*. These represent the historic, densely packed commercial centers of the old city.
 
 ### Extending the Framework
-The framework built here isn't just for Kannada. The core philosophy of learning a language through survival scenarios is expanding. A sister project applying these exact same principles to Tamil -- with a different author -- is currently in the works over at [konjam.org](https://konjam.org/)!
+The framework built here isn't just for Kannada. The core philosophy of learning a language through survival scenarios is expanding. We've recently migrated our persistence layer to **Firebase** to provide robust, real-time synchronization across devices, making the platform ready for even more languages. A sister project applying these exact same principles to Tamil -- with a different author -- is currently in the works over at [konjam.org](https://konjam.org/)!

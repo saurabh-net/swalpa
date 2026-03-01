@@ -117,7 +117,9 @@ function loadGame() {
     if (!storage) return;
     const saved = storage.load('meter_haaki_state');
     if (saved) {
+        // Deep merge or specific assign to avoid losing existing state properties if any
         Object.assign(state, saved);
+        console.log("[Meter Haaki] State loaded:", state);
     }
 }
 
@@ -474,3 +476,11 @@ function shareResult(platform, rank, level) {
 
 // Start the game on load
 window.addEventListener('load', init);
+
+// FIX: Race condition - Listen for cloud sync completion to refresh game state
+window.addEventListener('swalpa-data-synced', () => {
+    console.log("[Meter Haaki] Cloud data synced, reloading state...");
+    loadGame();
+    updateUI();
+    updateBackground();
+});

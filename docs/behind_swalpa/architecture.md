@@ -6,7 +6,7 @@ While language is the focus of the site, the underlying platform serves as an ex
 The platform is designed to be high-performance, private, and extremely low-maintenance.
 
 - **Frontend**: Built on MkDocs Material (static site generation) heavily augmented with Vanilla Javascript.
-- **Persistence**: We use a **Local-First** architecture. Progress is instantly saved to your browser's `localStorage` ensuring sub-millisecond UI feedback. We integrate **Userbase.com** for optional end-to-end cloud sync, allowing you to back up your streak across devices.
+- **Persistence**: We use a **Local-First** architecture. Progress is instantly saved to your browser's `localStorage` ensuring sub-millisecond UI feedback. We integrate **Firebase** for optional real-time cloud sync, allowing you to back up your streak across devices.
 - **Interactivity**: Custom-built JS game engines, Orbit-powered Spaced Repetition (SRS) flashcards, NotebookLM authored podcasts and slides, and a Giscus-powered feedback system.
 
 ---

@@ -118,6 +118,7 @@ function loadGame() {
     const saved = storage.load('adjust_maadi_state');
     if (saved) {
         Object.assign(state, saved);
+        console.log("[Adjust Maadi] State loaded:", state);
     }
 }
 
@@ -421,3 +422,11 @@ function shareResult(platform, rank, level) {
 
 
 window.addEventListener('load', init);
+
+// FIX: Race condition - Listen for cloud sync completion to refresh game state
+window.addEventListener('swalpa-data-synced', () => {
+    console.log("[Adjust Maadi] Cloud data synced, reloading state...");
+    loadGame();
+    updateUI();
+    updateBackground();
+});
