@@ -188,9 +188,9 @@ window.triggerProfileShare = function (rankStr, streak, badgesArr) {
     if (badgesArr && badgesArr.length > 0) {
         msg += `Badges Unlocked: ${badgesArr.map(b => b.emoji + ' ' + b.title).join(', ')}\n`;
     }
-    msg += `I'm learning spoken Kannada via SWALPA! Come join me.\n`;
+    msg += `\nCome learn spoken Kannada with me! Check it out at:\n`;
 
-    window.triggerShare(msg, "https://swalpa.org/nanna_profile");
+    window.triggerShare(msg, "https://swalpa.org/");
 };
 
 // Auto-hydrate static share widgets on Lesson Pages with an inline preview box
