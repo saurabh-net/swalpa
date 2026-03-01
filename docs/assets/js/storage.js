@@ -1,9 +1,7 @@
 /**
  * SWALPA Storage Manager
- * Handles local-first persistence with optional Userbase.com cloud sync.
+ * Handles local-first persistence with Firebase cloud sync.
  */
-
-const USERBASE_APP_ID = '060290bd-6c76-4d3a-bab1-04c578bc6c41'; // Production App ID
 
 class SwalpaStorageManager {
     constructor() {
@@ -150,6 +148,9 @@ class SwalpaStorageManager {
             isSyncing: this.isSyncing
         };
         this.syncCallbacks.forEach(cb => cb(status));
+
+        // Dispatch global event for iframes (games) to listen to
+        window.dispatchEvent(new CustomEvent('swalpa-data-synced', { detail: status }));
     }
 }
 

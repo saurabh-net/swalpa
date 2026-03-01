@@ -478,9 +478,14 @@ function shareResult(platform, rank, level) {
 window.addEventListener('load', init);
 
 // FIX: Race condition - Listen for cloud sync completion to refresh game state
-window.addEventListener('swalpa-data-synced', () => {
+const refreshOnSync = () => {
     console.log("[Meter Haaki] Cloud data synced, reloading state...");
     loadGame();
     updateUI();
     updateBackground();
-});
+};
+
+window.addEventListener('swalpa-data-synced', refreshOnSync);
+if (window !== window.parent) {
+    window.parent.addEventListener('swalpa-data-synced', refreshOnSync);
+}
