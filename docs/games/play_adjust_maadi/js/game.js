@@ -1,7 +1,7 @@
-import { NPCS, LEVELS, RANKS } from './data.js';
-import { saveHighScore } from '../../../assets/js/scores.js';
-import { unlockBadge } from '../../../assets/js/badges.js';
-import { logActivity } from '../../../assets/js/activity.js';
+import { NPCS, LEVELS, RANKS } from './data.js?v=5';
+import { saveHighScore } from '../../../assets/js/scores.js?v=5';
+import { unlockBadge } from '../../../assets/js/badges.js?v=5';
+import { logActivity } from '../../../assets/js/activity.js?v=5';
 
 const state = {
     respect: 25,
