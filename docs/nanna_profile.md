@@ -1,4 +1,4 @@
-# 📝 Namma Profile
+# 📝 Nanna Profile
 
 Welcome to your Bangalore progress dashboard! As you complete lessons and navigate street scenarios in the games, you will earn Respect Points (**RP**), rank up, and unlock exclusive badges.
 

@@ -190,7 +190,7 @@ window.triggerProfileShare = function (rankStr, streak, badgesArr) {
     }
     msg += `I'm learning spoken Kannada via SWALPA! Come join me.\n`;
 
-    window.triggerShare(msg, "https://swalpa.org/namma_profile");
+    window.triggerShare(msg, "https://swalpa.org/nanna_profile");
 };
 
 // Auto-hydrate static share widgets on Lesson Pages with an inline preview box
