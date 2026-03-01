@@ -987,3 +987,11 @@ input:checked+.swalpa-slider:before {
         margin-right: 0 !important;
     }
 }
+/* Centering and width restriction for better readability on wide screens */
+@media screen and (min-width: 60em) {
+    .md-content__inner {
+        max-width: 45rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
