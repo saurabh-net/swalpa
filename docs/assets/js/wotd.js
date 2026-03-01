@@ -1,5 +1,5 @@
 /**
- * SWALPA Word of the Day & Streak Tracker
+ * SWALPA Phrase of the Day & Streak Tracker
  */
 
 const WOTD_PHRASES = [
@@ -93,7 +93,7 @@ function initWotd() {
     root.innerHTML = `
         <div class="swalpa-wotd-container" onclick="playWotdAudio('${phrase.audio}')">
             <div class="swalpa-wotd-header">
-                <h3>Word of the Day</h3>
+                <h3>Phrase of the Day</h3>
                 <div class="swalpa-streak-pill ${isActiveStreak ? 'active' : ''}" title="Your daily streak">
                     <span class="streak-icon">${streakIcon}</span>
                     <span class="streak-count">${streakCount} ${streakCount === 1 ? 'Day' : 'Days'}</span>

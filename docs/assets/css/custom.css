@@ -467,7 +467,7 @@ input:checked+.swalpa-slider:before {
     line-height: 1.4;
 }
 
-/* --- Word of the Day & Steaks --- */
+/* --- Phrase of the Day & Steaks --- */
 .swalpa-wotd-container {
     background: linear-gradient(to right, rgba(206, 17, 38, 0.03), rgba(255, 210, 0, 0.03));
     border: 1px solid var(--md-default-fg-color--lightest);
