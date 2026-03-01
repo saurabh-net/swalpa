@@ -25,7 +25,6 @@ export const LEVELS = {
     1: {
         title: "The Landlord (Rent Negotiation)",
         scenario: "Your landlord is increasing the rent by 15%. Time to use your charm.",
-        background: "../../assets/img/scenes/hallway.jpg",
         isHighStress: false,
         dialogue: {
             engagement: {
@@ -87,7 +86,6 @@ export const LEVELS = {
     2: {
         title: "The Tender Coconut Vendor",
         scenario: "You want a nice cold elaneer (tender coconut). The vendor quotes 60 Rupees.",
-        background: "../../assets/img/scenes/street_vendor.jpg",
         dialogue: {
             engagement: {
                 speaker: "Elaneer Anna",
@@ -149,7 +147,6 @@ export const LEVELS = {
     3: {
         title: "The Plumber",
         scenario: "The pipe is leaking. The plumber has arrived but is looking at a massive repair.",
-        background: "../../assets/img/scenes/bathroom.jpg",
         isHighStress: true,
         dialogue: {
             engagement: {
@@ -212,7 +209,6 @@ export const LEVELS = {
     4: {
         title: "The BESCOM Power Cut",
         scenario: "Power has been out for 4 hours. You see a BESCOM lineman near the transformer.",
-        background: "../../assets/img/scenes/transformer.jpg",
         isHighStress: true,
         dialogue: {
             engagement: {
