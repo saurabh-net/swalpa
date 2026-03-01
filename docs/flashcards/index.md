@@ -1,6 +1,8 @@
 ---
 title: Flashcards
 description: Master Kannada vocabulary through spaced repetition (SRS). Practice English to Kannada for active recall and Kannada to English for passive recognition.
+hide:
+  - toc
 ---
 
 # 🧠 Flashcards

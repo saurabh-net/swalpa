@@ -1,5 +1,7 @@
 ---
 description: Listen to the SWALPA Podcast series for deeper insights into Bangalore Kannada and survival street-smarts.
+hide:
+  - toc
 ---
 # 🎙️ SWALPA Podcasts
 

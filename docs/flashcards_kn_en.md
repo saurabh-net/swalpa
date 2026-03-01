@@ -1,6 +1,8 @@
 ---
 image: assets/img/social/og_lesson_11.jpg
 description: Interactive Kannada flashcards — practice recognising Kannada words and phrases in their English meaning. Spaced repetition for real Bangalore street vocabulary.
+hide:
+  - toc
 ---
 <script type="application/ld+json">
 {

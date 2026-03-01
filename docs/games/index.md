@@ -1,5 +1,7 @@
 ---
 description: Play interactive Kannada language games. Negotiate with auto-drivers, master suffixes, and navigate Bangalore scenarios.
+hide:
+  - toc
 ---
 # 🎮 Interactive Games
 
