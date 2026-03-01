@@ -75,7 +75,7 @@ extra_javascript:
 nav:
   - Namaskara: index.md
   - My Profile: profile.md
-  - Lesson Summary: summary_slides.md
+  - Lesson Slides: summary_slides.md
   - Engage:
       - Games: games/index.md
       - Podcasts: podcasts/index.md

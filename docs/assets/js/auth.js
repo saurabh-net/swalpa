@@ -6,7 +6,7 @@
 window.AuthManager = {
     async signUp(username, password) {
         try {
-            const user = await userbase.signUp({ username, password, rememberMe: 'local' });
+            const user = await window.userbase.signUp({ username, password, rememberMe: 'local' });
             window.StorageManager.user = user;
             await window.StorageManager.syncUp(); // Migrate local progress to new account
             window.StorageManager._notifySyncChange();
@@ -18,7 +18,7 @@ window.AuthManager = {
 
     async signIn(username, password) {
         try {
-            const user = await userbase.signIn({ username, password, rememberMe: 'local' });
+            const user = await window.userbase.signIn({ username, password, rememberMe: 'local' });
             window.StorageManager.user = user;
             await window.StorageManager.syncDown();
             window.StorageManager._notifySyncChange();
@@ -30,7 +30,7 @@ window.AuthManager = {
 
     async logout() {
         try {
-            await userbase.signOut();
+            await window.userbase.signOut();
             window.StorageManager.user = null;
             window.StorageManager._notifySyncChange();
             return { success: true };

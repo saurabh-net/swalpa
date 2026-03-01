@@ -20,7 +20,7 @@ class StorageManager {
 
         try {
             if (!window.userbase) throw new Error('Userbase SDK not available');
-            const session = await userbase.init({ appId: USERBASE_APP_ID });
+            const session = await window.userbase.init({ appId: USERBASE_APP_ID });
             if (session.user) {
                 this.user = session.user;
                 await this.syncDown();
@@ -46,7 +46,7 @@ class StorageManager {
         // 2. Sync to Userbase if logged in
         if (this.user) {
             try {
-                await userbase.putItem({
+                await window.userbase.putItem({
                     databaseName: 'swalpa_progress',
                     item: timestampedData,
                     itemId: key
@@ -81,7 +81,7 @@ class StorageManager {
         this._notifySyncChange();
 
         try {
-            await userbase.openDatabase({
+            await window.userbase.openDatabase({
                 databaseName: 'swalpa_progress',
                 changeHandler: (items) => {
                     items.forEach(item => {
