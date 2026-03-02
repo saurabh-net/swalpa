@@ -42,6 +42,5 @@ image: assets/img/social/og_suffix_station.jpg
 </div>
 
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; gap: 10px;">
-    <button onclick="document.getElementById('game-iframe').requestFullscreen()" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; backdrop-filter: blur(5px);">👓 Fullscreen API</button>
-    <a href="../suffix_station/" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; backdrop-filter: blur(5px); text-decoration: none;">← Exit</a>
+    <a href="../suffix_station/" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; backdrop-filter: blur(5px); text-decoration: none;">&larr; Exit</a>
 </div>
