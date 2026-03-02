@@ -10,9 +10,7 @@ Namaskara! Welcome to **SWALPA** (**S**poken **W**ords **A**nd **L**anguage **P*
 
 <div markdown>
 ## 🎯 Our Mission
-Our goal is to provide a **phonetic-only, Bangalore-functional** Kannada learning resource. This guide is built specifically for non-Kannada speakers in Bangalore—such as IT professionals, recent migrants, and long-term residents—who want to survive and thrive through spoken language without needing to learn the formal written script.
-
-We focus on maximizing your return on investment by teaching you high-frequency vocabulary and practical phrases that you can use immediately in your daily life in Namma Bengaluru.
+Our goal is to provide a **phonetic-only, Bangalore-functional** Kannada learning resource. This guide is built specifically for non-Kannada speakers in Bangalore—such as IT professionals, recent migrants, and long-term residents—who want to survive and thrive through spoken language without needing to learn the formal written script (yet).
 </div>
 
 <!-- <div id="swalpa-progress-dashboard" style="margin: 20px 0; padding: 25px; background: rgba(30, 41, 59, 0.7); border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1); color: #F8FAFC; text-align: center; backdrop-filter: blur(12px);">
@@ -68,7 +66,7 @@ We focus on maximizing your return on investment by teaching you high-frequency 
 ## 👥 Target Audience
 This guide is for you if:
 
-- You live in Bangalore and want to interact confidently with locals, auto drivers, shopkeepers, and colleagues.
+- You live in Bangalore and want to interact confidently with neighbors, auto drivers, shopkeepers, and colleagues.
 - You want to learn practical, street-smart Kannada (the Bangalore dialect, like *Oota aitha?* instead of the textbook *Oota madidira?*).
 - You find learning a new script intimidating and prefer to learn through transliteration (reading Kannada words in English letters).
 - You relate well to Hindi logical bridges, which we use to make grammar easier to grasp intuitively (e.g., using Hindi parallels like *Mujhe* -> *Nanage*).
