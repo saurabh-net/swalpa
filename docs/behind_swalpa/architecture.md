@@ -23,6 +23,10 @@ The core 10 lessons serve as the manually curated "Source of Truth," constructed
 ## Behind the Curtains
 The project is entirely open-source ([GitHub Public Repo](https://github.com/saurabh-net/swalpa)). However, we maintain a private staging repository that acts as an internal "brain"—holding thousands of lines of raw research, Python build scripts, and experimental features before they are distilled and deployed to this live site.
 
+### Extending the Framework
+The framework built here isn't just for Kannada. The core philosophy of learning a language through survival scenarios is expanding. We've recently migrated our persistence layer to **Firebase** to provide robust, real-time synchronization across devices, making the platform ready for even more languages. A sister project applying these exact same principles to Tamil -- with a different author -- is currently in the works over at [konjam.org](https://konjam.org/)!
+
+
 ---
 
 *Disclosure: I work at Google, but this is a pure passion project built on the side to keep myself accountable to my learning goals. The AI stack utilized throughout this project consists exclusively of Google's public tools (Gemini, NotebookLM, Google Cloud TTS, Firebase, Antigravity). Keep exploring, keep practicing, and remember: Banni, swalpa swalpa kaliyona! (Come, let's learn little by little!)*
