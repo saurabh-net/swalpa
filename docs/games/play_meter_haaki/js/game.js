@@ -110,13 +110,13 @@ function showFloatingFeedback(text, type, elementId) {
 }
 
 function updateBackground() {
-    const container = document.querySelector('.glass-container');
+    const container = document.querySelector('#game-scene');
     const level = LEVELS[state.level];
     if (!level) return;
     const bgPath = level.background;
     if (bgPath && container) {
         // Ensure path is relative to the html file
-        container.style.backgroundImage = `linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('${bgPath}')`;
+        container.style.backgroundImage = `url('${bgPath}')`;
     }
 }
 

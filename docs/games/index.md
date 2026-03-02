@@ -31,17 +31,6 @@ Welcome to the SWALPA Play Zone! These games are designed to test your "street l
     </div>
 
     <div class="swalpa-feature-item">
-        <div class="swalpa-feature-icon">🤝</div>
-        <div class="swalpa-feature-content">
-            <h3>Adjust Maadi</h3>
-            <p>Master the art of negotiation. Figure out the right prices for services, repairs, and daily interactions in the city.</p>
-        </div>
-        <div class="swalpa-feature-action">
-            <a href="adjust_maadi/" class="swalpa-button">Play Now</a>
-        </div>
-    </div>
-
-    <div class="swalpa-feature-item">
         <div class="swalpa-feature-icon">🎧</div>
         <div class="swalpa-feature-content">
             <h3>Kelisi & Gurtisi</h3>

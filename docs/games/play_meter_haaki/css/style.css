@@ -86,16 +86,16 @@ body {
 #game-scene {
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color: #000000;
     background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
     position: relative;
     transition: background-image 0.5s ease-in-out;
+    /* background-image: url('../assets/level_1_background.png'); */
 }
 
 #game-scene::before {
@@ -454,7 +454,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* --- Floating Feedback --- */
