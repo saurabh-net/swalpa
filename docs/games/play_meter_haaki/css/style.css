@@ -112,7 +112,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 15px;
     z-index: 10;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding-top: env(safe-area-inset-top);
     /* Handle notch/fullscreen UI */
 }
@@ -121,7 +121,7 @@ body {
     .stats {
         padding-top: calc(15px + env(safe-area-inset-top));
         /* Extra safety on small screens */
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 8px;
     }
 }
@@ -191,7 +191,7 @@ body {
 }
 
 .patience-container {
-    grid-column: span 2;
+    display: none !important;
 }
 
 .patience-fill {
@@ -210,6 +210,10 @@ body {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     transform: translateY(0);
     transition: transform 0.3s ease;
+    max-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .scene-intro {
@@ -288,13 +292,26 @@ body {
 #dialogue-text {
     font-size: 16px;
     line-height: 1.5;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+    flex-shrink: 0;
 }
 
 #choices-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    overflow-y: auto;
+    padding-right: 4px;
+    /* Custom scrollbar for choices */
+}
+
+#choices-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+#choices-container::-webkit-scrollbar-thumb {
+    background: var(--glass-border);
+    border-radius: 2px;
 }
 
 .choice-btn {
