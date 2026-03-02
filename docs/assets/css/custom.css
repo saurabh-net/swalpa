@@ -1002,6 +1002,30 @@ input:checked+.swalpa-slider:before {
     height: 20px;
 }
 
+/* --- Sidebar Progress Checkmarks --- */
+.swalpa-sidebar-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.swalpa-sidebar-check svg {
+    width: 100%;
+    height: 100%;
+}
+
+.swalpa-sidebar-check.completed {
+    color: #4CAF50;
+}
+
+.swalpa-sidebar-check.pending {
+    color: var(--md-default-fg-color--lightest);
+    opacity: 0.5;
+}
+
 /* --- Global UI Refinement: Hide TOC --- */
 .md-sidebar--secondary {
     display: none !important;

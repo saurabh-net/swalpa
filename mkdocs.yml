@@ -71,6 +71,7 @@ extra_javascript:
   - assets/js/init.js?v=1.0.1
   - assets/js/audio.js?v=1.0.1
   - assets/js/header.js?v=1.0.1
+  - assets/js/sidebar_sync.js?v=1.0.1
   - assets/js/lessons.js?v=1.0.1
   - assets/js/wotd.js?v=1.0.1
   - assets/js/share.js?v=1.0.1

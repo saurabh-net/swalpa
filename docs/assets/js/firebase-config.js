@@ -23,7 +23,7 @@ firebase.initializeApp(firebaseConfig);
 
 // Expose instances globally
 window.auth = firebase.auth();
-window.db = firebase.firestore();
+window.db = firebase.app().firestore("swalpa-users");
 
 // Initialize Analytics if supported
 if (typeof firebase.analytics === 'function') {

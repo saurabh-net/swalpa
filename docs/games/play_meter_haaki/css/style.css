@@ -437,3 +437,59 @@ body {
 .hidden {
     display: none;
 }
+
+/* --- Floating Feedback --- */
+.floating-feedback {
+    position: absolute;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 100;
+    animation: floatUpFade 1s ease-out forwards;
+}
+
+.floating-feedback.positive {
+    color: var(--accent-green);
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.floating-feedback.negative {
+    color: var(--accent-red);
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+@keyframes floatUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+}
+
+.stat-pulse {
+    animation: statPulse 0.4s ease-out;
+}
+
+@keyframes statPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

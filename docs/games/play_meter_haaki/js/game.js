@@ -88,6 +88,27 @@ function updateUI() {
     }
 }
 
+function showFloatingFeedback(text, type, elementId) {
+    const parent = document.getElementById(elementId).parentElement;
+    const feedback = document.createElement('div');
+    feedback.className = `floating-feedback ${type}`;
+    feedback.innerText = text;
+
+    // Position near the stat item
+    feedback.style.left = '50%';
+    feedback.style.top = '-20px';
+
+    parent.style.position = 'relative';
+    parent.appendChild(feedback);
+
+    // Trigger pulse on the parent
+    parent.classList.remove('stat-pulse');
+    void parent.offsetWidth; // trigger reflow
+    parent.classList.add('stat-pulse');
+
+    setTimeout(() => feedback.remove(), 1000);
+}
+
 function updateBackground() {
     const container = document.querySelector('.glass-container');
     const level = LEVELS[state.level];
@@ -279,14 +300,19 @@ async function handleChoice(choice) {
         }
 
         if (choice.effect.respect) {
-            state.respect = Math.min(100, Math.max(0, state.respect + (choice.effect.respect * driverMod.respect * rand)));
+            const delta = choice.effect.respect * driverMod.respect * rand;
+            state.respect = Math.min(100, Math.max(0, state.respect + delta));
+            showFloatingFeedback(`${delta > 0 ? '+' : ''}${Math.round(delta)}`, delta > 0 ? 'positive' : 'negative', 'respect-meter');
         }
         if (choice.effect.patience) {
-            state.patience = Math.min(100, Math.max(0, state.patience + (choice.effect.patience * driverMod.patience * rand * patiencePenalty)));
+            const delta = choice.effect.patience * driverMod.patience * rand * patiencePenalty;
+            state.patience = Math.min(100, Math.max(0, state.patience + delta));
+            showFloatingFeedback(`${delta > 0 ? '+' : ''}${Math.round(delta)}`, delta > 0 ? 'positive' : 'negative', 'patience-meter');
         }
         if (choice.effect.wallet) {
-            // Negative wallet effect means spending money
-            state.wallet += (choice.effect.wallet * environmentPriceMod);
+            const delta = choice.effect.wallet * environmentPriceMod;
+            state.wallet += delta;
+            showFloatingFeedback(`${delta > 0 ? '+' : ''}₹${Math.abs(Math.round(delta))}`, delta > 0 ? 'positive' : 'negative', 'wallet-value');
         }
 
         if (choice.effect.end === 'reset') {
@@ -366,7 +392,7 @@ function renderLevelFailed(message) {
         </div>
     `;
 
-    document.getElementById('retry-btn').onclick = () => {
+    document.getElementById('retry-btn').onclick = async () => {
         state.patience = 100;
         state.currentStep = 'engagement';
         await saveGame();

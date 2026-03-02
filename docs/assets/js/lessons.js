@@ -12,26 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lessonMatch = window.location.pathname.match(/\/(0[1-9]|10)_([a-zA-Z0-9_]+)\/?/);
     const currentLessonId = lessonMatch ? lessonMatch[0].replace(/\//g, '') : null;
 
-    // --- 1. Add Navigation Checkmarks ---
-    const navLinks = document.querySelectorAll('.md-nav__link');
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href') || '';
-        let isCompleted = false;
-
-        // Check if any completed lesson ID is in the href (for inactive links)
-        completedLessons.forEach(lessonId => {
-            if (href.includes(lessonId)) isCompleted = true;
-        });
-
-        // To handle MkDocs Material 'current page' links where href="." or similar
-        if (link.classList.contains('md-nav__link--active') && currentLessonId && completedLessons.includes(currentLessonId)) {
-            isCompleted = true;
-        }
-
-        if (isCompleted && !link.innerHTML.includes('✅')) {
-            link.innerHTML = link.innerHTML + ' <span style="font-size: 0.9em; margin-left: 6px;" title="Completed">✅</span>';
-        }
-    });
+    // --- 1. Add Navigation Checkmarks (Handoff to assets/js/sidebar_sync.js) ---
 
     // --- 2. Inject "Lesson Finished" Toggle on Lesson Pages ---
     const mainContent = document.querySelector('.md-content__inner');

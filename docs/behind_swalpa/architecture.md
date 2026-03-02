@@ -25,4 +25,4 @@ The project is entirely open-source ([GitHub Public Repo](https://github.com/sau
 
 ---
 
-*Disclosure: I work at Google, but this is a pure passion project built on the side to keep myself accountable to my learning goals. The AI stack utilized throughout this project consists exclusively of Google's public tools (Gemini, NotebookLM, Google Cloud TTS). Keep exploring, keep practicing, and remember: Banni, swalpa swalpa kaliyona! (Come, let's learn little by little!)*
+*Disclosure: I work at Google, but this is a pure passion project built on the side to keep myself accountable to my learning goals. The AI stack utilized throughout this project consists exclusively of Google's public tools (Gemini, NotebookLM, Google Cloud TTS, Firebase, Antigravity). Keep exploring, keep practicing, and remember: Banni, swalpa swalpa kaliyona! (Come, let's learn little by little!)*

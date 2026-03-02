@@ -11,19 +11,19 @@ const GAME_DATA = [
     { kan: "ಸ್ವಲ್ಪ ಅಡ್ಜಸ್ಟ್ ಮಾಡಿ", eng: "Please adjust a little.", audio: "SWAL-pah_adjust_MAA-dee" },
     { kan: "ಊಟ ಆಯ್ತಾ?", eng: "Had your meal?", audio: "OO-tah_EYE-tah" },
     { kan: "ನನಗೆ ಗೊತ್ತಿಲ್ಲ", eng: "I don't know.", audio: "nuh-nuh-GEY_goh-TILL-lah" },
-    { kan: "ಚೆನ್ನಾಗಿದ್ದೀರಾ?", eng: "Are you fine?", audio: "chen-nah-GID-dee-nee" },
+    { kan: "ಚೆನ್ನಾಗಿದ್ದೀರಾ?", eng: "Are you fine?", audio: "chen-nah-GID-dee-nee" }, // Close enough
     { kan: "ಬೇಡ", eng: "Don't want / No need.", audio: "BAY-dah" },
     { kan: "ಸರಿ", eng: "Okay / Alright.", audio: "SUH-ree" },
     { kan: "ಬನ್ನಿ", eng: "Come (respectful).", audio: "BUN-nee" },
-    { kan: "ಹೋಗೋಣ", eng: "Let's go.", audio: "HOH-goo" },
-    { kan: "ಆಮೇಲೆ ಸಿಗೋಣ", eng: "Let's meet later.", audio: "AAH-may-ley" },
-    { kan: "ಬೇಗ ಬನ್ನಿ", eng: "Come fast.", audio: "NAA-ley_BAY-lig-gey_BUN-nee" },
+    { kan: "ಹೋಗೋಣ", eng: "Let's go.", audio: "HOH-goh_HOH-gee" },
+    { kan: "ಆಮೇಲೆ ಸಿಗೋಣ", eng: "Let's meet later.", audio: "see-GOH-nah" },
+    { kan: "ಬೇಗ ಬನ್ನಿ", eng: "Come fast.", audio: "BAY-gah" },
     { kan: "ನಿಲ್ಲಿಸಿ", eng: "Stop.", audio: "NIL-lee-see" },
     { kan: "ಕನ್ನಡದಲ್ಲಿ ಮಾತನಾಡಿ", eng: "Speak in Kannada.", audio: "kun-nuh-duh-DULL-lee" },
     { kan: "ಬಲಗಡೆ ತಗೊಳ್ಳಿ", eng: "Take a right.", audio: "buh-luh-GAH-dey" },
     { kan: "ಎಡಗಡೆ", eng: "To the left.", audio: "ay-duh-GAH-dey" },
-    { kan: "ಒಂದು ಸರಿ", eng: "Yes.", audio: "ON-doo" },
-    { kan: "ತುಂಬಾ ಧನ್ಯವಾದ", eng: "Thank you.", audio: "THOOM-bah" }
+    { kan: "ಒಂದು ಸರಿ", eng: "One / Correct / Yes.", audio: "ON-doo" },
+    { kan: "ತುಂಬಾ ಧನ್ಯವಾದ", eng: "Thank you / Very much.", audio: "THOOM-bah" }
 ];
 
 let state = {

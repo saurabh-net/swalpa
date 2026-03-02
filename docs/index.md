@@ -62,22 +62,6 @@ We focus on maximizing your return on investment by teaching you high-frequency 
     document.getElementById('best-suffix').innerText = (scores['suffix-station'] !== undefined && scores['suffix-station'] !== null && scores['suffix-station'] !== 0) ? scores['suffix-station'] : '---';
     document.getElementById('best-rickshaw').innerText = scores['meter-haaki'] ? Math.round(scores['meter-haaki'].respect) : '---';
     document.getElementById('best-adjust').innerText = scores['adjust-maadi'] ? Math.round(scores['adjust-maadi'].respect) : '---';
-
-    // Update lesson checkmarks
-    const completed = window.swalpaStorage.load('swalpa_completed_lessons') || [];
-    for (let i = 1; i <= 10; i++) {
-      const id = i.toString().padStart(2, '0');
-      const el = document.getElementById(`check-${id}`);
-      if (el) {
-        if (completed.includes(id)) {
-          el.innerHTML = '✅';
-          el.style.opacity = '1';
-        } else {
-          el.innerHTML = '🔘';
-          el.style.opacity = '0.3';
-        }
-      }
-    }
   }
 
   window.addEventListener('load', updateDashboard);
@@ -97,15 +81,15 @@ Short on time? **[Just skim through the Lesson Slides](summary_slides.md)** to g
 
 Here is a sneak peek at what you will learn in the upcoming modules:
 
-*   **[1. History & Nuances](01_history_and_nuances.md)** <span id="check-01" class="lesson-check"></span>: Understand the cultural context, the Bangalore dialect, and how this guide approaches learning.
-*   **[2. Survival & Emergencies](02_survival_and_emergencies.md)** <span id="check-02" class="lesson-check"></span>: Essential phrases for getting out of tricky situations, asking for help, and basic navigation.
-*   **[3. Social Interactions](03_social_interactions.md)** <span id="check-03" class="lesson-check"></span>: Greetings, making friends, and polite conversation.
-*   **[4. Household & Logistics](04_household_and_logistics.md)** <span id="check-04" class="lesson-check"></span>: Interacting with domestic help, landlords, and handling daily errands.
-*   **[5. Time & Numbers](05_time_and_numbers.md)** <span id="check-05" class="lesson-check"></span>: Telling time, bargaining, and handling money effectively.
-*   **[6. Verbs & Grammar](06_verbs_and_grammar.md)** <span id="check-06" class="lesson-check"></span>: The engine of the language—how to put sentences together using practical grammatical bridges.
-*   **[7. Adjectives](07_adjectives.md)** <span id="check-07" class="lesson-check"></span>: Describing things, people, and situations properly.
-*   **[8. Slang](08_slang.md)** <span id="check-08" class="lesson-check"></span>: Sounding like a true Bangalorean with local colloquialisms.
-*   **[9. Travel & Conflict](09_travel_and_conflict.md)** <span id="check-09" class="lesson-check"></span>: Navigating autos, buses, metro, and successfully resolving disputes without escalating.
-*   **[10. Everyday Logistics & Services](10_everyday_logistics_and_services.md)** <span id="check-10" class="lesson-check"></span>: Dealing with delivery drivers, landlords, basic repairs, and office navigation.
+*   **[1. History & Nuances](01_history_and_nuances.md)**: Understand the cultural context, the Bangalore dialect, and how this guide approaches learning.
+*   **[2. Survival & Emergencies](02_survival_and_emergencies.md)**: Essential phrases for getting out of tricky situations, asking for help, and basic navigation.
+*   **[3. Social Interactions](03_social_interactions.md)**: Greetings, making friends, and polite conversation.
+*   **[4. Household & Logistics](04_household_and_logistics.md)**: Interacting with domestic help, landlords, and handling daily errands.
+*   **[5. Time & Numbers](05_time_and_numbers.md)**: Telling time, bargaining, and handling money effectively.
+*   **[6. Verbs & Grammar](06_verbs_and_grammar.md)**: The engine of the language—how to put sentences together using practical grammatical bridges.
+*   **[7. Adjectives](07_adjectives.md)**: Describing things, people, and situations properly.
+*   **[8. Slang](08_slang.md)**: Sounding like a true Bangalorean with local colloquialisms.
+*   **[9. Travel & Conflict](09_travel_and_conflict.md)**: Navigating autos, buses, metro, and successfully resolving disputes without escalating.
+*   **[10. Everyday Logistics & Services](10_everyday_logistics_and_services.md)**: Dealing with delivery drivers, landlords, basic repairs, and office navigation.
 
 Dive in, practice speaking out loud, and don't worry about being perfect. *Swalpa swalpa* (little by little), you'll get there!
