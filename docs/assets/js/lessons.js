@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 0. Identify Current Lesson (if any) ---
     const lessonMatch = window.location.pathname.match(/\/(0[1-9]|10)_([a-zA-Z0-9_]+)\/?/);
-    const currentLessonId = lessonMatch ? lessonMatch[0].replace(/\//g, '') : null;
+    const currentLessonId = lessonMatch ? lessonMatch[1] : null; // Use only the numbers (e.g. "02")
 
     // --- 1. Add Navigation Checkmarks (Handoff to assets/js/sidebar_sync.js) ---
 

@@ -988,6 +988,11 @@ input:checked+.swalpa-slider:before {
     box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
 }
 
+/* Hide redundant label in active nav items (duplicate of the link) */
+.md-nav__item--active>label.md-nav__link[for="__toc"] {
+    display: none !important;
+}
+
 .swalpa-google-btn:disabled {
     opacity: 0.7;
     cursor: not-allowed;
