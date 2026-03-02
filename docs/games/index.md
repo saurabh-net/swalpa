@@ -48,4 +48,4 @@ Welcome to the SWALPA Play Zone! These games are designed to test your "street l
 Learning a language shouldn't just be about reading. By playing these scenarios, you build high-speed neural recall for the phrases you'll actually use while negotiating at Silk Board or ordering at a Darshini.
 
 > [!TIP]
-> Your high scores and "Respect Points" (RP) earned here are saved to your [Local Resident Profile](../profile/).
+> Your high scores and "Respect Points" (RP) earned here are saved to your [Local Resident Profile](../nanna_profile).
