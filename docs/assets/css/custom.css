@@ -831,56 +831,43 @@ input:checked+.swalpa-slider:before {
     }
 }
 
-/* --- Cloud Sync & Auth UI --- */
-.swalpa-sync-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 25px;
+/* --- Cloud Sync & Auth UI (Refined Footer) --- */
+.swalpa-sync-footer {
+    margin-top: 40px;
+    padding: 12px;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.swalpa-sync-footer:hover {
+    opacity: 1;
+}
+
+.sync-footer-content {
+    display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--md-default-fg-color--light);
 }
 
-.swalpa-sync-card.synced {
-    background: rgba(0, 255, 100, 0.05);
-    border-color: rgba(0, 255, 100, 0.2);
-}
-
-.sync-info h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.1em;
-    color: var(--md-default-fg-color);
-}
-
-.sync-info p {
-    margin: 0;
-    font-size: 0.9em;
-    opacity: 0.8;
-}
-
-.sync-btn {
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: Outfit, sans-serif;
-    white-space: nowrap;
-}
-
-.sync-btn.login {
-    background: #ce1126;
-    color: white;
-}
-
-.sync-btn.logout {
+.sync-link-btn {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--md-default-fg-color);
+    border: none;
+    color: var(--md-primary-fg-color);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0;
+    font-family: inherit;
+}
+
+.sync-link-btn:hover {
+    color: var(--md-accent-fg-color);
 }
 
 .swalpa-modal {
@@ -975,6 +962,44 @@ input:checked+.swalpa-slider:before {
         flex-direction: column;
         text-align: center;
     }
+}
+
+/* --- Google Sign-In Button --- */
+.swalpa-google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: #3c4043;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    margin-top: 20px;
+}
+
+.swalpa-google-btn:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+}
+
+.swalpa-google-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.swalpa-google-btn.loading {
+    background-color: #f1f3f4;
+}
+
+.swalpa-google-btn img {
+    width: 20px;
+    height: 20px;
 }
 
 /* --- Global UI Refinement: Hide TOC --- */

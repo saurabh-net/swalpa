@@ -92,7 +92,7 @@ function initWotd() {
     root.innerHTML = `
         <div class="swalpa-wotd-container">
             <div class="swalpa-wotd-header">
-                <h3>Phrase of the Day</h3>
+                <h3>Word of the Day</h3>
                 <div class="swalpa-streak-pill ${isActiveStreak ? 'active' : ''}" title="Your daily streak">
                     <span class="streak-icon">${streakIcon}</span>
                     <span class="streak-count">${streakCount} ${streakCount === 1 ? 'Day' : 'Days'}</span>

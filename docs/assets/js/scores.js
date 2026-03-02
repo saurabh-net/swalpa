@@ -15,7 +15,7 @@ export function getHighScores() {
     };
 }
 
-export function saveHighScore(gameId, data) {
+export async function saveHighScore(gameId, data) {
     const scores = getHighScores();
 
     if (gameId === 'suffix-station') {
@@ -23,14 +23,19 @@ export function saveHighScore(gameId, data) {
             scores['suffix-station'] = data;
         }
     } else {
-        // Meter Haaki or Adjust Maadi
-        if (!scores[gameId] || data.level > scores[gameId].level) {
+        // Meter Haaki or Adjust Maadi or Kelisi Gurtisi
+        if (!scores[gameId]) {
+            scores[gameId] = data;
+        } else if (typeof data === 'number') {
+            if (data > scores[gameId]) {
+                scores[gameId] = data;
+            }
+        } else if (data.level > scores[gameId].level) {
             scores[gameId] = data;
         } else if (data.level === scores[gameId].level && data.respect > scores[gameId].respect) {
             scores[gameId].respect = data.respect;
         }
     }
 
-    window.swalpaStorage.save(SCORES_KEY, scores);
-    return scores;
+    return await window.swalpaStorage.save(SCORES_KEY, scores);
 }

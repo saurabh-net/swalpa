@@ -14,7 +14,7 @@ The platform is designed to be high-performance, private, and extremely low-main
 ## AI-Assisted, Human-Led Workflow
 The core 10 lessons serve as the manually curated "Source of Truth," constructed after weeks of research. However, the interactive layers built on top of them are powered by AI:
 
-- **Agentic Coding**: The game engines, UI features, and cloud sync logic were co-developed alongside **Antigravity** (an agentic coding AI).
+- **Agentic Coding**: The game engines, UI features, and **Firebase** cloud sync logic were co-developed alongside **Antigravity** (an agentic coding AI).
 - **Audio Generation**: We utilize Python scripts to interface with Google Cloud's advanced Text-to-Speech models (like Chirp3-HD) to generate the native-sounding, street-accurate pronunciation clips.
 - **Content Expansion**: Workflows utilizing Gemini Deep Research and NotebookLM help process grammar rules, generate podcast scripts, and maintain architectural consistency across the Markdown codebase.
 

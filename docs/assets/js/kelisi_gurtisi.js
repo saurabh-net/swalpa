@@ -159,7 +159,7 @@ function showFeedback(text, type) {
     setTimeout(() => el.classList.remove('visible'), 1200);
 }
 
-function endGame() {
+async function endGame() {
     state.isPlaying = false;
     document.getElementById('game-play-screen').classList.add('hidden');
     document.getElementById('game-over-screen').classList.remove('hidden');
@@ -167,12 +167,12 @@ function endGame() {
 
     // Save Score
     if (window.saveHighScore) {
-        saveHighScore('kelisi-gurtisi', state.score);
+        await window.saveHighScore('kelisi-gurtisi', state.score);
     }
 
     // Log Activity
     if (window.swalpaLogActivity) {
-        window.swalpaLogActivity(5);
+        await window.swalpaLogActivity(5);
     }
 }
 

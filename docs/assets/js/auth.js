@@ -14,7 +14,7 @@ window.AuthManager = {
             return { success: true };
         } catch (e) {
             console.error("Google Sign-In failed:", e);
-            return { success: false, error: e.message };
+            return { success: false, error: e.message, code: e.code };
         }
     },
 

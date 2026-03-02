@@ -18,7 +18,7 @@ const state = {
 let patienceInterval = null;
 
 // Initialize the game
-function init() {
+async function init() {
     loadGame();
     setupEventListeners();
     updateUI();
@@ -30,7 +30,7 @@ function init() {
         const sceneIntro = document.querySelector('.scene-intro');
         if (sceneIntro) sceneIntro.classList.remove('hidden');
     } else {
-        showDialogue(state.currentStep);
+        await showDialogue(state.currentStep);
     }
 }
 
@@ -50,9 +50,9 @@ function setupEventListeners() {
 
     const startBtn = document.getElementById('start-btn');
     if (startBtn) {
-        startBtn.onclick = () => {
+        startBtn.onclick = async () => {
             updateBackground();
-            showDialogue('engagement');
+            await showDialogue('engagement');
         };
     }
 }
@@ -99,10 +99,10 @@ function updateBackground() {
     }
 }
 
-function saveGame() {
+async function saveGame() {
     const storage = window.swalpaStorage || window.parent.swalpaStorage;
     if (!storage) return;
-    storage.save('meter_haaki_state', {
+    await storage.save('meter_haaki_state', {
         respect: state.respect,
         wallet: state.wallet,
         patience: state.patience,
@@ -167,9 +167,9 @@ async function typeWriter(text, element) {
     document.querySelectorAll('.choice-btn').forEach(btn => btn.style.opacity = '1');
 }
 
-function showDialogue(stepKey) {
+async function showDialogue(stepKey) {
     state.currentStep = stepKey;
-    saveGame();
+    await saveGame();
 
     const dialogueBox = document.getElementById('dialogue-box');
     const speakerName = document.getElementById('speaker-name');
@@ -179,7 +179,7 @@ function showDialogue(stepKey) {
 
     if (stepKey === 'level_complete') {
         stopPatienceDecay();
-        renderLevelComplete();
+        await renderLevelComplete();
         return;
     }
 
@@ -226,9 +226,9 @@ function showDialogue(stepKey) {
         btn.className = 'choice-btn';
         btn.style.opacity = '0'; // Hidden until typing ends
         btn.innerHTML = `<span class="choice-num">${index + 1}</span> ${parsePhoneticsOnly(choice.text)}`;
-        btn.onclick = () => {
+        btn.onclick = async () => {
             if (state.isTypewriting) return;
-            handleChoice(choice);
+            await handleChoice(choice);
         };
         choicesContainer.appendChild(btn);
     });
@@ -255,7 +255,7 @@ function stopPatienceDecay() {
     }
 }
 
-function handleChoice(choice) {
+async function handleChoice(choice) {
     // Handle Driver Selection
     if (choice.driver) {
         state.activeDriver = choice.driver;
@@ -298,23 +298,23 @@ function handleChoice(choice) {
 
     // Global "Adjust Maadi" Reset if respect is too low
     if (state.respect < 10) {
-        triggerGlobalReset();
+        await triggerGlobalReset();
         return;
     }
 
     updateUI();
 
     if (choice.effect && choice.effect.barrier) {
-        showBarrierResponse(choice);
+        await showBarrierResponse(choice);
         return;
     }
 
     if (choice.next) {
-        showDialogue(choice.next);
+        await showDialogue(choice.next);
     }
 }
 
-function triggerGlobalReset() {
+async function triggerGlobalReset() {
     const dialogueText = document.getElementById('dialogue-text');
     const choicesContainer = document.getElementById('choices-container');
 
@@ -324,16 +324,16 @@ function triggerGlobalReset() {
     const resetBtn = document.createElement('button');
     resetBtn.className = 'choice-btn';
     resetBtn.innerText = "Swalpa adjust maadi (Request Reset)";
-    resetBtn.onclick = () => {
+    resetBtn.onclick = async () => {
         state.respect = 25;
         state.patience = 50;
         updateUI();
-        showDialogue('engagement');
+        await showDialogue('engagement');
     };
     choicesContainer.appendChild(resetBtn);
 }
 
-function showBarrierResponse(choice) {
+async function showBarrierResponse(choice) {
     const dialogueText = document.getElementById('dialogue-text');
     const choicesContainer = document.getElementById('choices-container');
 
@@ -343,11 +343,11 @@ function showBarrierResponse(choice) {
     const resetBtn = document.createElement('button');
     resetBtn.className = 'choice-btn';
     resetBtn.innerText = "Swalpa adjust maadi (Try Again)";
-    resetBtn.onclick = () => {
+    resetBtn.onclick = async () => {
         state.respect = 25;
         state.patience = Math.max(10, state.patience - 10);
         updateUI();
-        showDialogue(state.currentStep);
+        await showDialogue(state.currentStep);
     };
     choicesContainer.appendChild(resetBtn);
 }
@@ -369,13 +369,13 @@ function renderLevelFailed(message) {
     document.getElementById('retry-btn').onclick = () => {
         state.patience = 100;
         state.currentStep = 'engagement';
-        saveGame();
+        await saveGame();
         location.reload();
     };
 }
 
-function renderLevelComplete() {
-    saveGame();
+async function renderLevelComplete() {
+    await saveGame();
     const scene = document.getElementById('game-scene');
     const dialogueBox = document.getElementById('dialogue-box');
     dialogueBox.classList.add('hidden');
@@ -425,9 +425,9 @@ function renderLevelComplete() {
         </div>
     `;
 
-    saveHighScore('meter-haaki', { level: state.level, respect: state.respect });
-    unlockBadge('meter_haaki_pro');
-    if (typeof logActivity === 'function') logActivity(5);
+    await saveHighScore('meter-haaki', { level: state.level, respect: state.respect });
+    await unlockBadge('meter_haaki_pro');
+    if (typeof logActivity === 'function') await logActivity(5);
 
     document.getElementById('restart-game-btn').onclick = () => {
         localStorage.removeItem('meter_haaki_state');
@@ -443,11 +443,11 @@ function renderLevelComplete() {
     }
 }
 
-function startNextLevel() {
+async function startNextLevel() {
     state.level++;
     state.currentStep = 'engagement';
     state.patience = 100; // Reset patience for new level
-    saveGame();
+    await saveGame();
     location.reload(); // Simple reload to refresh scene with new level
 }
 

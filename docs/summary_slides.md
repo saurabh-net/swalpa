@@ -35,19 +35,20 @@ Need a quick refresher on the core concepts, vocabulary, and linguistic hacks? W
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: rgba(0, 0, 0, 0.2); /* Reduced from 0.5 */
+    color: rgba(255, 255, 255, 0.6); /* Added transparency to text */
     border: none;
-    padding: 1rem 1.2rem;
+    padding: 0.8rem 1rem; /* Slightly reduced */
     cursor: pointer;
     font-size: 1.5rem;
     border-radius: 50%;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
     z-index: 10;
 }
 
 .swalpa-carousel-btn:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
 }
 
 .swalpa-carousel-btn.prev {

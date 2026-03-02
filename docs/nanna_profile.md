@@ -21,7 +21,7 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
             <p id="auth-desc" style="margin-bottom: 30px; opacity: 0.8;">Securely sync your respect points and badges across all your devices using your Google account.</p>
             
             <button id="google-signin-btn" onclick="handleGoogleSignIn()" class="swalpa-google-btn">
-                <img src="/assets/img/google-icon.svg" alt="Google" style="width: 20px; height: 20px;">
+                <img src="../assets/img/google-icon.svg" alt="Google">
                 <span>Sign in with Google</span>
             </button>
 
@@ -62,25 +62,7 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                 
                 let html = '';
 
-                // 0. Cloud Sync Status Card
-                if (syncStatus) {
-                    html += `
-                        <div class="swalpa-sync-card ${syncStatus.isLoggedIn ? 'synced' : 'guest'}">
-                            <div class="sync-info">
-                                <h3>${syncStatus.isLoggedIn ? '✅ Cloud Sync Active' : '☁️ Sync Your Progress'}</h3>
-                                <p>${syncStatus.isLoggedIn 
-                                    ? `Logged in as <b>${syncStatus.username}</b>. Your data is encrypted and synced.` 
-                                    : 'Your progress is currently saved only on this browser. Enable sync to access it anywhere.'}
-                                </p>
-                            </div>
-                            <div class="sync-actions">
-                                ${syncStatus.isLoggedIn 
-                                    ? `<button class="sync-btn logout" onclick="AuthManager.logout()">Logout</button>` 
-                                    : `<button class="sync-btn login" onclick="openAuthModal()">Enable Cloud Sync</button>`}
-                            </div>
-                        </div>
-                    `;
-                }
+                // Skip placing sync card here (moved to bottom)
                 
                 html += `
             <div class="swalpa-profile-card">
@@ -149,7 +131,17 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
         `;
 
         // 2. Build the Badge Grid
-        for (const [id, badge] of Object.entries(badgeDefs)) {
+        const badgeEntries = Object.entries(badgeDefs);
+        // Sort: unlocked first
+        badgeEntries.sort((a, b) => {
+            const aUnlocked = unlockedBadges.includes(a[0]);
+            const bUnlocked = unlockedBadges.includes(b[0]);
+            if (aUnlocked && !bUnlocked) return -1;
+            if (!aUnlocked && bUnlocked) return 1;
+            return 0;
+        });
+
+        for (const [id, badge] of badgeEntries) {
             const isUnlocked = unlockedBadges.includes(id);
             const statusClass = isUnlocked ? 'unlocked' : 'locked';
             
@@ -164,6 +156,26 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                 </div>
             `;
         }
+
+            // 3. Status/Sync Card (At the bottom, refined)
+            const isLoggedIn = syncStatus ? syncStatus.isLoggedIn : (window.swalpaStorage && window.swalpaStorage.user ? true : false);
+            const username = syncStatus && syncStatus.username ? syncStatus.username : (window.swalpaStorage && window.swalpaStorage.user ? (window.swalpaStorage.user.username || window.swalpaStorage.user.email.split('@')[0]) : null);
+
+            html += `
+                <div class="swalpa-sync-footer ${isLoggedIn ? 'synced' : 'guest'}">
+                    <div class="sync-footer-content">
+                        <span class="sync-icon">${isLoggedIn ? '☁️' : '☁️'}</span>
+                        <span class="sync-text">
+                            ${isLoggedIn 
+                                ? `Synced as <b>${username}</b>` 
+                                : 'Progress saved locally only'}
+                        </span>
+                        ${isLoggedIn 
+                            ? `<button class="sync-link-btn" onclick="AuthManager.logout()">Logout</button>` 
+                            : `<button class="sync-link-btn" onclick="openAuthModal()">Enable Cloud Sync</button>`}
+                    </div>
+                </div>
+            `;
 
         html += `</div>`; // Close grid
         root.innerHTML = html;
@@ -215,7 +227,11 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
         if (result.success) {
             closeAuthModal();
         } else {
-            errorEl.innerText = result.error;
+            let errorMsg = result.error;
+            if (result.code === 'auth/unauthorized-domain' || errorMsg.includes('blocked')) {
+                errorMsg = `<b>Domain Authorization Error:</b> This site (swalpa.org) is not authorized in the Firebase console. Please ensure it is added to the "Authorized Domains" list.`;
+            }
+            errorEl.innerHTML = errorMsg;
             errorEl.style.display = 'block';
             btn.disabled = false;
             btn.classList.remove('loading');

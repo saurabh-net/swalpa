@@ -127,7 +127,7 @@ function startGame() {
     startTimer();
 }
 
-function endGame() {
+async function endGame() {
     state.gamePhase = 'gameover';
     clearInterval(state.timerInterval);
 
@@ -148,11 +148,11 @@ function endGame() {
     els.rankDesc.textContent = rank.desc;
 
     // Save leaderboard
-    saveHighScore('suffix-station', state.score);
+    await saveHighScore('suffix-station', state.score);
     if (state.score >= 50) {
-        unlockBadge('suffix_scientist');
+        await unlockBadge('suffix_scientist');
     }
-    if (typeof logActivity === 'function') logActivity(5);
+    if (typeof logActivity === 'function') await logActivity(5);
 }
 
 function getRank(score, accuracy) {

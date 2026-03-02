@@ -17,7 +17,7 @@ const state = {
 let patienceInterval = null;
 
 // Initialize the game
-function init() {
+async function init() {
     loadGame();
     setupEventListeners();
     updateUI();
@@ -29,7 +29,7 @@ function init() {
         const sceneIntro = document.querySelector('.scene-intro');
         if (sceneIntro) sceneIntro.classList.remove('hidden');
     } else {
-        showDialogue(state.currentStep);
+        await showDialogue(state.currentStep);
     }
 }
 
@@ -54,9 +54,9 @@ function setupEventListeners() {
 
     const startBtn = document.getElementById('start-btn');
     if (startBtn) {
-        startBtn.onclick = () => {
+        startBtn.onclick = async () => {
             updateBackground();
-            showDialogue('engagement');
+            await showDialogue('engagement');
         };
     }
 }
@@ -100,10 +100,10 @@ function updateBackground() {
     }
 }
 
-function saveGame() {
+async function saveGame() {
     const storage = window.swalpaStorage || window.parent.swalpaStorage;
     if (!storage) return;
-    storage.save('adjust_maadi_state', {
+    await storage.save('adjust_maadi_state', {
         respect: state.respect,
         wallet: state.wallet,
         patience: state.patience,
@@ -162,9 +162,9 @@ async function typeWriter(text, element) {
     document.querySelectorAll('.choice-btn').forEach(btn => btn.style.opacity = '1');
 }
 
-function showDialogue(stepKey) {
+async function showDialogue(stepKey) {
     state.currentStep = stepKey;
-    saveGame();
+    await saveGame();
 
     const dialogueBox = document.getElementById('dialogue-box');
     const speakerName = document.getElementById('speaker-name');
@@ -174,7 +174,7 @@ function showDialogue(stepKey) {
 
     if (stepKey === 'level_complete') {
         stopPatienceDecay();
-        renderLevelComplete();
+        await renderLevelComplete();
         return;
     }
 
@@ -203,9 +203,9 @@ function showDialogue(stepKey) {
         btn.className = 'choice-btn';
         btn.style.opacity = '0';
         btn.innerHTML = `<span class="choice-num">${index + 1}</span> ${parsePhoneticsOnly(choice.text)}`;
-        btn.onclick = () => {
+        btn.onclick = async () => {
             if (state.isTypewriting) return;
-            handleChoice(choice);
+            await handleChoice(choice);
         };
         choicesContainer.appendChild(btn);
     });
@@ -232,7 +232,7 @@ function stopPatienceDecay() {
     }
 }
 
-function handleChoice(choice) {
+async function handleChoice(choice) {
     if (choice.effect) {
         // NPC Modifiers
         const speaker = LEVELS[state.level].dialogue[state.currentStep].speaker;
@@ -272,16 +272,16 @@ function handleChoice(choice) {
     updateUI();
 
     if (choice.effect && choice.effect.barrier) {
-        showBarrierResponse();
+        await showBarrierResponse();
         return;
     }
 
     if (choice.next) {
-        showDialogue(choice.next);
+        await showDialogue(choice.next);
     }
 }
 
-function showBarrierResponse() {
+async function showBarrierResponse() {
     const dialogueText = document.getElementById('dialogue-text');
     const choicesContainer = document.getElementById('choices-container');
 
@@ -291,11 +291,11 @@ function showBarrierResponse() {
     const resetBtn = document.createElement('button');
     resetBtn.className = 'choice-btn';
     resetBtn.innerText = "Swalpa adjust maadi (Try Again)";
-    resetBtn.onclick = () => {
+    resetBtn.onclick = async () => {
         state.respect = Math.max(10, state.respect - 5);
         state.patience = Math.max(10, state.patience - 10);
         updateUI();
-        showDialogue(state.currentStep);
+        await showDialogue(state.currentStep);
     };
     choicesContainer.appendChild(resetBtn);
 }
@@ -314,16 +314,16 @@ function renderLevelFailed(message) {
         </div>
     `;
 
-    document.getElementById('retry-btn').onclick = () => {
+    document.getElementById('retry-btn').onclick = async () => {
         state.patience = 100;
         state.currentStep = 'engagement';
-        saveGame();
+        await saveGame();
         location.reload();
     };
 }
 
-function renderLevelComplete() {
-    saveGame();
+async function renderLevelComplete() {
+    await saveGame();
     const scene = document.getElementById('game-scene');
     const dialogueBox = document.getElementById('dialogue-box');
     dialogueBox.classList.add('hidden');
@@ -372,9 +372,9 @@ function renderLevelComplete() {
         </div>
     `;
 
-    saveHighScore('adjust-maadi', { level: state.level, respect: state.respect });
-    unlockBadge('adjust_maadi_master');
-    if (typeof logActivity === 'function') logActivity(5);
+    await saveHighScore('adjust-maadi', { level: state.level, respect: state.respect });
+    await unlockBadge('adjust_maadi_master');
+    if (typeof logActivity === 'function') await logActivity(5);
 
     document.getElementById('restart-game-btn').onclick = () => {
         localStorage.removeItem('adjust_maadi_state');
@@ -390,11 +390,11 @@ function renderLevelComplete() {
     }
 }
 
-function startNextLevel() {
+async function startNextLevel() {
     state.level++;
     state.currentStep = 'engagement';
     state.patience = 100;
-    saveGame();
+    await saveGame();
     location.reload();
 }
 
