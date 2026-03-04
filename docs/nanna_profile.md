@@ -55,9 +55,11 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                 
                 let currentStreak = 1;
                 if (window.swalpaStorage && typeof window.swalpaStorage.load === 'function') {
-                    currentStreak = window.swalpaStorage.load('swalpa_streak') || 1;
+                    const streakVal = window.swalpaStorage.load('swalpa_streak');
+                    currentStreak = streakVal ? parseInt(streakVal) : 1;
                 } else {
-                    currentStreak = localStorage.getItem('swalpa_streak') || 1;
+                    const raw = localStorage.getItem('swalpa_streak');
+                    currentStreak = raw ? parseInt(raw) : 1;
                 }
                 
                 let html = '';
@@ -71,7 +73,7 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                     <div class="sp-details">
                         <h2>${progress.rank.title.split(' ').slice(1).join(' ')}</h2>
                         <div class="sp-points">
-                            ${progress.totalPoints} <span>RP</span>
+                            ${Number(progress.totalPoints).toFixed(2)} <span>RP</span>
                             <span style="opacity: 0.5; margin: 0 8px;">|</span>
                             🔥 ${currentStreak} <span style="font-size: 0.8em">Day Streak</span>
                         </div>
@@ -120,7 +122,8 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
             <div style="text-align: center; margin-top: 25px;">
                 <button class="swalpa-share-button profile-share-btn" onclick="
                     const arr = [${unlockedBadges.slice(0, 3).map(id => `{emoji: '${badgeDefs[id].emoji}', title: '${badgeDefs[id].title}'}`).join(',')}];
-                    window.triggerProfileShare('${progress.rank.title}', window.localStorage.getItem('swalpa_streak'), arr);
+                    const st = window.swalpaStorage ? window.swalpaStorage.load('swalpa_streak') : localStorage.getItem('swalpa_streak');
+                    window.triggerProfileShare('${progress.rank.title}', st || 1, arr);
                 ">
                     <span class="share-icon">📤</span> Share My Progress
                 </button>

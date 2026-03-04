@@ -178,3 +178,14 @@ async function endGame() {
 
 document.addEventListener('DOMContentLoaded', initGame);
 window.playGameAudio = playAudio; // For the replay button
+
+// FIX: Listen for cloud sync completion to refresh game state
+const refreshOnSync = () => {
+    console.log("[Kelisi Gurtisi] Cloud data synced, reloading state...");
+    location.reload();
+};
+
+window.addEventListener('swalpa-data-synced', refreshOnSync);
+if (window.parent) {
+    window.parent.addEventListener('swalpa-data-synced', refreshOnSync);
+}

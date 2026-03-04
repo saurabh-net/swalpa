@@ -37,7 +37,7 @@ Welcome to the SWALPA Play Zone! These games are designed to test your "street l
             <p>Listen & Identify. Train your ears to recognize spoken Kannada phrases used on the streets of Bangalore.</p>
         </div>
         <div class="swalpa-feature-action">
-            <a href="play_kelisi_gurtisi/" class="swalpa-button">Play Now</a>
+            <a href="kelisi_gurtisi/" class="swalpa-button">Play Now</a>
         </div>
     </div>
 </div>

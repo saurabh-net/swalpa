@@ -55,6 +55,8 @@ function initWotd() {
     if (!lastVisitStr) {
         // First visit
         streakCount = 1;
+        window.swalpaStorage.save('swalpa_last_visit', todayStr);
+        window.swalpaStorage.save('swalpa_streak', streakCount.toString());
     } else if (lastVisitStr !== todayStr) {
         // Did they miss a day?
         const lastVisitDate = new Date(lastVisitStr + 'T00:00:00');

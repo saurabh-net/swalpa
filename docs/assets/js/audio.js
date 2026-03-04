@@ -268,6 +268,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.swalpaStorage.save(showKey, 'true');
                 document.documentElement.classList.remove('hide-phonetics');
                 document.body.classList.remove('hide-phonetics');
+                // Award badge on first enable
+                if (window.unlockBadge) window.unlockBadge('sound_engineer');
             } else {
                 window.swalpaStorage.save(showKey, 'false');
                 document.documentElement.classList.add('hide-phonetics');
