@@ -488,7 +488,7 @@ async function startNextLevel() {
 
 function shareResult(platform, rank, level) {
     const text = `🛺 I just survived ${level} levels of Namma Bengaluru Traffic in the Meter-Haaki game! \n\nMy Rank: ${rank}\n\nCan you negotiate like a pro? Try it on SWALPA.org! #SWALPA #BangaloreTraffic #MeterHaaki`;
-    const url = "https://swalpa.org/games/auto-rickshaw/";
+    const url = "https://swalpa.org/games/meter_haaki/";
     const fullMessage = `${text} \n\n${url}`;
 
     if (platform === 'whatsapp') {

@@ -167,13 +167,24 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
                         <span class="sync-icon">${isLoggedIn ? '☁️' : '☁️'}</span>
                         <span class="sync-text">
                             ${isLoggedIn 
-                                ? `Synced as <b>${username}</b>` 
+                                ? `Logged in as <b>${username}</b>` 
                                 : 'Progress saved locally only'}
                         </span>
                         ${isLoggedIn 
                             ? `<button class="sync-link-btn" onclick="AuthManager.logout()">Logout</button>` 
                             : `<button class="sync-link-btn" onclick="openAuthModal()">Enable Cloud Sync</button>`}
                     </div>
+                    ${isLoggedIn ? `
+                    <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                        <button id="btn-sync-up" class="swalpa-share-button" style="background: rgba(255,215,0,0.1); color: #FFD700; padding: 8px 16px; font-size: 13px;" onclick="handleManualSync('up')">
+                            ⬆️ Push to Cloud
+                        </button>
+                        <button id="btn-sync-down" class="swalpa-share-button" style="background: rgba(255,255,255,0.05); color: #94A3B8; padding: 8px 16px; font-size: 13px;" onclick="handleManualSync('down')">
+                            ⬇️ Pull from Cloud
+                        </button>
+                    </div>
+                    <div id="manual-sync-status" style="margin-top: 10px; font-size: 12px; height: 16px; color: #FFD700; text-align: center;"></div>
+                    ` : ''}
                 </div>
             `;
 
@@ -235,6 +246,53 @@ Welcome to your Bangalore progress dashboard! As you complete lessons and naviga
             errorEl.style.display = 'block';
             btn.disabled = false;
             btn.classList.remove('loading');
+        }
+    }
+
+    // --- Manual Sync Helpers ---
+    window.handleManualSync = async function(direction) {
+        if (!window.swalpaStorage || !window.swalpaStorage.user) return;
+        
+        const btnUp = document.getElementById('btn-sync-up');
+        const btnDown = document.getElementById('btn-sync-down');
+        const statusEl = document.getElementById('manual-sync-status');
+        
+        if (btnUp) btnUp.style.opacity = '0.5';
+        if (btnDown) btnDown.style.opacity = '0.5';
+        
+        statusEl.innerText = direction === 'up' ? "Pushing to cloud..." : "Pulling from cloud...";
+        statusEl.style.color = "#94A3B8";
+        
+        let result;
+        if (direction === 'up') {
+            result = await window.swalpaStorage.syncUp();
+        } else {
+            if (!confirm("Warning: Pulling from cloud will OVERWRITE all your local progress on this device. Are you sure?")) {
+                if (btnUp) btnUp.style.opacity = '1';
+                if (btnDown) btnDown.style.opacity = '1';
+                statusEl.innerText = "";
+                return;
+            }
+            result = await window.swalpaStorage.syncDown();
+        }
+        
+        if (result && result.success) {
+            statusEl.innerText = direction === 'up' ? "✅ Successfully pushed to cloud!" : "✅ Successfully pulled from cloud!";
+            statusEl.style.color = "#10B981"; // success green
+            setTimeout(() => {
+                if (direction === 'down') {
+                    window.location.reload();
+                } else {
+                    if (btnUp) btnUp.style.opacity = '1';
+                    if (btnDown) btnDown.style.opacity = '1';
+                    setTimeout(() => statusEl.innerText = "", 3000);
+                }
+            }, 1000);
+        } else {
+            statusEl.innerText = "❌ Sync Failed: " + (result ? result.error : "Unknown error");
+            statusEl.style.color = "#ff5252"; // error red
+            if (btnUp) btnUp.style.opacity = '1';
+            if (btnDown) btnDown.style.opacity = '1';
         }
     }
 </script>

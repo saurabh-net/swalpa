@@ -9,7 +9,6 @@ window.AuthManager = {
             const provider = new firebase.auth.GoogleAuthProvider();
             const result = await window.auth.signInWithPopup(provider);
             window.swalpaStorage.user = result.user;
-            await window.swalpaStorage.syncDown();
             window.swalpaStorage._notifySyncChange();
             return { success: true };
         } catch (e) {

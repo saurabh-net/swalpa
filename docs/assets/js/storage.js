@@ -22,7 +22,6 @@ class SwalpaStorageManager {
             if (user) {
                 this.user = user;
                 console.log('Firebase user logged in:', user.email);
-                await this.syncDown();
             } else {
                 this.user = null;
                 if (this.unsubscribe) {
@@ -84,50 +83,34 @@ class SwalpaStorageManager {
     }
 
     /**
-     * Fetch all items from Firestore and update localStorage if newer.
+     * Fetch all items from Firestore and completely overwrite localStorage.
      */
     async syncDown() {
-        if (!this.user) return;
+        if (!this.user) return { success: false, error: 'Not logged in' };
         this.isSyncing = true;
         this._notifySyncChange();
 
         try {
-            // Real-time listener performance optimization: we only update local if cloud is newer
-            this.unsubscribe = window.db.collection('users')
+            const querySnapshot = await window.db.collection('users')
                 .doc(this.user.uid)
                 .collection('progress')
-                .onSnapshot((querySnapshot) => {
-                    querySnapshot.forEach((doc) => {
-                        const key = doc.id;
-                        const cloudData = doc.data();
-                        const localRaw = localStorage.getItem(key);
+                .get();
 
-                        let shouldUpdate = true;
-                        if (localRaw) {
-                            try {
-                                const localData = JSON.parse(localRaw);
-                                if (localData._updatedAt && cloudData._updatedAt && localData._updatedAt > cloudData._updatedAt) {
-                                    shouldUpdate = false;
-                                }
-                            } catch (e) { }
-                        }
+            querySnapshot.forEach((doc) => {
+                const key = doc.id;
+                const cloudData = doc.data();
+                localStorage.setItem(key, JSON.stringify(cloudData));
+            });
 
-                        if (shouldUpdate) {
-                            localStorage.setItem(key, JSON.stringify(cloudData));
-                        }
-                    });
-                    this.isSyncing = false;
-                    this._notifySyncChange();
-                    window.dispatchEvent(new CustomEvent('swalpa-data-synced'));
-                }, (error) => {
-                    console.error('Firestore listener error:', error);
-                    this.isSyncing = false;
-                    this._notifySyncChange();
-                });
-        } catch (e) {
-            console.error('Firebase sync down failed:', e);
             this.isSyncing = false;
             this._notifySyncChange();
+            window.dispatchEvent(new CustomEvent('swalpa-data-synced'));
+            return { success: true };
+        } catch (e) {
+            console.error('Firebase pull failed:', e);
+            this.isSyncing = false;
+            this._notifySyncChange();
+            return { success: false, error: e.message };
         }
     }
 
@@ -135,15 +118,28 @@ class SwalpaStorageManager {
      * Push all local SWALPA data to cloud.
      */
     async syncUp() {
-        if (!this.user) return;
+        if (!this.user) return { success: false, error: 'Not logged in' };
+        this.isSyncing = true;
+        this._notifySyncChange();
 
-        const swalpaKeys = Object.keys(localStorage).filter(key =>
-            key.startsWith('swalpa_') || key.includes('_haaki_') || key.includes('_maadi_')
-        );
+        try {
+            const swalpaKeys = Object.keys(localStorage).filter(key =>
+                key.startsWith('swalpa_') || key.includes('_haaki_') || key.includes('_maadi_')
+            );
 
-        for (const key of swalpaKeys) {
-            const data = this.load(key);
-            await this.save(key, data);
+            for (const key of swalpaKeys) {
+                const data = this.load(key);
+                await this.save(key, data);
+            }
+
+            this.isSyncing = false;
+            this._notifySyncChange();
+            return { success: true };
+        } catch (e) {
+            console.error('Firebase push failed:', e);
+            this.isSyncing = false;
+            this._notifySyncChange();
+            return { success: false, error: e.message };
         }
     }
 
