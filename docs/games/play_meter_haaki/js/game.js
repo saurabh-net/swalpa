@@ -316,7 +316,11 @@ async function handleChoice(choice) {
         }
 
         if (choice.effect.end === 'reset') {
-            localStorage.removeItem('meter_haaki_state'); // We can leave removeItem as is or use save(null)
+            if (storage && storage.remove) {
+                storage.remove('meter_haaki_state');
+            } else {
+                localStorage.removeItem('meter_haaki_state');
+            }
             location.reload();
             return;
         }
@@ -456,7 +460,12 @@ async function renderLevelComplete() {
     if (typeof logActivity === 'function') await logActivity(5);
 
     document.getElementById('restart-game-btn').onclick = () => {
-        localStorage.removeItem('meter_haaki_state');
+        const storage = window.swalpaStorage || window.parent.swalpaStorage;
+        if (storage && storage.remove) {
+            storage.remove('meter_haaki_state');
+        } else {
+            localStorage.removeItem('meter_haaki_state');
+        }
         location.reload();
     };
 

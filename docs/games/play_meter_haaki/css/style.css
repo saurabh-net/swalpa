@@ -222,7 +222,8 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    /* Changed from center to allow scrolling from top */
     align-items: center;
     text-align: center;
     width: 90%;
@@ -233,6 +234,10 @@ body {
     padding: 30px;
     border-radius: 30px;
     border: 1px solid var(--glass-border);
+    max-height: 90vh;
+    /* Prevent modal from exceeding viewport */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
 }
 
 .scene-intro h1 {

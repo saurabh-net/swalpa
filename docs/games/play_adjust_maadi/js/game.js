@@ -377,7 +377,12 @@ async function renderLevelComplete() {
     if (typeof logActivity === 'function') await logActivity(5);
 
     document.getElementById('restart-game-btn').onclick = () => {
-        localStorage.removeItem('adjust_maadi_state');
+        const storage = window.swalpaStorage || window.parent.swalpaStorage;
+        if (storage && storage.remove) {
+            storage.remove('adjust_maadi_state');
+        } else {
+            localStorage.removeItem('adjust_maadi_state');
+        }
         location.reload();
     };
 

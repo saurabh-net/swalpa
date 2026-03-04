@@ -4,9 +4,22 @@
  */
 
 // Immediately apply hidden state to prevent flashing
-if (localStorage.getItem('swalpa_show_phonetics') !== 'true') {
-    document.documentElement.classList.add('hide-phonetics');
-}
+// Must parse swalpaStorage's JSON wrapper: {"_data": value, "_updatedAt": ...}
+(function () {
+    let isShown = false;
+    try {
+        const raw = localStorage.getItem('swalpa_show_phonetics');
+        if (raw) {
+            const parsed = JSON.parse(raw);
+            isShown = (parsed && parsed._data !== undefined) ? parsed._data === 'true' : raw === 'true';
+        }
+    } catch (e) {
+        isShown = localStorage.getItem('swalpa_show_phonetics') === 'true';
+    }
+    if (!isShown) {
+        document.documentElement.classList.add('hide-phonetics');
+    }
+})();
 
 document.addEventListener("DOMContentLoaded", function () {
     const articleContent = document.querySelector('.md-content');
@@ -241,16 +254,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const isShown = window.swalpaStorage.load(showKey) === 'true';
         checkbox.checked = isShown;
 
-        if (!isShown) {
+        if (isShown) {
+            // Remove the class from both html and body (flash-prevention adds to html)
+            document.documentElement.classList.remove('hide-phonetics');
+            document.body.classList.remove('hide-phonetics');
+        } else {
+            document.documentElement.classList.add('hide-phonetics');
             document.body.classList.add('hide-phonetics');
         }
 
         checkbox.addEventListener('change', (e) => {
             if (e.target.checked) {
                 window.swalpaStorage.save(showKey, 'true');
+                document.documentElement.classList.remove('hide-phonetics');
                 document.body.classList.remove('hide-phonetics');
             } else {
                 window.swalpaStorage.save(showKey, 'false');
+                document.documentElement.classList.add('hide-phonetics');
                 document.body.classList.add('hide-phonetics');
             }
         });

@@ -74,6 +74,16 @@ class SwalpaStorageManager {
     }
 
     /**
+     * Remove data from local storage.
+     */
+    remove(key) {
+        localStorage.removeItem(key);
+        // Optional: Could also remove from Firestore if needed, 
+        // but typically 'removing state' in these games is a reset, 
+        // and we might want to keep the cloud backup or overwrite it later.
+    }
+
+    /**
      * Fetch all items from Firestore and update localStorage if newer.
      */
     async syncDown() {
