@@ -1,9 +1,4 @@
----
-title: Kelisi & Gurtisi (Listen & Identify)
-hide:
-  - navigation
-  - toc
----
+
 
 <div id="game-container" class="swalpa-game-container">
     

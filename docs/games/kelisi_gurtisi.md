@@ -10,6 +10,4 @@ hide:
     </a>
 </div>
 
-<div class="game-frame-container" style="width: 100%; max-width: 600px; margin: 1rem auto; height: 800px; overflow: hidden; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); background: #000; border: 1px solid rgba(255, 255, 255, 0.1);">
-    <iframe src="../play_kelisi_gurtisi/" style="width: 100%; height: 100%; border: none;"></iframe>
-</div>
+--8<-- "games/play_kelisi_gurtisi/index.md"
