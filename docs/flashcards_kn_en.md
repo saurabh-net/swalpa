@@ -20,100 +20,125 @@ hide:
 <script type="module" src="https://js.withorbit.com/orbit-web-component.js"></script>
 
 <style>
-/* Hide all review areas by default */
+/* ABSOLUTELY hide all review areas by default */
 orbit-reviewarea {
-    display: none;
+    display: none !important;
 }
-/* Show the active one */
+/* Show ONLY the active one */
 orbit-reviewarea.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
+    display: block !important;
+    animation: fadeIn 0.4s ease-out;
 }
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 .flashcard-nav {
-    margin: 40px 0;
+    margin: 30px 0;
     text-align: center;
-    padding: 20px;
-    background: rgba(var(--md-primary-fg-color--rgb), 0.05);
-    border-radius: 12px;
-    border: 1px dashed var(--md-primary-fg-color);
+    padding: 24px;
+    background: rgba(var(--md-primary-fg-color--rgb), 0.08);
+    border-radius: 16px;
+    border: 2px dashed var(--md-primary-fg-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 .next-cards-btn {
     background: var(--md-primary-fg-color);
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
     font-weight: bold;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .next-cards-btn:hover {
-    transform: scale(1.05);
-    background: var(--md-primary-fg-color--dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    filter: brightness(1.1);
+}
+.next-cards-btn:active {
+    transform: translateY(0);
 }
 .progress-text {
-    margin-top: 10px;
-    font-size: 0.85rem;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
     color: var(--md-typeset-color);
-    opacity: 0.7;
+    font-weight: 500;
+}
+/* Hide cards until script runs */
+.cards-loading orbit-reviewarea {
+    display: none !important;
 }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const areas = document.querySelectorAll('orbit-reviewarea');
-    let currentIndex = 0;
+(function() {
+    // Add loading class immediately
+    document.documentElement.classList.add('cards-loading');
 
-    const updateVisibility = () => {
-        areas.forEach((area, index) => {
-            if (index === currentIndex) {
-                area.classList.add('active');
-            } else {
-                area.classList.remove('active');
+    document.addEventListener('DOMContentLoaded', () => {
+        const areas = document.querySelectorAll('orbit-reviewarea');
+        if (areas.length === 0) {
+            document.documentElement.classList.remove('cards-loading');
+            return;
+        }
+        
+        let currentIndex = parseInt(sessionStorage.getItem('orbit_current_index_' + window.location.pathname)) || 0;
+
+        const updateUI = () => {
+            areas.forEach((area, index) => {
+                if (index === currentIndex) {
+                    area.classList.add('active');
+                } else {
+                    area.classList.remove('active');
+                }
+            });
+            
+            const progressEl = document.getElementById('flashcard-progress');
+            if (progressEl) {
+                progressEl.innerText = `Focus Session: Block ${currentIndex + 1} of ${areas.length}`;
+            }
+            
+            const nextBtn = document.getElementById('next-block-btn');
+            if (nextBtn) {
+                if (currentIndex === areas.length - 1) {
+                    nextBtn.innerText = "🔄 Start From Beginning";
+                    nextBtn.onclick = () => { currentIndex = 0; saveAndRefresh(); };
+                } else {
+                    nextBtn.innerText = "Next 5 Cards →";
+                    nextBtn.onclick = () => { currentIndex++; saveAndRefresh(); };
+                }
+            }
+        };
+
+        const saveAndRefresh = () => {
+            sessionStorage.setItem('orbit_current_index_' + window.location.pathname, currentIndex);
+            updateUI();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+
+        updateUI();
+        // Reveal after UI is set
+        document.documentElement.classList.remove('cards-loading');
+
+        // Badge observer
+        const observer = new MutationObserver(() => {
+            if (document.querySelectorAll('orbit-reviewarea').length > 0) {
+                document.querySelectorAll('orbit-reviewarea').forEach(area => {
+                    area.addEventListener('click', () => {
+                        if (window.unlockBadge) window.unlockBadge('flashcard_shishya');
+                    }, { once: true });
+                });
+                observer.disconnect();
             }
         });
-        
-        // Update progress text
-        const progressEl = document.getElementById('flashcard-progress');
-        if (progressEl) {
-            progressEl.innerText = `Block ${currentIndex + 1} of ${areas.length} (Cards ${currentIndex * 5 + 1} - ${Math.min((currentIndex + 1) * 5, 100)})`;
-        }
-        
-        // Final block check
-        const nextBtn = document.getElementById('next-block-btn');
-        if (nextBtn) {
-            if (currentIndex === areas.length - 1) {
-                nextBtn.innerText = "All Done! Restart?";
-                nextBtn.onclick = () => { currentIndex = 0; updateVisibility(); };
-            } else {
-                nextBtn.innerText = "Next 5 Cards →";
-                nextBtn.onclick = () => { currentIndex++; updateVisibility(); window.scrollTo({top: 0, behavior: 'smooth'}); };
-            }
-        }
-    };
-
-    // Initial state
-    if (areas.length > 0) {
-        updateVisibility();
-    }
-
-    // Badge observer (existing)
-    const observer = new MutationObserver(() => {
-        if (document.querySelectorAll('orbit-reviewarea').length > 0) {
-            document.querySelectorAll('orbit-reviewarea').forEach(area => {
-                area.addEventListener('click', () => {
-                    if (window.unlockBadge) window.unlockBadge('flashcard_shishya');
-                }, { once: true });
-            });
-            observer.disconnect();
-        }
+        observer.observe(document.body, { childList: true, subtree: true });
     });
-    observer.observe(document.body, { childList: true, subtree: true });
-});
+})();
 </script>
 
 # Flashcards (Kannada to English)
