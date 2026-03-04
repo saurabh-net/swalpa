@@ -124,13 +124,34 @@ class SwalpaStorageManager {
 
         try {
             const swalpaKeys = Object.keys(localStorage).filter(key =>
-                key.startsWith('swalpa_') || key.includes('_haaki_') || key.includes('_maadi_')
+                key.startsWith('swalpa_') ||
+                key.includes('_haaki_') ||
+                key.includes('_maadi_') ||
+                key.includes('_station_') ||
+                key.includes('kelisi_gurtisi') ||
+                key.includes('game_state')
             );
+
+            const batch = window.db.batch();
 
             for (const key of swalpaKeys) {
                 const data = this.load(key);
-                await this.save(key, data);
+
+                const timestampedData = {
+                    _data: data,
+                    _updatedAt: Date.now()
+                };
+                localStorage.setItem(key, JSON.stringify(timestampedData));
+
+                const docRef = window.db.collection('users')
+                    .doc(this.user.uid)
+                    .collection('progress')
+                    .doc(key);
+
+                batch.set(docRef, timestampedData);
             }
+
+            await batch.commit();
 
             this.isSyncing = false;
             this._notifySyncChange();
