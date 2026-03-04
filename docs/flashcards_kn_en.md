@@ -39,14 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
 # Flashcards (Kannada to English)
 
 > [!TIP]
-> **Your progress is saved entirely on your device (in local storage).** You won't lose your progress if you refresh the page or come back tomorrow!
+> **Sync your progress with [withorbit.com](https://withorbit.com).** By completing a small set of cards, you'll be prompted to sign in, ensuring your spaced repetition progress is saved across devices!
 
-<orbit-reviewarea id="orbit-kn-en">
+<orbit-reviewarea id="orbit-kn-en-1">
 <orbit-prompt question="Naanu. (Used primarily in the nominative case; acts as the anchor for self-identification.)" answer="**The Kannada first-person singular pronoun for &quot;I&quot; or &quot;Me&quot;.**"></orbit-prompt>
 <orbit-prompt question="Neevu. (The absolute default for strangers, vendors, and colleagues in Bengaluru.)" answer="**The polite second-person pronoun that is the default for addressing strangers and colleagues in Bengaluru.**"></orbit-prompt>
 <orbit-prompt question="Neenu. (Reserved strictly for close friends or children; avoid using with service personnel.)" answer="**The informal Kannada pronoun for &quot;You&quot; (equivalent to Hindi &quot;Tu&quot;).**"></orbit-prompt>
 <orbit-prompt question="Avaru. (The third-person respectful pronoun; functions for both genders and as the general plural &quot;they&quot;.)" answer="**The third-person respectful pronoun that functions for both genders and serves as the general plural &quot;they&quot;.**"></orbit-prompt>
 <orbit-prompt question="Naavu. (The first-person plural pronoun; used inclusively.)" answer="**The Kannada first-person inclusive plural pronoun for &quot;We&quot;.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-2">
 <orbit-prompt question="Idu. (Refers to an inanimate object or animal in close physical proximity within the Amahat category.)" answer="**The demonstrative pronoun that refers to an inanimate object or animal in close physical proximity.**"></orbit-prompt>
 <orbit-prompt question="Adu. (Refers to an object or animal at a distance.)" answer="**The Kannada demonstrative pronoun for &quot;That&quot; referring to an object at a distance.**"></orbit-prompt>
 <orbit-prompt question="Illi. (Spatial marker meaning &quot;Here&quot;; essential for instructing transport drivers where to stop.)" answer="**The spatial marker that is essential for instructing transport drivers where to stop.**"></orbit-prompt>
@@ -57,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <orbit-prompt question="Yaaru?. (The interrogative for identifying people.)" answer="**The Kannada interrogative word used specifically for identifying people as &quot;Who?&quot;.**"></orbit-prompt>
 <orbit-prompt question="Yaake?. (Interrogative used to demand reasoning or causation.)" answer="**The Kannada interrogative used to demand reasoning or causation meaning &quot;Why?&quot;.**"></orbit-prompt>
 <orbit-prompt question="Haudu. (Affirmative response; the &#x27;ou&#x27; diphthong is pronounced similarly to the &#x27;o&#x27; in &quot;go&quot;.)" answer="**The standard affirmative response in Kannada for &quot;Yes&quot;.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-3">
 <orbit-prompt question="Illa. (Negative response indicating absence or disagreement; pronounced with emphasis on the first syllable.)" answer="**The Kannada word that functions as both &quot;No&quot; and a negative response indicating absence.**"></orbit-prompt>
 <orbit-prompt question="Beku. (Indicating desire or requirement; used pervasively in commercial transactions.)" answer="**The essential modal verb that indicates desire or requirement for &quot;Want&quot; or &quot;Need&quot;.**"></orbit-prompt>
 <orbit-prompt question="Beda. (Meaning &quot;Do not want/need&quot;; useful for declining offers, refusing higher fares, or dismissing hawkers.)" answer="**The negative counterpart to &quot;Beku&quot; used to decline offers or refuse higher fares.**"></orbit-prompt>
@@ -67,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <orbit-prompt question="Maadi. (The respectful imperative of &quot;Maadu&quot;; often used in phrases like &quot;Adjust maadi&quot;.)" answer="**The universal auxiliary verb that is often appended to English nouns to create &#x27;Kanglish&#x27; verbs.**"></orbit-prompt>
 <orbit-prompt question="Nillisi. (Imperative verb meaning &quot;Stop&quot;; standard command for instructing an auto or cab driver to halt.)" answer="**The standard respectful command for instructing a driver to stop.**"></orbit-prompt>
 <orbit-prompt question="Nodi. (Root is Nodu; used to direct someone&#x27;s attention or request they inspect something.)" answer="**The respectful imperative is used to request someone to inspect or look at something.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-4">
 <orbit-prompt question="Heli. (Root is Helu; used to prompt information, such as asking a vendor to state a final price.)" answer="**The respectful imperative used to prompt information like a final price.**"></orbit-prompt>
 <orbit-prompt question="Keli. (Root is Kelu; used to gain attention before a question or to ask/listen.)" answer="**The respectful imperative used to gain someone&#x27;s attention before asking a question.**"></orbit-prompt>
 <orbit-prompt question="Nera. (Directional adverb; used extensively in navigation as in &quot;Nera hogi&quot;.)" answer="**The directional adverb that is used to instruct a driver to go &quot;Straight&quot;.**"></orbit-prompt>
@@ -77,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <orbit-prompt question="Olagade. (Spatial marker meaning inside; useful for directing personnel to leave items inside a gate or door.)" answer="**The spatial marker that is used to direct delivery personnel to leave items &quot;Inside&quot;.**"></orbit-prompt>
 <orbit-prompt question="Horagade or Aache. (Spatial marker; used to instruct drivers, delivery agents, or guests to wait externally.)" answer="**The spatial marker for &quot;Outside&quot; is used to instruct drivers or guests to wait externally.**"></orbit-prompt>
 <orbit-prompt question="Swalpa. (Highly utilized adverb; can mean a small amount or function as a conversational softener.)" answer="**The adverb that functions as both a measure for &quot;A little&quot; and a polite conversational softener.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-5">
 <orbit-prompt question="Jaasthi. (Adverb indicating excess; used in market bargaining as in &quot;Thumba jaasthi&quot;.)" answer="**The adverb for &quot;Too much&quot; or &quot;More&quot; is frequently used in market bargaining.**"></orbit-prompt>
 <orbit-prompt question="Bega. (Adverb of speed; used to urge drivers or request expedited service.)" answer="**The Kannada adverb for &quot;Fast&quot; used to urge drivers to speed up.**"></orbit-prompt>
 <orbit-prompt question="Nidhana or Mellage. (Adverb of speed; essential for requesting individuals to speak slower or drive carefully.)" answer="**The adverb that is essential for requesting individuals to speak more slowly.**"></orbit-prompt>
@@ -87,6 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <orbit-prompt question="Eradu. (Numeric unit central to basic counting and market transactions.)" answer="**The Kannada word for the numeric unit &quot;Two&quot;.**"></orbit-prompt>
 <orbit-prompt question="Mooru. (Numeric unit for 3.)" answer="**The Kannada word for the numeric unit &quot;Three&quot;.**"></orbit-prompt>
 <orbit-prompt question="Naalku. (Numeric unit for 4.)" answer="**The Kannada word for the numeric unit &quot;Four&quot;.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-6">
 <orbit-prompt question="Aidhu. (Numeric unit for 5.)" answer="**The Kannada word for the numeric unit &quot;Five&quot;.**"></orbit-prompt>
 <orbit-prompt question="Aaru. (Numeric unit for 6.)" answer="**The Kannada word for the numeric unit &quot;Six&quot;.**"></orbit-prompt>
 <orbit-prompt question="Yelu. (Numeric unit for 7.)" answer="**The Kannada word for the numeric unit &quot;Seven&quot;.**"></orbit-prompt>
@@ -97,6 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <orbit-prompt question="Hanneradu. (Numeric compound formed from 10 + 2.)" answer="**The Kannada numeric compound for &quot;Twelve&quot;.**"></orbit-prompt>
 <orbit-prompt question="It signifies the &#x27;teen&#x27; equivalent in Kannada grammar. (Example: Hadimooru signifies 13.)" answer="**What the Kannada prefix &quot;Hadi-&quot; signifies in numeric compounds like Hadimooru (Thirteen).**"></orbit-prompt>
 <orbit-prompt question="Hadinaalku. (Numeric compound signifying 10 + 4.)" answer="**The Kannada numeric compound for &quot;Fourteen&quot;.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-7">
 <orbit-prompt question="Hadinaidu. (Numeric compound signifying 10 + 5.)" answer="**The Kannada numeric compound for &quot;Fifteen&quot;.**"></orbit-prompt>
 <orbit-prompt question="Hadinaaru. (Numeric compound signifying 10 + 6.)" answer="**The Kannada numeric compound for &quot;Sixteen&quot;.**"></orbit-prompt>
 <orbit-prompt question="Hadinelu. (Numeric compound signifying 10 + 7.)" answer="**The Kannada numeric compound for &quot;Seventeen&quot;.**"></orbit-prompt>
@@ -107,6 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <orbit-prompt question="Nalavattu. (Numeric multiple of ten representing 40.)" answer="**The Kannada numeric multiple for &quot;Forty&quot;.**"></orbit-prompt>
 <orbit-prompt question="Aivattu. (Numeric multiple of ten representing 50.)" answer="**The Kannada numeric multiple for &quot;Fifty&quot;.**"></orbit-prompt>
 <orbit-prompt question="Nooru. (The base unit for hundreds; vital for larger transactions and rent discussions.)" answer="**The base unit for &quot;One Hundred&quot; is vital for rent and larger transactions.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-8">
 <orbit-prompt question="Saavira. (The base unit for thousands.)" answer="**The Kannada base unit for &quot;One Thousand&quot;.**"></orbit-prompt>
 <orbit-prompt question="-alli or -nalli. (The locative case suffix; replaces prepositions like &#x27;in&#x27; or &#x27;at&#x27;.)" answer="**The Sapthami Vibhakti suffix indicates location in space or time for &quot;In&quot; or &quot;On&quot;.**"></orbit-prompt>
 <orbit-prompt question="-ge, -ige, or -kke. (The dative case suffix; indicates target destination or recipient, crucial for transport.)" answer="**The Chaturthi Vibhakti suffix indicates a target destination or recipient for &quot;To&quot;.**"></orbit-prompt>
@@ -117,6 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <orbit-prompt question="Nanage or Nange. (Meaning &quot;To me&quot;; the absolute anchor for all experiential verbs like hunger or desire.)" answer="**The dative form of the first-person pronoun &quot;I&quot;, used as the anchor for experiential verbs.**"></orbit-prompt>
 <orbit-prompt question="Nimage. (Meaning &quot;To you (Respectful)&quot;; used in phrases like &quot;Nimage yenu beku?&quot;)" answer="**The dative form of the respectful second-person pronoun &quot;You&quot;.**"></orbit-prompt>
 <orbit-prompt question="Eega. (Temporal adverb indicating the present moment.)" answer="**The temporal adverb for &quot;Now&quot; is used to demand immediate action.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-9">
 <orbit-prompt question="Aamele. (Temporal adverb; extremely common in delaying tactics or scheduling.)" answer="**The temporal adverb meaning &quot;Later&quot; or &quot;Afterwards&quot; is common in scheduling.**"></orbit-prompt>
 <orbit-prompt question="Ivathu or Ivattu. (Temporal noun indicating the current day.)" answer="**The temporal noun indicates the current day, &quot;Today&quot;.**"></orbit-prompt>
 <orbit-prompt question="Naale. (Temporal noun indicating the future day.)" answer="**The temporal noun for &quot;Tomorrow&quot; is often used to postpone meetings or visits.**"></orbit-prompt>
@@ -127,6 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <orbit-prompt question="Rathri. (Temporal noun indicating nighttime.)" answer="**The Kannada temporal noun for &quot;Night&quot;.**"></orbit-prompt>
 <orbit-prompt question="Samaya or Hothu. (Noun used to ask duration or exact clock time.)" answer="**The noun is used to ask about duration or exact clock time for &quot;Time&quot;.**"></orbit-prompt>
 <orbit-prompt question="Mattu. (Meaning &quot;And&quot;; used to link similar items in lists or connect parallel ideas.)" answer="**The conjunction is used to link similar items in lists or parallel ideas.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-10">
 <orbit-prompt question="Aadare or Adare. (Meaning &quot;But&quot;; essential for building complex sentences and introducing contrast.)" answer="**The conjunction is essential for building complex sentences and introducing contrast.**"></orbit-prompt>
 <orbit-prompt question="Athava. (Meaning &quot;Or&quot;; used for presenting options or choices in a transaction.)" answer="**The conjunction is used for presenting options or choices in a transaction.**"></orbit-prompt>
 <orbit-prompt question="Ekeandre. (Combines Yake and Andare to provide reasoning.)" answer="**The conjunction meaning &quot;Because&quot; combines the words for &quot;Why&quot; (Yake) and &quot;If said&quot; (Andare).**"></orbit-prompt>
@@ -137,6 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <orbit-prompt question="Bayarike. (Expressed experientially with the dative subject, as in &quot;Nanage bayarike agide&quot;.)" answer="**The state of &quot;Thirst&quot; is expressed in Kannada syntax.**"></orbit-prompt>
 <orbit-prompt question="Novu. (Used with the dative subject to express physical distress, such as &quot;Thumba novu ide&quot;.)" answer="**The noun is used with the dative subject to express physical distress or &quot;Pain&quot;.**"></orbit-prompt>
 <orbit-prompt question="Kopa. (Expressed dynamically, as in &quot;Nanage kopa bandide&quot;.)" answer="**The emotion of &quot;Anger&quot; is expressed in the Kannada dative paradigm.**"></orbit-prompt>
+</orbit-reviewarea>
+
+<orbit-reviewarea id="orbit-kn-en-11">
 <orbit-prompt question="Bhaya. (Expressed experientially, as in &quot;Nanage bhaya agide&quot;.)" answer="**The emotion of &quot;Fear&quot; is expressed in the Kannada dative paradigm.**"></orbit-prompt>
 <orbit-prompt question="Ide. (Meaning &quot;Is&quot; or &quot;Exists&quot;; used to confirm availability, as in &quot;Neeru ideya?&quot;)" answer="**The third-person neuter verb that confirms availability or existence.**"></orbit-prompt>
 <orbit-prompt question="Illa. (Functions as &quot;No&quot; and the verb of non-existence; used to deny availability.)" answer="**The word that functions as both &quot;No&quot; and the verb of non-existence to deny availability.**"></orbit-prompt>
