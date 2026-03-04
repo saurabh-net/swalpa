@@ -19,12 +19,92 @@ hide:
 
 <script type="module" src="https://js.withorbit.com/orbit-web-component.js"></script>
 
+<style>
+/* Hide all review areas by default */
+orbit-reviewarea {
+    display: none;
+}
+/* Show the active one */
+orbit-reviewarea.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.flashcard-nav {
+    margin: 40px 0;
+    text-align: center;
+    padding: 20px;
+    background: rgba(var(--md-primary-fg-color--rgb), 0.05);
+    border-radius: 12px;
+    border: 1px dashed var(--md-primary-fg-color);
+}
+.next-cards-btn {
+    background: var(--md-primary-fg-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+.next-cards-btn:hover {
+    transform: scale(1.05);
+    background: var(--md-primary-fg-color--dark);
+}
+.progress-text {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--md-typeset-color);
+    opacity: 0.7;
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    const areas = document.querySelectorAll('orbit-reviewarea');
+    let currentIndex = 0;
+
+    const updateVisibility = () => {
+        areas.forEach((area, index) => {
+            if (index === currentIndex) {
+                area.classList.add('active');
+            } else {
+                area.classList.remove('active');
+            }
+        });
+        
+        // Update progress text
+        const progressEl = document.getElementById('flashcard-progress');
+        if (progressEl) {
+            progressEl.innerText = `Block ${currentIndex + 1} of ${areas.length} (Cards ${currentIndex * 5 + 1} - ${Math.min((currentIndex + 1) * 5, 100)})`;
+        }
+        
+        // Final block check
+        const nextBtn = document.getElementById('next-block-btn');
+        if (nextBtn) {
+            if (currentIndex === areas.length - 1) {
+                nextBtn.innerText = "All Done! Restart?";
+                nextBtn.onclick = () => { currentIndex = 0; updateVisibility(); };
+            } else {
+                nextBtn.innerText = "Next 5 Cards →";
+                nextBtn.onclick = () => { currentIndex++; updateVisibility(); window.scrollTo({top: 0, behavior: 'smooth'}); };
+            }
+        }
+    };
+
+    // Initial state
+    if (areas.length > 0) {
+        updateVisibility();
+    }
+
+    // Badge observer (existing)
     const observer = new MutationObserver(() => {
-        const reviewAreas = document.querySelectorAll('orbit-reviewarea');
-        if (reviewAreas.length > 0) {
-            reviewAreas.forEach(area => {
+        if (document.querySelectorAll('orbit-reviewarea').length > 0) {
+            document.querySelectorAll('orbit-reviewarea').forEach(area => {
                 area.addEventListener('click', () => {
                     if (window.unlockBadge) window.unlockBadge('flashcard_shishya');
                 }, { once: true });
@@ -40,6 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 > [!TIP]
 > **Sync your progress with [withorbit.com](https://withorbit.com).** By completing a small set of cards, you'll be prompted to sign in, ensuring your spaced repetition progress is saved across devices!
+
+<div class="flashcard-nav">
+    <button id="next-block-btn" class="next-cards-btn">Next 5 Cards →</button>
+    <div id="flashcard-progress" class="progress-text">Block 1 of 20</div>
+</div>
 
 <orbit-reviewarea id="orbit-kn-en-1">
 <orbit-prompt question="Naanu. (Used primarily in the nominative case; acts as the anchor for self-identification.)" answer="**The Kannada first-person singular pronoun for &quot;I&quot; or &quot;Me&quot;.**"></orbit-prompt>
