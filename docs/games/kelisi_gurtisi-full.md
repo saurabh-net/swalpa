@@ -6,20 +6,37 @@ hide:
 ---
 
 <style>
-/* Make the game take the full screen height minus header */
-.md-content__inner {
-    margin: 0 !important;
-    padding: 0 !important;
-    max-width: 100% !important;
-}
-
-/* Hide breadcrumbs, title, etc to give maximum space */
-.md-typeset h1, .md-content__button { margin-top: 0; display: none; }
+  html, body { 
+    margin: 0 !important; 
+    padding: 0 !important; 
+    width: 100% !important; 
+    height: 100% !important; 
+    overflow: hidden !important; 
+    background: #000 !important;
+  }
+  .md-main, .md-content, .md-content__inner, .md-main__inner, .md-container { 
+    padding: 0 !important; 
+    margin: 0 !important; 
+    max-width: none !important; 
+  }
+  .md-header, .md-sidebar, .md-footer, .md-tabs, .md-announce, .md-header__title { 
+    display: none !important; 
+  }
+  .game-frame-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    background: #000;
+  }
 </style>
 
-<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(0,0,0,0.2); border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px;">
-    <a href="../kelisi_gurtisi/" class="swalpa-button" style="text-decoration: none; padding: 6px 12px; font-size: 0.9em;">← Exit Full Screen</a>
-    <span style="font-family: Outfit, sans-serif; font-weight: bold; color: var(--md-primary-fg-color);">Kelisi & Gurtisi</span>
+<div class="game-frame-container">
+    <iframe src="../play_kelisi_gurtisi/" id="game-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
 </div>
 
---8<-- "docs/games/play_kelisi_gurtisi/index.md"
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; gap: 10px;">
+    <a href="../kelisi_gurtisi/" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; backdrop-filter: blur(5px); text-decoration: none;">&larr; Exit</a>
+</div>

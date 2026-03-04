@@ -51,6 +51,8 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.details
+  - pymdownx.snippets:
+      base_path: ["docs"]
 
 extra:
   generator: false
