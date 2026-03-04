@@ -78,11 +78,7 @@ extra_javascript:
 
 nav:
   - Namaskara: index.md
-  - Games: 
-      - Home: games/index.md
-      - Meter Haaki: games/meter_haaki.md
-      - Suffix Station: games/suffix_station.md
-      - Kelisi & Gurtisi: games/kelisi_gurtisi.md
+  - Games: games/index.md
   - Nanna Profile: nanna_profile.md
   - Lessons:
       - Quick Ref: summary_slides.md
