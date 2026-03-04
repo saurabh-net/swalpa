@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 > [!TIP]
 > **Your progress is saved entirely on your device (in local storage).** You won't lose your progress if you refresh the page or come back tomorrow!
 
-<orbit-reviewarea>
+<orbit-reviewarea id="orbit-en-kn">
 <orbit-prompt question="What is the Kannada first-person singular pronoun for &quot;I&quot; or &quot;Me&quot;?" answer="**Naanu.**&#10;&#10;*(Used primarily in the nominative case; acts as the anchor for self-identification.)*"></orbit-prompt>
 <orbit-prompt question="Which polite second-person pronoun is the default for addressing strangers and colleagues in Bengaluru?" answer="**Neevu.**&#10;&#10;*(The absolute default for strangers, vendors, and colleagues in Bengaluru.)*"></orbit-prompt>
 <orbit-prompt question="What is the informal Kannada pronoun for &quot;You&quot; (equivalent to Hindi &quot;Tu&quot;)?" answer="**Neenu.**&#10;&#10;*(Reserved strictly for close friends or children; avoid using with service personnel.)*"></orbit-prompt>

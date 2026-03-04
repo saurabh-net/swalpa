@@ -78,17 +78,14 @@ extra_javascript:
 
 nav:
   - Namaskara: index.md
-  - Lesson Slides: summary_slides.md
+  - Games: 
+      - Home: games/index.md
+      - Meter Haaki: games/meter_haaki.md
+      - Suffix Station: games/suffix_station.md
+      - Kelisi & Gurtisi: games/kelisi_gurtisi.md
   - Nanna Profile: nanna_profile.md
-  - Engage:
-      - Games: 
-          - Home: games/index.md
-          - Meter Haaki: games/meter_haaki.md
-          - Suffix Station: games/suffix_station.md
-          - Kelisi & Gurtisi: games/kelisi_gurtisi.md
-      - Podcasts: podcasts/index.md
-      - Flashcards: flashcards/index.md
   - Lessons:
+      - Quick Ref: summary_slides.md
       - 1. History & Nuances: 01_history_and_nuances.md
       - 2. Survival & Emergencies: 02_survival_and_emergencies.md
       - 3. Social Interactions: 03_social_interactions.md
@@ -99,6 +96,9 @@ nav:
       - 8. Travel & Conflict: 08_travel_and_conflict.md
       - 9. Renting & Repairs: 09_everyday_logistics_and_services.md
       - 10. Home & Groceries: 10_household_and_logistics.md
+  - Supplementary:
+      - Podcasts: podcasts/index.md
+      - Flashcards: flashcards/index.md
   - Behind Swalpa:
       - Why?: behind_swalpa/why.md
       - AI Workflows: behind_swalpa/architecture.md
