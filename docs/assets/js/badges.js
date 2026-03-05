@@ -159,10 +159,9 @@ window.unlockBadge = unlockBadge;
 window.getUnlockedBadges = getUnlockedBadges;
 window.BADGE_DEFINITIONS = BADGE_DEFINITIONS;
 
-// Hack to detect interaction with the Giscus iframe for the Conversationalist badge
-window.addEventListener('blur', () => {
-    const giscusFrame = document.querySelector('iframe.giscus-frame');
-    if (giscusFrame && document.activeElement === giscusFrame) {
+// Listen for interaction with the custom Firebase comments to award the Conversationalist badge
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'submit-comment-btn') {
         unlockBadge('conversationalist');
     }
 });
