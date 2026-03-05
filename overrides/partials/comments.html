@@ -1,122 +1,46 @@
-{% if not page.is_homepage and page.meta.comments != false %}
-<div class="swalpa-comments-container">
-    <h2 id="__comments">💬 {{ lang.t("meta.comments") }}</h2>
-    <div id="swalpa-comments-root">
-        <div style="text-align: center; padding: 20px; opacity: 0.6;">
-            <i>Loading comments...</i>
-        </div>
-    </div>
-</div>
+{% if true %}
+<div id="debug-comments-partial-loaded" style="display:none"></div>
+<h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
 
+<!-- 
+  ====================================================================
+  👇 REPLACE THE SCRIPT BELOW WITH YOUR SNIPPET FROM GISCUS.APP 👇 
+  ====================================================================
+  -->
+<script src="https://giscus.app/client.js" data-repo="saurabh-net/swalpa" data-repo-id="R_kgDORVnR0w"
+    data-category="Announcements" data-category-id="DIC_kwDORVnR084C3ZzS" data-mapping="pathname" data-strict="0"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme"
+    data-lang="en" crossorigin="anonymous" async>
+    </script>
+<!-- ==================================================================== -->
+
+<!-- Synchronize Giscus theme with MkDocs palette (handles Dark/Light mode toggle) -->
 <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light"
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    /* Register event handlers after documented loaded */
     document.addEventListener("DOMContentLoaded", function () {
-        const commentsRoot = document.getElementById('swalpa-comments-root');
-        const pagePath = window.location.pathname;
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light"
 
-        // Ensure Firebase auth and db are available
-        if (!window.auth || !window.db) {
-            console.error("Firebase not initialized. Cannot load comments.");
-            commentsRoot.innerHTML = `<div style="padding:10px; color:#FFB6C1;">Failed to load comments (Firebase missing).</div>`;
-            return;
-        }
-
-        window.auth.onAuthStateChanged((user) => {
-            renderCommentsSession(user);
-        });
-
-        function renderCommentsSession(user) {
-            // Listen for real-time updates to comments for this page
-            window.db.collection("comments")
-                .where("pagePath", "==", pagePath)
-                .orderBy("timestamp", "asc")
-                .onSnapshot((snapshot) => {
-                    const comments = [];
-                    snapshot.forEach((doc) => {
-                        comments.push({ id: doc.id, ...doc.data() });
-                    });
-
-                    renderUI(user, comments);
-                }, (error) => {
-                    console.error("Firestore comments error:", error);
-                    commentsRoot.innerHTML = `<div style="padding:10px; color:#FFB6C1;">Failed to load comments.</div>`;
-                });
-        }
-
-        function renderUI(user, comments) {
-            let html = '<div class="swalpa-comments-list">';
-
-            if (comments.length === 0) {
-                html += `<div style="text-align: center; padding: 20px; opacity: 0.5; font-size: 14px;">No comments yet. Be the first to start the conversation!</div>`;
-            } else {
-                comments.forEach(comment => {
-                    const date = comment.timestamp ? new Date(comment.timestamp.seconds * 1000).toLocaleDateString() : 'Just now';
-                    html += `
-                        <div class="comment-item">
-                            <img src="${comment.photoURL}" class="comment-avatar" referrerPolicy="no-referrer" alt="Avatar">
-                            <div class="comment-content">
-                                <div class="comment-header">
-                                    <span class="comment-author">${comment.displayName}</span>
-                                    <span class="comment-date">${date}</span>
-                                </div>
-                                <div class="comment-text">${comment.text}</div>
-                            </div>
-                        </div>
-                    `;
-                });
+                /* Instruct Giscus to change theme */
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
             }
-            html += '</div>';
-
-            if (user) {
-                html += `
-                    <div class="comment-form">
-                        <textarea id="comment-textarea" placeholder="Leave a comment..."></textarea>
-                        <button id="submit-comment-btn" class="comment-submit-btn">Post Comment</button>
-                        <div style="clear: both;"></div>
-                    </div>
-                `;
-            } else {
-                html += `
-                    <div class="comment-login-prompt">
-                        Please <a href="/profile/">log in</a> to leave a comment.
-                    </div>
-                `;
-            }
-
-            commentsRoot.innerHTML = html;
-
-            if (user) {
-                const submitBtn = document.getElementById('submit-comment-btn');
-                const textarea = document.getElementById('comment-textarea');
-
-                if (submitBtn && textarea) {
-                    submitBtn.addEventListener('click', async () => {
-                        const text = textarea.value.trim();
-                        if (!text) return;
-
-                        submitBtn.disabled = true;
-                        submitBtn.innerText = "Posting...";
-
-                        try {
-                            await window.db.collection("comments").add({
-                                pagePath: pagePath,
-                                uid: user.uid,
-                                displayName: user.displayName,
-                                photoURL: user.photoURL,
-                                text: text,
-                                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                            });
-                            textarea.value = '';
-                        } catch (err) {
-                            console.error("Error posting comment:", err);
-                            alert("Could not post comment. Try again!");
-                        } finally {
-                            submitBtn.disabled = false;
-                            submitBtn.innerText = "Post Comment";
-                        }
-                    });
-                }
-            }
-        }
-    });
+        })
+    })
 </script>
 {% endif %}
