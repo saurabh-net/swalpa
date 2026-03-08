@@ -26,6 +26,8 @@ The project is entirely open-source ([GitHub Public Repo](https://github.com/sau
 ### Extending the Framework
 The framework built here isn't just for Kannada. The core philosophy of learning a language through survival scenarios is expanding. We've recently migrated our persistence layer to **Firebase** to provide robust, real-time synchronization across devices, making the platform ready for even more languages. A sister project applying these exact same principles to Tamil -- with a different author -- is currently in the works over at [konjam.org](https://konjam.org/)!
 
+We've also open-sourced the entire architecture as **[Lingo-Scaffold](https://github.com/saurabh-net/lingo-scaffold)** — a set of composable AI agent skills that let anyone build their own version of swalpa for *any language and culture*. It packages our 18 skills, research workflows, game templates, and deployment pipeline into a reusable toolkit. Just describe your target language and city, and an AI agent like Antigravity handles the rest.
+
 
 ---
 
